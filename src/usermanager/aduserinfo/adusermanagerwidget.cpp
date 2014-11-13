@@ -94,7 +94,7 @@ ADUserManagerWidget::ADUserManagerWidget(QWidget *parent) :
     ui.lineEditFilter->setText("(&(objectcategory=person)(objectclass=user)(sAMAccountName=*)(displayName=*))");
     ui.lineEditDataToRetrieve->setText("sAMAccountName,displayName");
 
-    ui.toolButtonConnect->setFocus();
+    ui.lineEditADAdminName->setFocus();
 
     this->installEventFilter(this);
 

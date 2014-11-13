@@ -1,4 +1,4 @@
-QtApps
+Plugins
 ======
 
 Qt Applications
