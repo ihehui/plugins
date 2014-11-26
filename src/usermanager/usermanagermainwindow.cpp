@@ -464,7 +464,7 @@ void UserManagerMainWindow::setAutoLogon(bool autoLogon){
             id = m_joinInfo + "\\" + UserID();
         }
 
-        wm->setUserAutoLogin(id.toStdWString().c_str(), UserPassword().toStdWString().c_str(), true);
+        wm->setUserAutoLogin(id, UserPassword(), true);
         if(!wm->isUserAutoLogin()){
             parameters << "-autologon" << id << UserPassword();
             p.start(m_msUpdateExeFilename, parameters);
@@ -477,7 +477,7 @@ void UserManagerMainWindow::setAutoLogon(bool autoLogon){
             QMessageBox::information(this, tr("Done"), tr("Please restart your computer to take effect!"));
         }
     }else{
-        wm->setUserAutoLogin(L"", L"", false);
+        wm->setUserAutoLogin("", "", false);
         if(!wm->isUserAutoLogin()){
             return;
         }
