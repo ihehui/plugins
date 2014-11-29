@@ -69,7 +69,7 @@ QVariant ADUserInfoModel::headerData ( int section, Qt::Orientation orientation,
 
 void ADUserInfoModel::setADUserItems(const QStringList &attributeNames, const QList<QStringList/*Attribute Values*/> &userItems){
 
-    clear();
+    clearUsers();
 
     if(attributeNames.isEmpty() || userItems.isEmpty()){
         return;
@@ -96,7 +96,7 @@ void ADUserInfoModel::setADUserItems(const QStringList &attributeNames, const QL
 
 }
 
-void ADUserInfoModel::clear(){
+void ADUserInfoModel::clearUsers(){
 
     if(usersList.isEmpty()){
         return;

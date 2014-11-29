@@ -29,7 +29,7 @@ public:
     ADUser * getADUser(const QModelIndex & index);
 
 private:
-    void clear();
+    void clearUsers();
 
 
 private:

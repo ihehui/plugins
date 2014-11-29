@@ -137,7 +137,16 @@
          <string/>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <property name="margin">
+         <property name="leftMargin">
+          <number>3</number>
+         </property>
+         <property name="topMargin">
+          <number>3</number>
+         </property>
+         <property name="rightMargin">
+          <number>3</number>
+         </property>
+         <property name="bottomMargin">
           <number>3</number>
          </property>
          <property name="horizontalSpacing">
@@ -340,7 +349,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>User cannot change password</string>
+    <string>User can not change password</string>
    </property>
   </action>
   <action name="actionPasswordNeverExpires">

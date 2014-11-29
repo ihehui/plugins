@@ -37,13 +37,13 @@
 //#endif
 
 #ifndef DOMAIN_DC_IP
-#define DOMAIN_DC_IP "200.200.200.118"
+#define DOMAIN_DC_IP "200.200.198.198"
 #endif
 #ifndef DOMAIN_ADMIN_NAME
-#define DOMAIN_ADMIN_NAME "admin"
+#define DOMAIN_ADMIN_NAME "hehui"
 #endif
 #ifndef DOMAIN_ADMIN_PASSWORD
-#define DOMAIN_ADMIN_PASSWORD "admin"
+#define DOMAIN_ADMIN_PASSWORD "000..."
 #endif
 
 #ifndef ADSI_LIB
@@ -276,6 +276,7 @@ void ADUserManagerWidget::on_toolButtonConnect_clicked(){
 
     ui.lineEditAccountName->setText(m_adsi->UserNameOfCurrentThread());
 
+    ui.comboBoxOU->clear();
     ui.comboBoxOU->addItem("");
     QString ous = m_adsi->AD_GetAllOUs("", ";", "\\");
     QStringList ouList = ous.split(";");
@@ -309,7 +310,7 @@ void ADUserManagerWidget::on_toolButtonQueryAD_clicked(){
     if(ui.comboBoxQueryMode->currentIndex() == 0){
         QString displayName = ui.lineEditDisplayName->text();
         filter = QString("(&(objectcategory=person)(objectclass=user)(sAMAccountName=%1*)%2)").arg(ui.lineEditAccountName->text()).arg(displayName.trimmed().isEmpty()?"":QString("(displayName=%1*)").arg(displayName));
-        dataToRetrieve = "sAMAccountName,displayName,userWorkstations,telephoneNumber,description,objectGUID,objectSid";
+        dataToRetrieve = "sAMAccountName,displayName,userWorkstations,telephoneNumber,description,department,title,objectGUID,objectSid";
     }else{
         filter = ui.lineEditFilter->text();
         if(filter.trimmed().isEmpty()){filter = "(&(objectcategory=person)(objectclass=user)(sAMAccountName=*)(displayName=*))";}
@@ -430,10 +431,10 @@ void ADUserManagerWidget::slotViewADUserInfo(const QModelIndex &index){
 }
 
 void ADUserManagerWidget::slotCreateADUser(ADUser *adUser){
-    showADUserInfoWidget(adUser);
+    showADUserInfoWidget(adUser, true);
 }
 
-void ADUserManagerWidget::showADUserInfoWidget(ADUser *adUser){
+void ADUserManagerWidget::showADUserInfoWidget(ADUser *adUser, bool creareNewUser){
     qDebug()<<"--ADUserManagerWidget::showADUserInfoWidget(...)";
 
     if(!verifyPrivilege()){
@@ -452,7 +453,11 @@ void ADUserManagerWidget::showADUserInfoWidget(ADUser *adUser){
     vbl.addWidget(&wgt);
     dlg.setLayout(&vbl);
     dlg.updateGeometry();
-    dlg.setWindowTitle(tr("AD User Info"));
+    if(creareNewUser){
+        dlg.setWindowTitle(tr("Create New AD User"));
+    }else{
+        dlg.setWindowTitle(tr("AD User Info"));
+    }
     dlg.exec();
 
 }
@@ -467,7 +472,7 @@ void ADUserManagerWidget::slotUnlockAccount(){
 
     bool ok = m_adsi->AD_UnlockObject(sAMAccountName);
     if(!ok){
-        QMessageBox::critical(this, tr("Error"), QString("Failed to unlock user '%1'! \r\n %2").arg(sAMAccountName).arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
+        QMessageBox::critical(this, tr("Error"), QString("Failed to unlock user '%1'! \r\n %2").arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
     }
 
 }
@@ -483,7 +488,7 @@ void ADUserManagerWidget::slotDisableADUserAccount(){
     bool disabled = m_adsi->AD_IsObjectDisabled(sAMAccountName);
     bool ok = m_adsi->AD_EnableObject(sAMAccountName, disabled);
     if(!ok){
-        QMessageBox::critical(this, tr("Error"), QString("Failed to %1 user '%2'! \r\n %3").arg(disabled?tr("enable"):tr("disable")).arg(sAMAccountName).arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
+        QMessageBox::critical(this, tr("Error"), QString("Failed to %1 user '%2'! \r\n %3").arg(disabled?tr("enable"):tr("disable")).arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
     }
 
 }
@@ -505,7 +510,7 @@ void ADUserManagerWidget::slotResetADUserPassword(){
         if (ok && !text.isEmpty()){
             newPassword = text.trimmed();
             if(newPassword.size() < 8){
-                QMessageBox::critical(this, tr("Error"), "At least 8 characters are required fro the password!");
+                QMessageBox::critical(this, tr("Error"), tr("At least 8 characters are required fro the password!"));
             }else{
                 break;
             }
@@ -522,7 +527,7 @@ void ADUserManagerWidget::slotResetADUserPassword(){
                                              "", &ok);
         if (ok && !text.isEmpty()){
             if(newPassword != text.trimmed() ){
-                QMessageBox::critical(this, tr("Error"), "Passwords do not match!");
+                QMessageBox::critical(this, tr("Error"), tr("Passwords do not match!"));
             }else{
                 break;
             }
@@ -646,7 +651,7 @@ void ADUserManagerWidget::updateActions() {
     ui.actionPrint->setEnabled(enableExp);
 
 #ifdef Q_OS_WIN32
-    ui.actionCreateNewAccount->setEnabled(false);
+    ui.actionCreateNewAccount->setEnabled(true);
 
     ui.actionUnlockAccount->setEnabled(enableModify);
     ui.actionDisableAccount->setEnabled(enableModify);

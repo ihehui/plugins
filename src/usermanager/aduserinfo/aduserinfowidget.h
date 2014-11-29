@@ -37,10 +37,15 @@ private slots:
     void on_pushButtonEdit_clicked();
     void on_pushButtonClose_clicked();
 
+    void on_checkBoxUserMustChangePassword_clicked();
+    void on_checkBoxUserCannotChangePassword_clicked();
+    void on_checkBoxPasswordNeverExpires_clicked();
+
     void saveChanges();
 
 private:
     void initUI();
+    void switchToCreatingMode();
     void switchToEditMode();
     void switchToViewMode();
 
@@ -51,12 +56,13 @@ private:
     ADSI *m_adsi;
     ADUser m_adUser;
 
-
     QString m_accountName;
     QString m_displayName;
     QString m_description;
     QString m_userWorkstations;
     QString m_telephone;
+    QString m_department;
+    QString m_title;
     QString m_guid;
     QString m_sid;
 
@@ -64,10 +70,6 @@ private:
 //    QString m_distinguishedName;
     QString m_simpleOUString;
     QString m_fullOUString;
-
-
-
-
 
 
 

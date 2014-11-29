@@ -27,7 +27,20 @@ public:
     void setAttribute(const QString &attributeName, const QString &attributeValue);
     QString getAttribute(const QString &attributeName);
 
+    bool accountDisabled();
+    void setAccountDisabled(bool disabled);
 
+//    bool accountLocked();
+//    void setAccountLocked(bool locked);
+
+    bool userMustChangePassword();
+    void setUserMustChangePassword(bool userMustChangePassword);
+
+    bool userCanChangePassword();
+    void setUserCanChangePassword(bool userCanChangePassword);
+
+    bool passwordNeverExpires();
+    void setPasswordNeverExpires(bool passwordNeverExpires);
 
 
 private:
@@ -37,8 +50,11 @@ private:
 
     QHash<QString/*AD Attribute Name*/, QString/*Attribute Value*/> attributeHash;
     
-
-
+    bool m_isAccountDisabled;
+//    bool m_isAccountLocked;
+    bool m_userMustChangePassword;
+    bool m_userCanChangePassword;
+    bool m_passwordNeverExpires;
 
 };
 

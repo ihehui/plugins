@@ -84,7 +84,7 @@ private slots:
 
     void slotViewADUserInfo(const QModelIndex &index);
     void slotCreateADUser(ADUser *adUser);
-    void showADUserInfoWidget(ADUser *adUser);
+    void showADUserInfoWidget(ADUser *adUser, bool creareNewUser = false);
     void slotUnlockAccount();
     void slotDisableADUserAccount();
 
