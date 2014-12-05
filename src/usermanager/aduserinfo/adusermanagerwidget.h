@@ -68,28 +68,22 @@ private slots:
     void on_actionExport_triggered();
     void on_actionPrint_triggered();
 
-    void on_actionUnlockAccount_triggered();
-    void on_actionDisableAccount_triggered();
-    void on_actionCreateNewAccount_triggered();
     void on_actionProperties_triggered();
-
-    void on_actionResetPassword_triggered();
-    void on_actionUserMustChangePassword_triggered();
-    void on_actionUserCannotChangePassword_triggered();
-    void on_actionPasswordNeverExpires_triggered();
-
+    void on_actionCreateNewAccount_triggered();
+    void on_actionDeleteAccount_triggered();
+    void on_actionRefresh_triggered();
 
     void slotExportQueryResult();
     void slotPrintQueryResult();
 
     void slotViewADUserInfo(const QModelIndex &index);
     void slotCreateADUser(ADUser *adUser);
+    void slotDeleteADUser();
+    void slotRefresh();
+
     void showADUserInfoWidget(ADUser *adUser, bool creareNewUser = false);
-    void slotUnlockAccount();
-    void slotDisableADUserAccount();
 
     void slotResetADUserPassword();
-    void slotUserMustChangePassword();
 
 
     void slotShowCustomContextMenu(const QPoint & pos);
@@ -102,7 +96,7 @@ private slots:
 
 
 private:
-    void reset();
+    void updateOUList();
 
 private:
     Ui::ADUserManagerWidgetUI ui;

@@ -242,7 +242,6 @@ void ADUserManagerWidget::on_toolButtonConnect_clicked(){
     if(m_adOpened){
         m_adsi->AD_Close();
         m_adsi->unloadLibrary();
-        reset();
         ui.groupBoxADUsersList->setEnabled(false);
         ui.comboBoxOU->clear();
         m_adOpened = false;
@@ -276,13 +275,7 @@ void ADUserManagerWidget::on_toolButtonConnect_clicked(){
 
     ui.lineEditAccountName->setText(m_adsi->UserNameOfCurrentThread());
 
-    ui.comboBoxOU->clear();
-    ui.comboBoxOU->addItem("");
-    QString ous = m_adsi->AD_GetAllOUs("", ";", "\\");
-    QStringList ouList = ous.split(";");
-    ouList.sort();
-    ui.comboBoxOU->addItems(ouList);
-    ADUser::setOUList(ouList);
+    updateOUList();
 
     ui.groupBoxADUsersList->setEnabled(true);
 
@@ -310,7 +303,8 @@ void ADUserManagerWidget::on_toolButtonQueryAD_clicked(){
     if(ui.comboBoxQueryMode->currentIndex() == 0){
         QString displayName = ui.lineEditDisplayName->text();
         filter = QString("(&(objectcategory=person)(objectclass=user)(sAMAccountName=%1*)%2)").arg(ui.lineEditAccountName->text()).arg(displayName.trimmed().isEmpty()?"":QString("(displayName=%1*)").arg(displayName));
-        dataToRetrieve = "sAMAccountName,displayName,userWorkstations,telephoneNumber,description,department,title,objectGUID,objectSid";
+        //dataToRetrieve = "sAMAccountName,displayName,telephoneNumber,description,department,title,userWorkstations,objectGUID,objectSid";
+        dataToRetrieve = "sAMAccountName,displayName,telephoneNumber,description,department,title,userWorkstations";
     }else{
         filter = ui.lineEditFilter->text();
         if(filter.trimmed().isEmpty()){filter = "(&(objectcategory=person)(objectclass=user)(sAMAccountName=*)(displayName=*))";}
@@ -331,16 +325,15 @@ void ADUserManagerWidget::on_toolButtonQueryAD_clicked(){
     }
 
     QStringList attributeNames = dataToRetrieve.split(",");
-
-    QString resultString = m_adsi->AD_GetObjectsInOU(ouString, filter, dataToRetrieve, itemSeparator, attributeSeparator);
-    if(resultString.isEmpty()){
+    QString resultString = "";
+     bool ok = m_adsi->AD_GetObjectsInOU(&resultString, ouString, filter, dataToRetrieve, itemSeparator, attributeSeparator);
+    if(!ok){
         QString error = m_adsi->AD_GetLastErrorString();
         m_userInfoModel->setADUserItems(attributeNames, QList<QStringList>());
         QMessageBox::critical(this, tr("Error"), tr("Failed to query AD!\r\n%1").arg(error) );
 
         return;
     }
-
 
     QStringList itemStrings = resultString.split(itemSeparator);
     QList<QStringList> items;
@@ -366,36 +359,33 @@ void ADUserManagerWidget::on_actionPrint_triggered(){
     slotPrintQueryResult();
 }
 
-void ADUserManagerWidget::on_actionUnlockAccount_triggered(){
-    slotUnlockAccount();
-}
 
-void ADUserManagerWidget::on_actionDisableAccount_triggered(){
-    slotDisableADUserAccount();
+
+void ADUserManagerWidget::on_actionProperties_triggered(){
+    slotViewADUserInfo(ui.tableViewADUsers->currentIndex());
 }
 
 void ADUserManagerWidget::on_actionCreateNewAccount_triggered(){
     slotCreateADUser(0);
 }
 
-void ADUserManagerWidget::on_actionProperties_triggered(){
-    slotViewADUserInfo(ui.tableViewADUsers->currentIndex());
+void ADUserManagerWidget::on_actionDeleteAccount_triggered(){
+
+    QModelIndex index = ui.tableViewADUsers->currentIndex();
+    if(!index.isValid()){
+        return;
+    }
+
+    if(ui.comboBoxQueryMode->currentIndex() != 0 ){
+        return;
+    }
+
+    getSelectedADUser(index);
+    slotDeleteADUser();
 }
 
-void ADUserManagerWidget::on_actionResetPassword_triggered(){
-    slotResetADUserPassword();
-}
-
-void ADUserManagerWidget::on_actionUserMustChangePassword_triggered(){
-    slotUserMustChangePassword();
-}
-
-void ADUserManagerWidget::on_actionUserCannotChangePassword_triggered(){
-    //TODO
-}
-
-void ADUserManagerWidget::on_actionPasswordNeverExpires_triggered(){
-    //TODO
+void ADUserManagerWidget::on_actionRefresh_triggered(){
+    slotRefresh();
 }
 
 
@@ -434,6 +424,32 @@ void ADUserManagerWidget::slotCreateADUser(ADUser *adUser){
     showADUserInfoWidget(adUser, true);
 }
 
+void ADUserManagerWidget::slotDeleteADUser(){
+
+    if(!m_selectedADUser){
+        return;
+    }
+
+    QString sAMAccountName = m_selectedADUser->getAttribute("sAMAccountName");
+    if(sAMAccountName.isEmpty()){
+        QMessageBox::critical(this, tr("Error"), tr("Failed to find SAM AccountName"));
+        return;
+    }
+
+    if(!m_adsi->AD_DeleteObject(sAMAccountName, "user")){
+        QMessageBox::critical(this, tr("Error"), QString("Failed to delete user '%1'! \r\n %2").arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
+    }else{
+        QMessageBox::information(this, tr("OK"), QString("User '%1' deleted!").arg(sAMAccountName) );
+    }
+
+}
+
+void ADUserManagerWidget::slotRefresh(){
+
+    on_toolButtonQueryAD_clicked();
+    updateOUList();
+}
+
 void ADUserManagerWidget::showADUserInfoWidget(ADUser *adUser, bool creareNewUser){
     qDebug()<<"--ADUserManagerWidget::showADUserInfoWidget(...)";
 
@@ -446,7 +462,7 @@ void ADUserManagerWidget::showADUserInfoWidget(ADUser *adUser, bool creareNewUse
     vbl.setContentsMargins(1, 1, 1, 1);
 
     ADUserInfoWidget wgt(m_adsi, adUser, &dlg);
-    connect(&wgt, SIGNAL(signalChangesSaved()), this, SLOT(on_toolButtonQueryAD_clicked()));
+    connect(&wgt, SIGNAL(signalChangesSaved()), this, SLOT(slotRefresh()));
     connect(&wgt, SIGNAL(signalCloseWidget()), &dlg, SLOT(accept()));
     connect(activityTimer, SIGNAL(timeout()), &dlg, SLOT(accept()));
 
@@ -462,36 +478,6 @@ void ADUserManagerWidget::showADUserInfoWidget(ADUser *adUser, bool creareNewUse
 
 }
 
-void ADUserManagerWidget::slotUnlockAccount(){
-
-    QString sAMAccountName = m_selectedADUser->getAttribute("sAMAccountName");
-    if(sAMAccountName.isEmpty()){
-        QMessageBox::critical(this, tr("Error"), tr("Failed to find SAM AccountName"));
-        return;
-    }
-
-    bool ok = m_adsi->AD_UnlockObject(sAMAccountName);
-    if(!ok){
-        QMessageBox::critical(this, tr("Error"), QString("Failed to unlock user '%1'! \r\n %2").arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
-    }
-
-}
-
-void ADUserManagerWidget::slotDisableADUserAccount(){
-
-    QString sAMAccountName = m_selectedADUser->getAttribute("sAMAccountName");
-    if(sAMAccountName.isEmpty()){
-        QMessageBox::critical(this, tr("Error"), tr("Failed to find SAM AccountName"));
-        return;
-    }
-
-    bool disabled = m_adsi->AD_IsObjectDisabled(sAMAccountName);
-    bool ok = m_adsi->AD_EnableObject(sAMAccountName, disabled);
-    if(!ok){
-        QMessageBox::critical(this, tr("Error"), QString("Failed to %1 user '%2'! \r\n %3").arg(disabled?tr("enable"):tr("disable")).arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
-    }
-
-}
 
 void ADUserManagerWidget::slotResetADUserPassword(){
 
@@ -547,20 +533,7 @@ void ADUserManagerWidget::slotResetADUserPassword(){
 
 }
 
-void ADUserManagerWidget::slotUserMustChangePassword(){
 
-    QString sAMAccountName = m_selectedADUser->getAttribute("sAMAccountName");
-    if(sAMAccountName.isEmpty()){
-        QMessageBox::critical(this, tr("Error"), tr("Failed to find SAM AccountName"));
-        return;
-    }
-
-    bool ok = m_adsi->AD_ModifyAttribute(sAMAccountName, "pwdLastSet", "0");
-    if(!ok){
-        QMessageBox::critical(this, tr("Error"), QString("Operation Failed! \r\n %1").arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
-    }
-
-}
 
 
 
@@ -605,22 +578,13 @@ void ADUserManagerWidget::slotShowCustomContextMenu(const QPoint & pos){
     menu.addSeparator();
 
     QMenu accountMenu(tr("Account"), this);
-    accountMenu.addAction(ui.actionUnlockAccount);
-    accountMenu.addAction(ui.actionDisableAccount);
+    accountMenu.addAction(ui.actionProperties);
     accountMenu.addSeparator();
     accountMenu.addAction(ui.actionCreateNewAccount);
-    accountMenu.addAction(ui.actionProperties);
+    accountMenu.addAction(ui.actionDeleteAccount);
     menu.addMenu(&accountMenu);
 
-    QMenu passwordMenu(tr("Password"), this);
-    passwordMenu.addAction(ui.actionResetPassword);
-    passwordMenu.addSeparator();
-    passwordMenu.addAction(ui.actionUserMustChangePassword);
-    passwordMenu.addAction(ui.actionPasswordNeverExpires);
-    passwordMenu.addAction(ui.actionUserCannotChangePassword);
-    menu.addMenu(&passwordMenu);
-
-
+    menu.addAction(ui.actionRefresh);
 
     //#endif
 
@@ -652,19 +616,7 @@ void ADUserManagerWidget::updateActions() {
 
 #ifdef Q_OS_WIN32
     ui.actionCreateNewAccount->setEnabled(true);
-
-    ui.actionUnlockAccount->setEnabled(enableModify);
-    ui.actionDisableAccount->setEnabled(enableModify);
-    if(userDisabled){
-        ui.actionDisableAccount->setText(tr("Enable Account"));
-    }else{
-        ui.actionDisableAccount->setText(tr("Disable Account"));
-    }
-
-    ui.actionResetPassword->setEnabled(enableModify);
-    ui.actionUserMustChangePassword->setEnabled(enableModify);
-    ui.actionPasswordNeverExpires->setEnabled(false);
-    ui.actionUserCannotChangePassword->setEnabled(false);
+    ui.actionDeleteAccount->setEnabled(enableModify);
 
     //    if(!m_isJoinedToDomain){
     //        ui.actionAutoLogon->setEnabled(enableExp && (wm->localUsers().contains(UserID(), Qt::CaseInsensitive)) ) ;
@@ -717,12 +669,19 @@ bool ADUserManagerWidget::verifyPrivilege(){
 }
 
 
+void ADUserManagerWidget::updateOUList(){
 
+    QString curOU = ui.comboBoxOU->currentText();
 
+    ui.comboBoxOU->clear();
+    ui.comboBoxOU->addItem("");
+    QString ous = m_adsi->AD_GetAllOUs("", ";", "\\");
+    QStringList ouList = ous.split(";");
+    ouList.sort();
+    ui.comboBoxOU->addItems(ouList);
+    ui.comboBoxOU->setCurrentIndex(ui.comboBoxOU->findText(curOU));
 
-
-
-void ADUserManagerWidget::reset(){
+    ADUser::setOUList(ouList);
 
 }
 

@@ -329,45 +329,25 @@
     <string>Create New Account</string>
    </property>
   </action>
-  <action name="actionResetPassword">
-   <property name="text">
-    <string>Reset Password</string>
-   </property>
-  </action>
-  <action name="actionDisableAccount">
-   <property name="text">
-    <string>Disable Account</string>
-   </property>
-  </action>
-  <action name="actionUnlockAccount">
-   <property name="text">
-    <string>Unlock Account</string>
-   </property>
-  </action>
-  <action name="actionUserCannotChangePassword">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>User can not change password</string>
-   </property>
-  </action>
-  <action name="actionPasswordNeverExpires">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Password never expires</string>
-   </property>
-  </action>
-  <action name="actionUserMustChangePassword">
-   <property name="text">
-    <string>User must change password at next logon</string>
-   </property>
-  </action>
   <action name="actionProperties">
    <property name="text">
     <string>Properties</string>
+   </property>
+  </action>
+  <action name="actionDeleteAccount">
+   <property name="text">
+    <string>Delete Account</string>
+   </property>
+   <property name="toolTip">
+    <string>Delete Account</string>
+   </property>
+  </action>
+  <action name="actionRefresh">
+   <property name="text">
+    <string>Refresh</string>
+   </property>
+   <property name="toolTip">
+    <string>Refresh</string>
    </property>
   </action>
  </widget>

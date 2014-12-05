@@ -103,9 +103,9 @@ void ADUser::setUserMustChangePassword(bool userMustChangePassword){
     m_userMustChangePassword = userMustChangePassword;
 }
 
-bool ADUser::userCanChangePassword(){
-    return m_userCanChangePassword;
-}
+//bool ADUser::userCanChangePassword(){
+//    return m_userCanChangePassword;
+//}
 
 void ADUser::setUserCanChangePassword(bool userCanChangePassword){
     m_userCanChangePassword = userCanChangePassword;

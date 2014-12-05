@@ -340,8 +340,8 @@ void ADUserInfoWidget::saveChanges(){
     }
 
     bool userCannotChangePassword = ui.checkBoxUserCannotChangePassword->isChecked();
-    if(userCannotChangePassword != m_adsi->userCanChangePassword(accountName)){
-        ok = m_adsi->AD_SetUserPasswordChange(accountName, !userCannotChangePassword);
+    if(userCannotChangePassword != m_adsi->userCannotChangePassword(accountName)){
+        ok = m_adsi->AD_SetUserCannotChangePassword(accountName, userCannotChangePassword);
         if(!ok){
             QMessageBox::critical(this, tr("Error"), QString("Operation Failed! \r\n %1").arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
             saved = false;
@@ -379,15 +379,7 @@ void ADUserInfoWidget::initUI(){
         return;
     }
 
-    m_guid = m_adUser.getAttribute("objectGUID");
-    m_sid = m_adUser.getAttribute("objectSid");
-    if(m_guid.isEmpty()){
-        switchToCreatingMode();
-        return;
-    }else{
-        switchToViewMode();
-        ui.pushButtonClose->setFocus();
-    }
+    switchToViewMode();
 
     ui.lineEditSAMAccount->setText(m_accountName);
 
@@ -436,9 +428,9 @@ void ADUserInfoWidget::initUI(){
     m_adUser.setUserMustChangePassword(userMustChangePasword);
     ui.checkBoxUserMustChangePassword->setChecked(userMustChangePasword);
 
-    bool userCanChangePassword = m_adsi->userCanChangePassword(m_accountName);
-    m_adUser.setUserCanChangePassword(userCanChangePassword);
-    ui.checkBoxUserCannotChangePassword->setChecked(!userCanChangePassword);
+    bool userCannotChangePassword = m_adsi->userCannotChangePassword(m_accountName);
+    //m_adUser.setUserCanChangePassword(userCanChangePassword);
+    ui.checkBoxUserCannotChangePassword->setChecked(userCannotChangePassword);
 
     bool passwordNeverExpires = m_adsi->passwordNeverExpires(m_accountName);
     m_adUser.setPasswordNeverExpires(passwordNeverExpires);
@@ -450,6 +442,10 @@ void ADUserInfoWidget::initUI(){
         ui.pushButtonEdit->setVisible(false);
     }
 
+    m_guid = m_adsi->AD_GetObjectAttribute(m_accountName, "objectGUID");
+    m_adUser.setAttribute("objectGUID", m_guid);
+    m_sid = m_adsi->AD_GetObjectAttribute(m_accountName, "objectSid");
+    m_adUser.setAttribute("objectSid", m_sid);
     ui.lineEditGUID->setText(m_guid);
     ui.lineEditSID->setText(m_sid);
 
@@ -536,6 +532,7 @@ void ADUserInfoWidget::switchToViewMode(){
     ui.groupBoxID->show();
 
     ui.pushButtonEdit->setText(tr("&Edit"));
+    ui.pushButtonClose->setFocus();
 
 }
 

@@ -36,7 +36,7 @@ public:
     bool userMustChangePassword();
     void setUserMustChangePassword(bool userMustChangePassword);
 
-    bool userCanChangePassword();
+//    bool userCanChangePassword();
     void setUserCanChangePassword(bool userCanChangePassword);
 
     bool passwordNeverExpires();
