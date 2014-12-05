@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>572</width>
+    <width>597</width>
     <height>575</height>
    </rect>
   </property>
@@ -387,7 +387,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEditConfirmPassword"/>
+          <widget class="QLineEdit" name="lineEditConfirmPassword">
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -404,6 +408,32 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEditSAMAccount</tabstop>
+  <tabstop>lineEditDisplayName</tabstop>
+  <tabstop>lineEditDescription</tabstop>
+  <tabstop>lineEditUserWorkstations</tabstop>
+  <tabstop>lineEditTelephone</tabstop>
+  <tabstop>lineEditDepartment</tabstop>
+  <tabstop>lineEditTitle</tabstop>
+  <tabstop>comboBoxOU</tabstop>
+  <tabstop>checkBoxAccountDisabled</tabstop>
+  <tabstop>checkBoxUnlockAccount</tabstop>
+  <tabstop>lineEditPassword</tabstop>
+  <tabstop>lineEditConfirmPassword</tabstop>
+  <tabstop>checkBoxUserMustChangePassword</tabstop>
+  <tabstop>checkBoxUserCannotChangePassword</tabstop>
+  <tabstop>checkBoxPasswordNeverExpires</tabstop>
+  <tabstop>lineEditGUID</tabstop>
+  <tabstop>lineEditSID</tabstop>
+  <tabstop>groupBoxUseLocalComputer</tabstop>
+  <tabstop>checkBoxLogonOnly</tabstop>
+  <tabstop>checkBoxPowerUsers</tabstop>
+  <tabstop>checkBoxRDusers</tabstop>
+  <tabstop>checkBoxAdministrators</tabstop>
+  <tabstop>pushButtonEdit</tabstop>
+  <tabstop>pushButtonClose</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

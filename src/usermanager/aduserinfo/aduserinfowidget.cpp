@@ -59,27 +59,26 @@ void ADUserInfoWidget::on_pushButtonEdit_clicked(){
 
 void ADUserInfoWidget::on_pushButtonClose_clicked(){
 
-    if(!ui.lineEditDisplayName->isReadOnly()){
+//    if(!ui.lineEditDisplayName->isReadOnly()){
 
-        QString accountName = ui.lineEditSAMAccount->text().trimmed();
-        QString displayName = ui.lineEditDisplayName->text();
-        QString description = ui.lineEditDescription->text();
-        QString userWorkstations = ui.lineEditUserWorkstations->text().trimmed();
-        QString telephone = ui.lineEditTelephone->text();
-        QString ouString = ui.comboBoxOU->currentText();
+//        QString accountName = ui.lineEditSAMAccount->text().trimmed();
+//        QString displayName = ui.lineEditDisplayName->text();
+//        QString description = ui.lineEditDescription->text();
+//        QString userWorkstations = ui.lineEditUserWorkstations->text().trimmed();
+//        QString telephone = ui.lineEditTelephone->text();
+//        QString ouString = ui.comboBoxOU->currentText();
 
-        if(m_accountName != accountName || m_displayName != displayName
-                || m_description != description || m_userWorkstations != userWorkstations
-                || m_telephone != telephone || m_simpleOUString != ouString){
+//        if(m_accountName != accountName || m_displayName != displayName
+//                || m_description != description || m_userWorkstations != userWorkstations
+//                || m_telephone != telephone || m_simpleOUString != ouString){
 
             int rep = QMessageBox::question(this, tr("Question"), tr("Do you want to save changes before quit?"), QMessageBox::Yes|QMessageBox::No, QMessageBox::Yes);
             if(rep == QMessageBox::Yes){
                 saveChanges();
             }
 
-        }
-
-    }
+//        }
+//    }
 
     this->close();
     emit signalCloseWidget();
@@ -135,9 +134,14 @@ void ADUserInfoWidget::saveChanges(){
     }
 
     QString userWorkstations = ui.lineEditUserWorkstations->text().trimmed();
-    rx.setPattern("^(\\w+,*)+$");
-    rxValidator.setRegExp(rx);
-    if(rxValidator.validate(userWorkstations, pos) != QValidator::Acceptable){
+//    rx.setPattern("^(\\w+,*)+$");
+//    rxValidator.setRegExp(rx);
+//    if(rxValidator.validate(userWorkstations, pos) != QValidator::Acceptable){
+//        QMessageBox::critical(this, tr("Error"), tr("Invalid Workstations!"));
+//        ui.lineEditUserWorkstations->setFocus();
+//        return ;
+//    }
+    if(userWorkstations.contains(";") || userWorkstations.contains("|")){
         QMessageBox::critical(this, tr("Error"), tr("Invalid Workstations!"));
         ui.lineEditUserWorkstations->setFocus();
         return ;

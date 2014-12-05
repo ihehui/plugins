@@ -97,6 +97,7 @@ ADUserManagerWidget::ADUserManagerWidget(QWidget *parent) :
     ui.lineEditADAdminName->setFocus();
 
     this->installEventFilter(this);
+    ui.tableViewADUsers->installEventFilter(this);
 
     connect(ui.tableViewADUsers, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(slotShowCustomContextMenu(QPoint)));
     connect(ui.tableViewADUsers, SIGNAL(clicked(const QModelIndex &)), this, SLOT(getSelectedADUser(const QModelIndex &)));
@@ -191,13 +192,13 @@ bool ADUserManagerWidget::eventFilter(QObject *obj, QEvent *event) {
         return true;
     }
         break;
-        //    case QEvent::MouseButtonRelease:
-        //    {
-        //        activityTimer->start();
-        //        qWarning()<<"MouseButtonRelease";
-        //        return QObject::eventFilter(obj, event);
-        //    }
-        //        break;
+    case QEvent::MouseButtonPress:
+    case QEvent::Leave:
+    {
+        activityTimer->start();
+        //return QObject::eventFilter(obj, event);
+    }
+        break;
         //    case QEvent::ToolTip:
         //    {
         //        if(obj == ui.userPSWDLineEdit){
@@ -212,7 +213,8 @@ bool ADUserManagerWidget::eventFilter(QObject *obj, QEvent *event) {
         //    }
         //        break;
     default:
-        return QObject::eventFilter(obj, event);
+        break;
+        //return QObject::eventFilter(obj, event);
 
 
     }
@@ -533,11 +535,6 @@ void ADUserManagerWidget::slotResetADUserPassword(){
 
 }
 
-
-
-
-
-
 void ADUserManagerWidget::slotShowCustomContextMenu(const QPoint & pos){
 
     if(!verifyPrivilege()){
@@ -594,12 +591,13 @@ void ADUserManagerWidget::slotShowCustomContextMenu(const QPoint & pos){
 
 void ADUserManagerWidget::updateActions() {
 
-    //bool enableIns = qobject_cast<QSqlQueryModel *>(ui.userListTableView->model());
-    bool enableExp = ui.tableViewADUsers->currentIndex().isValid() && ui.tableViewADUsers->selectionModel()->selectedIndexes().size();
-    //bool enableModify =  enableIns&& enableExp;
+    //bool enableExp = ui.tableViewADUsers->currentIndex().isValid() && ui.tableViewADUsers->selectionModel()->selectedIndexes().size();
+    bool enableExp = m_userInfoModel->rowCount();
+    ui.actionExport->setEnabled(enableExp);
+    ui.actionPrint->setEnabled(enableExp);
 
     bool enableModify = false;
-    bool userDisabled = true;
+    bool userSelected = false;
     if(m_selectedADUser && verifyPrivilege() ){
         QString accountName = m_selectedADUser->getAttribute("sAMAccountName");
         if(!accountName.isEmpty()){
@@ -607,21 +605,17 @@ void ADUserManagerWidget::updateActions() {
             if(!distinguishedName.contains("CN=Users")){
                 enableModify = true;
             }
-            userDisabled = m_adsi->AD_IsObjectDisabled(accountName);
+            userSelected = true;
         }
     }
 
-    ui.actionExport->setEnabled(enableExp);
-    ui.actionPrint->setEnabled(enableExp);
-
-#ifdef Q_OS_WIN32
+    ui.actionProperties->setEnabled(userSelected);
     ui.actionCreateNewAccount->setEnabled(true);
     ui.actionDeleteAccount->setEnabled(enableModify);
 
     //    if(!m_isJoinedToDomain){
     //        ui.actionAutoLogon->setEnabled(enableExp && (wm->localUsers().contains(UserID(), Qt::CaseInsensitive)) ) ;
     //    }
-#endif
 
 
 }
@@ -652,7 +646,7 @@ bool ADUserManagerWidget::verifyPrivilege(){
                                              tr("Authorization Number:"), QLineEdit::NoEcho,
                                              "", &ok);
         if (ok && !text.isEmpty()){
-            QString accessCodeString = "hehui";
+            QString accessCodeString = "";
             accessCodeString.append(QTime::currentTime().toString("hhmm"));
             if(text.toLower() == accessCodeString){
                 m_verified = true;
