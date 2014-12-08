@@ -206,6 +206,7 @@ void ADUserInfoWidget::saveChanges(){
 
         m_accountName = accountName;
         ui.lineEditSAMAccount->setReadOnly(true);
+        m_simpleOUString = ouString;
 
         m_guid = m_adsi->AD_GetObjectAttribute(accountName, "objectGUID");
         m_adUser.setAttribute("objectGUID", m_guid);

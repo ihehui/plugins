@@ -5,396 +5,363 @@
     <name>ADUserInfoWidgetUI</name>
     <message>
         <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="14"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="245"/>
         <source>AD User Info</source>
         <translation>域用户信息</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="20"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="246"/>
         <source>Account</source>
         <translation>帐户</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="26"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="247"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="33"/>
         <source>Account Name:</source>
         <translation>帐户名称：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="33"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="249"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="40"/>
         <source>SAM Account Name</source>
         <translation>SAM帐户名称</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="43"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="251"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="50"/>
         <source>Display Name:</source>
         <translation>显示名称：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="50"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="253"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="60"/>
         <source>Display Name</source>
         <translation>显示名称</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="60"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="255"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="70"/>
         <source>Description:</source>
         <translation>描述：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="67"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="257"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="77"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="77"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="260"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="87"/>
         <source>Workstations User Can Logon To</source>
         <translation>用户能够登陆的工作站</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="87"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="262"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="97"/>
         <source>Workstations:</source>
         <translation>工作站：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="94"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="263"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="104"/>
         <source>Telephone:</source>
         <translation>电话：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="101"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="265"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="111"/>
         <source>Telephone Number</source>
         <translation>电话号码</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="111"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="267"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="121"/>
         <source>OU:</source>
         <translation>组织单元：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="128"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="268"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="135"/>
+        <source>Account Disabled</source>
+        <translation>帐户已停用</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="142"/>
+        <source>Department:</source>
+        <translation>部门：</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="149"/>
+        <source>Department</source>
+        <translation>部门</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="159"/>
+        <source>Title:</source>
+        <translation>职位：</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="169"/>
+        <source>Title</source>
+        <translation>职位</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="182"/>
         <source>ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="134"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="269"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="188"/>
         <source>GUID:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="141"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="271"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="195"/>
         <source>GUID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="151"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="273"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="205"/>
         <source>SID:</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="158"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="275"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="212"/>
         <source>SID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="171"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="277"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="225"/>
         <source>Use Local Computer Resources</source>
         <translation>使用本地资源</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="183"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="278"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="237"/>
         <source>Allowing to logon to this computer only</source>
         <translation>仅允许登陆到本计算机</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="203"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="279"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="257"/>
         <source>Local User Group</source>
         <translation>本地用户组</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="209"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="280"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="263"/>
         <source>Power Users</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="216"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="281"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="270"/>
         <source>Remote Desktop Users</source>
         <translation>远程桌面用户</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="223"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="282"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="277"/>
         <source>Administrators</source>
         <translation>管理员</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="238"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="283"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="292"/>
         <source>&amp;Edit</source>
         <translation>编辑(&amp;E)</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="258"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="285"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="312"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="261"/>
-        <location filename="usermanager/ui/ui_aduserinfowidget.h" line="287"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="315"/>
         <source>&amp;Close</source>
         <translation>关闭(&amp;C)</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="327"/>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="333"/>
+        <source>User must change password at next logon</source>
+        <translation>用户下次登陆时须更改密码</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="343"/>
+        <source>User can not change password</source>
+        <translation>用户不能更改密码</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="371"/>
+        <source>Password:</source>
+        <translation>密码：</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="385"/>
+        <source>Confirm Password:</source>
+        <translation>确认密码：</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.ui" line="402"/>
+        <source>Password never expires</source>
+        <translation>密码永不过期</translation>
     </message>
 </context>
 <context>
     <name>ADUserManagerWidgetUI</name>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="14"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="294"/>
         <source>AD User Manager</source>
         <translation>域用户管理</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="20"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="305"/>
         <source>Server</source>
         <translation>服务器</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="26"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="306"/>
         <source>Server IP:</source>
         <translation>服务器IP：</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="33"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="308"/>
         <source>Server IP Address</source>
         <translation>服务器IP地址</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="40"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="310"/>
         <source>Admin Name:</source>
         <translation>管理员名称：</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="47"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="312"/>
         <source>Administrator Name</source>
         <translation>管理员名称</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="54"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="314"/>
         <source>Password:</source>
         <translation>密码：</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="61"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="316"/>
         <source>Password</source>
         <translation>密码</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="71"/>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="74"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="319"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="322"/>
         <source>Open AD</source>
         <translation>打开活动目录</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="77"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="324"/>
         <source>Connect</source>
         <translation>连接</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="84"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="294"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="325"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="372"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="303"/>
         <source>Ctrl+Return</source>
         <translation>CTRL+回车</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="106"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="326"/>
         <source>AD Users List</source>
         <translation>域用户列表</translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="121"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="328"/>
         <source>Users</source>
         <translation>用户</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="155"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="158"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="337"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="340"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="164"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="167"/>
         <source>Query Mode</source>
         <translation>查询模式</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="162"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="333"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="171"/>
         <source>Simple Query</source>
         <translation>普通查询</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="167"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="334"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="176"/>
         <source>Custom Query</source>
         <translation>自定义查询</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="182"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="342"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="191"/>
         <source>Account Name:</source>
         <translation>帐户名称：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="189"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="192"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="344"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="347"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="198"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="201"/>
         <source>SAM Account Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="199"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="349"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="208"/>
         <source>Display Name:</source>
         <translation>显示名称：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="206"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="209"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="351"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="354"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="215"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="218"/>
         <source>Display Name</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="220"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="356"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="229"/>
         <source>Filter:</source>
         <translation>过滤：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="237"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="357"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="246"/>
         <source>Data To Retrieve:</source>
         <translation>要获取的数据：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="258"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="358"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="267"/>
         <source>OU:</source>
         <translation>组织单元：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="271"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="274"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="360"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="363"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="280"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="283"/>
         <source>Organization Unit</source>
         <translation>组织单元</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="281"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="284"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="366"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="369"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="290"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="293"/>
         <source>Query AD</source>
         <translation>查询域</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="287"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="371"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="296"/>
         <source>Query</source>
         <translation>查询</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="310"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="295"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="319"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="315"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="296"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="324"/>
         <source>Print</source>
         <translation>打印</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="320"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="297"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="329"/>
         <source>Create New Account</source>
         <translation>创建新帐号</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="325"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="298"/>
-        <source>Reset Password</source>
-        <translation>重设密码</translation>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="339"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="342"/>
+        <source>Delete Account</source>
+        <translation>删除帐户</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="330"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="299"/>
-        <source>Disable Account</source>
-        <translation>禁用帐户</translation>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="347"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="350"/>
+        <source>Refresh</source>
+        <translation>刷新</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="335"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="300"/>
-        <source>Unlock Account</source>
-        <translation>解锁帐户</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="343"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="301"/>
-        <source>User cannot change password</source>
-        <translation>用户不能更改密码</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="351"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="302"/>
-        <source>Password never expires</source>
-        <translation>密码永不过期</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="356"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="303"/>
-        <source>User must change password at next logon</source>
-        <translation>用户下次登陆时须更改密码</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="361"/>
-        <location filename="usermanager/ui/ui_adusermanagerwidget.h" line="304"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.ui" line="334"/>
         <source>Properties</source>
         <translation>属性</translation>
     </message>
@@ -406,28 +373,21 @@
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="39"/>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="42"/>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="45"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="119"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="121"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="124"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="127"/>
         <source>SQL Data Explorer</source>
         <translation>SQL 数据浏览器</translation>
     </message>
     <message>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="81"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="129"/>
         <source>&amp;Insert Row</source>
         <translation>插入行(&amp;I)</translation>
     </message>
     <message>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="84"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="131"/>
         <source>Inserts a new row</source>
         <translation>插入新行</translation>
     </message>
     <message>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="97"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="133"/>
         <source>&amp;Delete Row(s)</source>
         <translation>删除行(&amp;D)</translation>
     </message>
@@ -435,15 +395,11 @@
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="100"/>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="103"/>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="106"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="134"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="136"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="139"/>
         <source>Delete the selected Row(s)</source>
         <translation>删除选中的行</translation>
     </message>
     <message>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="118"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="141"/>
         <source>&amp;Export</source>
         <translation>导出(&amp;E)</translation>
     </message>
@@ -452,30 +408,22 @@
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="124"/>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="127"/>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="145"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="142"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="144"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="147"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="154"/>
         <source>Export Data</source>
         <translation>导出数据</translation>
     </message>
     <message>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="139"/>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="142"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="149"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="151"/>
         <source>Import</source>
         <translation>导入</translation>
     </message>
     <message>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="154"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="156"/>
         <source>&amp;Print</source>
         <translation>打印(&amp;P)</translation>
     </message>
     <message>
         <location filename="sqlexplorer/dataexplorer/dataexplorer.ui" line="163"/>
-        <location filename="sqlexplorer/ui/ui_dataexplorer.h" line="157"/>
         <source>Print Preview</source>
         <translation>打印预览</translation>
     </message>
@@ -487,10 +435,6 @@
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="39"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="42"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="45"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="114"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="116"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="119"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="122"/>
         <source>Database List</source>
         <translation>数据库列表</translation>
     </message>
@@ -498,9 +442,6 @@
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="79"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="82"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="85"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="124"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="126"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="129"/>
         <source>Open Table In New TabPage</source>
         <translation>在新标签页中打开数据表</translation>
     </message>
@@ -508,9 +449,6 @@
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="93"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="96"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="99"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="131"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="133"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="136"/>
         <source>Show Metadata  </source>
         <translation>显示元数据</translation>
     </message>
@@ -518,39 +456,29 @@
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="108"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="111"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="114"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="138"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="140"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="143"/>
         <source>Refresh</source>
         <translation>刷新</translation>
     </message>
     <message>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="126"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="129"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="146"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="148"/>
         <source>Connect Database</source>
         <translation>连接数据库</translation>
     </message>
     <message>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="141"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="144"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="150"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="152"/>
         <source>Disconnect</source>
         <translation>断开连接</translation>
     </message>
     <message>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="149"/>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="152"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="154"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="156"/>
         <source>Show Record Count</source>
         <translation>显示记录数量</translation>
     </message>
     <message>
         <location filename="sqlexplorer/databaseexplorer/databaseexplorer.ui" line="117"/>
-        <location filename="sqlexplorer/ui/ui_databaseexplorer.h" line="145"/>
         <source>F5</source>
         <translation></translation>
     </message>
@@ -559,73 +487,59 @@
     <name>DnsLookup</name>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="14"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="574"/>
         <source>DNS Lookup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="27"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="575"/>
         <source>Domain Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="41"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="577"/>
         <source>Type:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="68"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="578"/>
         <source>China Telecom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="78"/>
         <location filename="dnslookup/dnslookup.ui" line="285"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="579"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="592"/>
         <source>China Unicom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="88"/>
         <location filename="dnslookup/dnslookup.ui" line="438"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="580"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="601"/>
         <source>China Mobile</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="98"/>
         <location filename="dnslookup/dnslookup.ui" line="591"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="581"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="610"/>
         <source>Others</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="123"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="582"/>
         <source>Lookup</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="132"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="583"/>
         <source> China Telecom</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="144"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="584"/>
         <source>202.96.128.86</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="173"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="585"/>
         <source>202.96.128.166</source>
         <translation type="unfinished"></translation>
     </message>
@@ -647,115 +561,82 @@
         <location filename="dnslookup/dnslookup.ui" line="698"/>
         <location filename="dnslookup/dnslookup.ui" line="730"/>
         <location filename="dnslookup/dnslookup.ui" line="780"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="586"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="588"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="590"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="591"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="595"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="597"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="599"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="600"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="604"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="606"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="608"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="609"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="611"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="614"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="616"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="618"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="621"/>
         <source>Record:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="196"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="587"/>
         <source>202.96.134.33</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="219"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="589"/>
         <source>202.96.134.133</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="297"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="593"/>
         <source>221.5.88.88</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="326"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="594"/>
         <source>221.4.66.66</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="349"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="596"/>
         <source>202.14.67.14</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="372"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="598"/>
         <source>120.80.88.88</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="463"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="602"/>
         <source>61.235.70.98</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="479"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="603"/>
         <source>61.235.70.252</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="502"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="605"/>
         <source>211.98.2.4</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="525"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="607"/>
         <source>211.98.4.1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="623"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="612"/>
         <source>114.114.114.114</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="639"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="613"/>
         <source>8.8.8.8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="662"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="615"/>
         <source>208.67.222.222</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="708"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="617"/>
         <source>Custom Name Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="dnslookup/dnslookup.ui" line="753"/>
         <location filename="dnslookup/dnslookup.ui" line="760"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="619"/>
-        <location filename="dnslookup/ui/ui_dnslookup.h" line="620"/>
         <source>IP:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -763,104 +644,164 @@
 <context>
     <name>HEHUI::ADUserInfoWidget</name>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="79"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="75"/>
         <source>Question</source>
         <translation>询问</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="79"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="75"/>
         <source>Do you want to save changes before quit?</source>
         <translation>你想要在退出前保存变更吗？</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="104"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="111"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="118"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="127"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="134"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="141"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="164"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="183"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="194"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="205"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="216"/>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="226"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="117"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="124"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="131"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="145"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="152"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="159"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="166"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="173"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="180"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="203"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="221"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="232"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="242"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="254"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="266"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="278"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="290"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="302"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="313"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="324"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="332"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="341"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="350"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="359"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="104"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="117"/>
         <source>Invalid Account Name!</source>
         <translation>无效的帐户名称！</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="111"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="124"/>
         <source>Invalid Display Name!</source>
         <translation>无效的显示名称！</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="118"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="131"/>
         <source>Invalid Description!</source>
         <translation>无效的描述！</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="127"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="145"/>
         <source>Invalid Workstations!</source>
         <translation>无效的工作站！</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="134"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="152"/>
         <source>Invalid Telephone Number!</source>
         <translation>无效的电话号码！</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="141"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="159"/>
+        <source>Invalid Department!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="166"/>
+        <source>Invalid Title!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="173"/>
         <source>Invalid OU!</source>
         <translation>无效的组织单元！</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="164"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="180"/>
+        <source>Passwords do not match!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="203"/>
         <source>Failed to create new account! 
  %1</source>
-        <translation>无法创建新帐户！%1</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="183"/>
-        <source>Failed to update display name! 
- %1</source>
-        <translation>无法更新显示名称！%1</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="194"/>
-        <source>Failed to update description! 
- %1</source>
-        <translation>无法更新描述！%1</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="205"/>
-        <source>Failed to update user workstations! 
- %1</source>
-        <translation>无法更新用户工作站！%1</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="216"/>
-        <source>Failed to update telephone number! 
- %1</source>
-        <translation>无法更新电话号码！%1</translation>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="221"/>
+        <source>Password is required!</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="226"/>
-        <source>Failed to move user! 
- %1</source>
-        <translation>无法移动用户！%1</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="330"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="511"/>
         <source>&amp;Save</source>
         <translation>保存(&amp;S)</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="344"/>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="242"/>
+        <source>Failed to update display name! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="254"/>
+        <source>Failed to update description! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="266"/>
+        <source>Failed to update user workstations! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="278"/>
+        <source>Failed to update telephone number! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="290"/>
+        <source>Failed to update department ! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="302"/>
+        <source>Failed to update title ! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="313"/>
+        <source>Failed to move user! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="324"/>
+        <source>enable</source>
+        <translation type="unfinished">启用</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="324"/>
+        <source>disable</source>
+        <translation type="unfinished">禁用</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="486"/>
+        <source>&amp;Create</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduserinfowidget.cpp" line="538"/>
         <source>&amp;Edit</source>
         <translation>编辑(&amp;E)</translation>
     </message>
@@ -868,117 +809,102 @@
 <context>
     <name>HEHUI::ADUserManagerWidget</name>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="254"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="268"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="338"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="464"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="470"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="479"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="486"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="495"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="508"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="525"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="537"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="549"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="555"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="706"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="255"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="269"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="335"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="437"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="442"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="488"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="501"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="518"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="530"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="657"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="254"/>
-        <source>Failed to load ADSI library! 
- %1</source>
-        <translation>无法载入ADSI库！%1</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="268"/>
-        <source>Failed to connect to DC! 
- %1</source>
-        <translation>无法连接到域控制器！%1</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="338"/>
-        <source>Failed to query AD!
-%1</source>
-        <translation>查询活动目录失败！%1</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="455"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="477"/>
         <source>AD User Info</source>
         <translation>域用户信息</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="464"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="479"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="495"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="549"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="437"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="488"/>
         <source>Failed to find SAM AccountName</source>
         <translation>找不到SAM帐户名称！</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="486"/>
-        <source>enable</source>
-        <translation>启用</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="486"/>
-        <source>disable</source>
-        <translation>禁用</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="502"/>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="520"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="495"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="513"/>
         <source>Reset Password</source>
         <translation>重设密码</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="503"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="496"/>
         <source>New Password(8 Characters MIN.):</source>
         <translation>新密码（至少8个字符）：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="521"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="514"/>
         <source>Confirm Password:</source>
         <translation>确认密码：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="539"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="444"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="532"/>
         <source>OK</source>
         <translation>确认</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="602"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="255"/>
+        <source>Failed to load ADSI library! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="269"/>
+        <source>Failed to connect to DC! 
+ %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="335"/>
+        <source>Failed to query AD!
+%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="475"/>
+        <source>Create New AD User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="501"/>
+        <source>At least 8 characters are required fro the password!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="518"/>
+        <source>Passwords do not match!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="577"/>
         <source>Account</source>
         <translation>帐户</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="610"/>
-        <source>Password</source>
-        <translation>密码</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="654"/>
-        <source>Enable Account</source>
-        <translation>启用帐户</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="656"/>
-        <source>Disable Account</source>
-        <translation>禁用帐户</translation>
-    </message>
-    <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="694"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="645"/>
         <source>Authentication Required</source>
         <translation>需要认证</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="695"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="646"/>
         <source>Authorization Number:</source>
         <translation>认证代码：</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="706"/>
+        <location filename="usermanager/aduserinfo/adusermanagerwidget.cpp" line="657"/>
         <source>Incorrect Authorization Number!</source>
         <translation>无效的认证代码！</translation>
     </message>
@@ -1710,69 +1636,57 @@
     <name>ModifyUserInfoDialog</name>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="14"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="172"/>
         <source>Dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="20"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="173"/>
         <source>Chinese &amp;Name:</source>
         <translation>中文名称[&amp;N]:</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="40"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="174"/>
         <source>&amp;Department:</source>
         <translation>部门[&amp;D]:</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="56"/>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="62"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="178"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="184"/>
         <source>Department</source>
         <translation>部门</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="104"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="175"/>
         <source>MIS</source>
         <translation></translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="177"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="186"/>
         <source>Email</source>
         <translation>电子邮件</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="183"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="188"/>
         <source>External Email Account</source>
         <translation>外部邮件帐号</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="193"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="191"/>
         <source>Internal Email Account</source>
         <translation>内部邮件帐号</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="203"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="194"/>
         <source>Email Account Name</source>
         <translation>外部邮件帐号</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="228"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="196"/>
         <source>&amp;OK</source>
         <translation>确定[&amp;O]</translation>
     </message>
     <message>
         <location filename="usermanager/modifyuserinfo/modifyuserinfodialog.ui" line="251"/>
-        <location filename="usermanager/ui/ui_modifyuserinfodialog.h" line="197"/>
         <source>&amp;Cancel</source>
         <translation>取消[&amp;C]</translation>
     </message>
@@ -1786,172 +1700,197 @@
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="20"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="22"/>
         <source>Account Expires</source>
         <translation>帐户过期</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="21"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="23"/>
         <source>Bad Password Time</source>
         <translation>错误的密码日期</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="22"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="24"/>
         <source>Bad Password Count</source>
         <translation>错误的密码次数</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="23"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="25"/>
         <source>Common Name</source>
         <translation>常用名</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="24"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="26"/>
         <source>Code Page</source>
         <translation>代码页</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="25"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="27"/>
         <source>Country Code</source>
         <translation>国家代码</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="26"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="28"/>
         <source>Description</source>
         <translation>描述</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="27"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="29"/>
+        <source>Department</source>
+        <translation>部门</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="30"/>
         <source>Display Name</source>
         <translation>显示名称</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="28"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="31"/>
         <source>Distinguished Name</source>
         <translation>可识别的名称</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="29"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="32"/>
         <source>Core Propagation Data</source>
         <translation>DS-Core-Propagation-Data</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="30"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="33"/>
+        <source>Home Directory</source>
+        <translation>主目录</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="34"/>
+        <source>Home Drive</source>
+        <translation>主驱动器</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="35"/>
         <source>Instance Type</source>
         <translation>实例类型</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="31"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="36"/>
         <source>Last Logoff</source>
         <translation>最后登出</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="32"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="37"/>
         <source>Last Logon</source>
         <translation>最后登入</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="33"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="38"/>
         <source>Logon Count</source>
         <translation>登陆次数</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="34"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="39"/>
+        <source>Lockout Time</source>
+        <translation>锁定时间</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="40"/>
         <source>E-mail</source>
         <translation>电子邮件</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="35"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="41"/>
         <source>Member Of</source>
         <translation>成员隶属</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="36"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="42"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="37"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="43"/>
         <source>NT Security Descriptor</source>
         <translation>NT安全描述符</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="38"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="44"/>
         <source>Object Category</source>
         <translation>对象类别</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="39"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="45"/>
         <source>Object Class</source>
         <translation>对象类</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="40"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="46"/>
         <source>Object GUID</source>
         <translation>对象GUID</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="41"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="47"/>
         <source>Object SID</source>
         <translation>对象SID</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="42"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="48"/>
         <source>Primary Group ID</source>
         <translation>首要组ID</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="43"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="49"/>
         <source>Password Last Set</source>
         <translation>最后一次设置密码</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="44"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="50"/>
         <source>SAM Account Name</source>
         <translation>SAM帐户名称</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="45"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="51"/>
         <source>SAM Account Type</source>
         <translation>SAM帐户类型</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="46"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="52"/>
         <source>Telephone Number</source>
         <translation>电话号码</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="47"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="53"/>
+        <source>Title</source>
+        <translation>职位</translation>
+    </message>
+    <message>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="54"/>
         <source>User Account Control</source>
         <translation>用户帐户控制</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="48"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="55"/>
         <source>User Principal Name</source>
         <translation>主用户名</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="49"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="56"/>
         <source>User Workstations</source>
         <translation>用户工作站</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="50"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="57"/>
         <source>USN Changed</source>
         <translation>USN变更</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="51"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="58"/>
         <source>USN Created</source>
         <translation>USN创建</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="52"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="59"/>
         <source>When Changed</source>
         <translation>修改日期</translation>
     </message>
     <message>
-        <location filename="usermanager/aduserinfo/aduser.cpp" line="53"/>
+        <location filename="usermanager/aduserinfo/aduser.cpp" line="60"/>
         <source>When Created</source>
         <translation>创建日期</translation>
     </message>
@@ -1960,99 +1899,83 @@
     <name>SettingsDialogClass</name>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="14"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="254"/>
         <source>SettingsDialog</source>
         <translation></translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="38"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="255"/>
         <source>Domain Account</source>
         <translation>域帐用户帐号</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="58"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="256"/>
         <source>Local Account</source>
         <translation>本地用户帐号</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="95"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="257"/>
         <source>&amp;Location:</source>
         <translation>位置(&amp;L)</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="118"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="260"/>
         <source>DongGuan No. 1 Branch FTY.</source>
         <oldsource>DongGuan LEATHER PRODUCTS FTY.</oldsource>
         <translation>东莞一厂</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="123"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="261"/>
         <source>DongGuan No. 2 Branch FTY.</source>
         <oldsource>DongGuan HANDBAG FTY.</oldsource>
         <translation>东莞二厂</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="128"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="262"/>
         <source>DongGuan No. 3 Branch FTY.</source>
         <translation>东莞三厂</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="133"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="263"/>
         <source>DongGuan No. 4 Branch FTY.</source>
         <translation>东莞四厂</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="138"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="264"/>
         <source>YingDe   LEATHER PRODUCTS FTY.</source>
         <translation>英德厂</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="154"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="266"/>
         <source>Domain:</source>
         <translation>域：</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="173"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="267"/>
         <source>Computer Name</source>
         <translation>计算机名称</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="179"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="268"/>
         <source>Current:</source>
         <translation>当前名称：</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="196"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="269"/>
         <source>&amp;New:</source>
         <translation>新名称(&amp;N)：</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="221"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="270"/>
         <source>Auto Logon</source>
         <translation>自动登陆</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="244"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="271"/>
         <source>&amp;OK</source>
         <translation>确定(&amp;O)</translation>
     </message>
     <message>
         <location filename="usermanager/settingsdialog/settingsdialog.ui" line="267"/>
-        <location filename="usermanager/ui/ui_settingsdialog.h" line="272"/>
         <source>&amp;Cancel</source>
         <translation>取消(&amp;C)</translation>
     </message>
@@ -2099,39 +2022,32 @@
     <name>SqlConsoleUI</name>
     <message>
         <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="15"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="103"/>
         <source>SQL Console</source>
         <translation>SQL 终端</translation>
     </message>
     <message>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="64"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="108"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="82"/>
         <source>&amp;Clear</source>
         <translation>清理(&amp;C)</translation>
     </message>
     <message>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="71"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="109"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="89"/>
         <source>Submit</source>
         <translation>提交</translation>
     </message>
     <message>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="74"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="110"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="92"/>
         <source>Ctrl+Return</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="30"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="107"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="39"/>
         <source>Use it on my own risk</source>
         <translation>风险自负</translation>
     </message>
     <message>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="92"/>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="124"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="112"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="145"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="110"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="142"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -2165,16 +2081,13 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="163"/>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="166"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="178"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="181"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="188"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="191"/>
         <source>Open SQL Script File</source>
         <translation>打开SQL脚本文件</translation>
     </message>
     <message>
-        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="169"/>
-        <location filename="sqlexplorer/ui/ui_sqlconsole.h" line="183"/>
+        <location filename="sqlexplorer/sqlconsole/sqlconsole.ui" line="194"/>
         <source>...</source>
         <translation></translation>
     </message>
@@ -2186,46 +2099,36 @@ p, li { white-space: pre-wrap; }
         <location filename="sqlexplorer/sqlexplorer.ui" line="23"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="26"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="29"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="312"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="314"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="317"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="320"/>
         <source>SQL Explorer</source>
         <translation>SQL 浏览器</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="122"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="322"/>
         <source>Database:</source>
         <translation>数据库：</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="145"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="323"/>
         <source>Table:</source>
         <translation>数据表：</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="168"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="325"/>
         <source>Show Metadata</source>
         <translation>显示元数据</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="177"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="333"/>
         <source>Metadata</source>
         <translation>元数据</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="210"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="334"/>
         <source>Rows:</source>
         <translation>行数：</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="229"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="336"/>
         <source>Record Count</source>
         <translation>记录数量</translation>
     </message>
@@ -2234,64 +2137,51 @@ p, li { white-space: pre-wrap; }
         <location filename="sqlexplorer/sqlexplorer.ui" line="264"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="267"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="270"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="339"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="342"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="345"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="347"/>
         <source>Paging</source>
         <translation>分页</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="308"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="348"/>
         <source>Limit Rows:</source>
         <translation>行数限定：</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="331"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="350"/>
         <source>Previous Page</source>
         <translation>上一页</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="334"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="352"/>
         <source>&lt;&lt;</source>
         <translation></translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="348"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="354"/>
         <source>Current Page</source>
         <translation>当前页</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="361"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="356"/>
         <source>/</source>
         <translation></translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="374"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="358"/>
         <source>Total Pages</source>
         <translation>总页数</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="377"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="360"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="384"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="362"/>
         <source>Next Page</source>
         <translation>下一页</translation>
     </message>
     <message>
         <location filename="sqlexplorer/sqlexplorer.ui" line="387"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="364"/>
         <source>&gt;&gt;</source>
         <translation></translation>
     </message>
@@ -2303,13 +2193,6 @@ p, li { white-space: pre-wrap; }
         <location filename="sqlexplorer/sqlexplorer.ui" line="431"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="434"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="437"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="366"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="369"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="372"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="374"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="376"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="379"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="382"/>
         <source>Database Explorer</source>
         <translation>数据库浏览器</translation>
     </message>
@@ -2318,10 +2201,6 @@ p, li { white-space: pre-wrap; }
         <location filename="sqlexplorer/sqlexplorer.ui" line="450"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="453"/>
         <location filename="sqlexplorer/sqlexplorer.ui" line="456"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="385"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="388"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="391"/>
-        <location filename="sqlexplorer/ui/ui_sqlexplorer.h" line="393"/>
         <source>SQL Console</source>
         <translation>SQL 终端</translation>
     </message>
@@ -2330,326 +2209,269 @@ p, li { white-space: pre-wrap; }
     <name>SystemInfoMainWindowUI</name>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="14"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="691"/>
         <source>System Info</source>
         <oldsource>System Management</oldsource>
         <translation>系统信息</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="212"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="707"/>
         <source>OS</source>
         <translation>操作系统</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="221"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="708"/>
         <source>OS Version:</source>
         <translation>系统版本：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="235"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="709"/>
         <source>Copmuter Name:</source>
         <translation>计算机名称：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="259"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="711"/>
         <source>Installation Date:</source>
         <translation>安装日期：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="283"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="712"/>
         <source>System Users:</source>
         <translation>系统用户：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="24"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="692"/>
         <source>Basic Info</source>
         <translation>基本信息</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="36"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="693"/>
         <source>Computer Name:</source>
         <translation>计算机名称：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="63"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="694"/>
         <source>Location:</source>
         <translation>位置：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="93"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="695"/>
         <source>Department:</source>
         <translation>部门：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="138"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="705"/>
         <source>SN:</source>
         <translation>编号：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="177"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="706"/>
         <source>Rename Computer</source>
         <translation>重命名计算机</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="746"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="760"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="758"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="761"/>
         <source>Assets Registration </source>
         <translation>资产登记</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="764"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="762"/>
         <source>Registrant:</source>
         <translation>登记人：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="771"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="763"/>
         <source>Remark:</source>
         <translation>备注：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="788"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="764"/>
         <source>DELL Service Number:</source>
         <translation>DELL服务编号：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="808"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="766"/>
         <source>Vender:</source>
         <translation>供应商：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="801"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="765"/>
         <source>Warranty:</source>
         <oldsource>Warranty(Months):</oldsource>
         <translation>保修：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="197"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="714"/>
         <source>&amp;OS</source>
         <translation>操作系统[&amp;O]</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="249"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="710"/>
         <source>Workgroup/Domain:</source>
         <translation>工作组或域：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="303"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="713"/>
         <source>Disk Drives:</source>
         <translation>磁盘驱动器：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="327"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="731"/>
         <source>&amp;Devices</source>
         <translation>设备(&amp;D)</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="348"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="715"/>
         <source>Devices</source>
         <translation>设备</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="364"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="716"/>
         <source>Video Card:</source>
         <translation>显卡：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="385"/>
         <location filename="systeminfo/systeminfo.ui" line="450"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="717"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="720"/>
         <source>MAC Address:</source>
         <translation>网卡物理地址：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="406"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="718"/>
         <source>CPU:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="420"/>
         <location filename="systeminfo/systeminfo.ui" line="464"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="719"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="721"/>
         <source>IP Address:</source>
         <translation>IP地址：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="481"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="722"/>
         <source>Adapter 1:</source>
         <translation>适配器1：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="488"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="723"/>
         <source>Adapter 2:</source>
         <translation>适配器2：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="495"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="724"/>
         <source>Network Info:</source>
         <translation>网络信息：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="502"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="725"/>
         <source>Motherboard:</source>
         <translation>主板：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="509"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="726"/>
         <source>Chipset:</source>
         <translation>芯片：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="523"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="727"/>
         <source>Memory:</source>
         <oldsource>Memory(MB):</oldsource>
         <translation>内存(MB)：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="540"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="728"/>
         <source>Audio Card:</source>
         <translation>声卡：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="554"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="729"/>
         <source>Monitor:</source>
         <translation>显示器：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="564"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="730"/>
         <source>DMI UUID:</source>
         <translation></translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="595"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="742"/>
         <source>&amp;Software</source>
         <translation>软件(&amp;S)</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="614"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="733"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="619"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="735"/>
         <source>Version</source>
         <translation>版本</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="624"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="737"/>
         <source>Size</source>
         <translation>大小</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="629"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="739"/>
         <source>Date</source>
         <translation>日期</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="634"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="741"/>
         <source>Publisher</source>
         <translation>发行商</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="678"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="744"/>
         <source>Ctrl+Return</source>
         <translation></translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="707"/>
         <location filename="systeminfo/systeminfo.ui" line="710"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="746"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="749"/>
         <source>Get System Information</source>
         <translation>获取系统信息</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="713"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="751"/>
         <source>Scan</source>
         <translation>扫描</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="720"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="752"/>
         <source>F5</source>
         <translation></translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="733"/>
         <location filename="systeminfo/systeminfo.ui" line="736"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="754"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="757"/>
         <source>Save System Information</source>
         <translation>保存系统信息</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="739"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="759"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="815"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="767"/>
         <source>Date Of Purchase:</source>
         <translation>采购日期：</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="671"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="743"/>
         <source>Query</source>
         <translation>查询</translation>
     </message>
     <message>
         <location filename="systeminfo/systeminfo.ui" line="112"/>
         <location filename="systeminfo/systeminfo.ui" line="118"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="697"/>
-        <location filename="systeminfo/ui/ui_systeminfo.h" line="703"/>
         <source>Department</source>
         <translation>部门</translation>
     </message>
@@ -2658,13 +2480,11 @@ p, li { white-space: pre-wrap; }
     <name>UserManagerMainWindowUI</name>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="14"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="194"/>
         <source>User Manager</source>
         <translation>用户管理器</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="25"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="273"/>
         <source>Database</source>
         <translation>数据库</translation>
     </message>
@@ -2672,17 +2492,12 @@ p, li { white-space: pre-wrap; }
         <location filename="usermanager/usermanagermainwindow.ui" line="31"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="121"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="127"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="215"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="248"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="254"/>
         <source>User List</source>
         <translation>用户列表</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="37"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="43"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="217"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="223"/>
         <source>User Name</source>
         <translation></translation>
     </message>
@@ -2690,115 +2505,91 @@ p, li { white-space: pre-wrap; }
         <location filename="usermanager/usermanagermainwindow.ui" line="53"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="56"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="59"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="226"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="229"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="231"/>
         <source>Query</source>
         <translation>查询</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="66"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="232"/>
         <source>Ctrl+Return</source>
         <translation></translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="79"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="237"/>
         <source>User Password</source>
         <translation></translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="95"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="98"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="240"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="243"/>
         <source>Add New User</source>
         <translation>添加新用户</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="101"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="245"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="208"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="256"/>
         <source>MIS</source>
         <translation></translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="311"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="195"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="314"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="197"/>
         <source>Export Query Result</source>
         <translation>导出查询结果</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="322"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="199"/>
         <source>Edit</source>
         <translation>编辑</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="325"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="201"/>
         <source>Edit User Info</source>
         <translation>编辑用户信息</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="333"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="203"/>
         <source>Print</source>
         <translation>打印</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="336"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="205"/>
         <source>Print Query Result</source>
         <translation>打印查询结果</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="344"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="347"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="207"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="209"/>
         <source>Auto Logon</source>
         <translation>自动登陆</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="352"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="355"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="211"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="213"/>
         <source>Create Email Account</source>
         <translation>创建邮件帐号</translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="108"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="246"/>
         <source>F9</source>
         <translation></translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="158"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="164"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="259"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="265"/>
         <source>Department</source>
         <translation></translation>
     </message>
     <message>
         <location filename="usermanager/usermanagermainwindow.ui" line="287"/>
         <location filename="usermanager/usermanagermainwindow.ui" line="290"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="268"/>
-        <location filename="usermanager/ui/ui_usermanagermainwindow.h" line="271"/>
         <source>User ID</source>
         <translation></translation>
     </message>

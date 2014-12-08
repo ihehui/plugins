@@ -140,18 +140,18 @@ void UserManagerPlugin::slotMainActionForMenuTriggered(){
 
     QWidget *parentWidget = qobject_cast<QWidget *> (parent());
 
-//    HEHUI::User user;
-//    HEHUI::LoginBase login(&user, name(), parentWidget);
-//    if (!login.isVerified()) {
-//        return ;
-//    }
+    HEHUI::User user;
+    HEHUI::LoginBase login(&user, name(), parentWidget);
+    if (!login.isVerified()) {
+        return ;
+    }
 
     bool isYDAdmin = false;
-//    if(user.getBusinessAddress() == "DG"){
-//        isYDAdmin = false;
-//    }else if(user.getBusinessAddress() == "YD"){
-//        isYDAdmin = true;
-//    }
+    if(user.getBusinessAddress() == "DG"){
+        isYDAdmin = false;
+    }else if(user.getBusinessAddress() == "YD"){
+        isYDAdmin = true;
+    }
 
     UserManagerMainWindow *wgt = new UserManagerMainWindow(isYDAdmin, parentWidget);
     //connect(userManager, SIGNAL(destroyed(QObject *)), this, SLOT(slotUserManagerWidgetDestoryed(QObject *)));

@@ -37,13 +37,13 @@
 //#endif
 
 #ifndef DOMAIN_DC_IP
-#define DOMAIN_DC_IP "200.200.198.198"
+#define DOMAIN_DC_IP "200.200.200.118"
 #endif
 #ifndef DOMAIN_ADMIN_NAME
-#define DOMAIN_ADMIN_NAME "hehui"
+#define DOMAIN_ADMIN_NAME ""
 #endif
 #ifndef DOMAIN_ADMIN_PASSWORD
-#define DOMAIN_ADMIN_PASSWORD "000..."
+#define DOMAIN_ADMIN_PASSWORD ""
 #endif
 
 #ifndef ADSI_LIB
@@ -438,11 +438,22 @@ void ADUserManagerWidget::slotDeleteADUser(){
         return;
     }
 
+    int ret = QMessageBox::warning(this, tr("Warning"),
+                                   tr("<font color=red><b> Deletion is not reversible! <p>Do you want to delete user '%1'?<p> </b></font>").arg(sAMAccountName),
+                                   QMessageBox::Yes|QMessageBox::No,
+                                   QMessageBox::No
+                                   );
+    if(ret == QMessageBox::No){
+        return;
+    }
+
     if(!m_adsi->AD_DeleteObject(sAMAccountName, "user")){
         QMessageBox::critical(this, tr("Error"), QString("Failed to delete user '%1'! \r\n %2").arg(sAMAccountName).arg(m_adsi->AD_GetLastErrorString()) );
     }else{
-        QMessageBox::information(this, tr("OK"), QString("User '%1' deleted!").arg(sAMAccountName) );
+        QMessageBox::information(this, tr("OK"), QString("User '%1' has been deleted!").arg(sAMAccountName) );
     }
+
+    slotRefresh();
 
 }
 
