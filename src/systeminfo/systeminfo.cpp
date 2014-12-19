@@ -9,6 +9,7 @@
 #include <QSqlQuery>
 #include <QStatusBar>
 #include <QSettings>
+#include <QInputDialog>
 
 #include "./systeminfo.h"
 #include "HHSharedCore/hglobal_core.h"
@@ -44,11 +45,15 @@ SystemInfo::SystemInfo(const QString &adminName, QWidget *parent)
 
     ui.setupUi(this);
 
+    m_lastErrorString = "";
+
     ui.lineEditRegistrant->setText(m_adminName);
     m_computerName = getComputerName().toLower();
     ui.lineEditComputerName->setText(m_computerName.toUpper());
 
-    m_workgroup = getJoinInformation();
+    m_isJoinedToDomain = false;
+    m_workgroup = getJoinInformation(&m_isJoinedToDomain);
+    //getComputerNameInfo(&m_dnsDomain, 0, 0);
 
     ui.comboBoxLocation->addItem(tr("Dong Guan"), "dg");
     ui.comboBoxLocation->addItem(tr("Ying De"), "yd");
@@ -64,27 +69,26 @@ SystemInfo::SystemInfo(const QString &adminName, QWidget *parent)
     connect(ui.comboBoxLocation, SIGNAL(currentIndexChanged(int)), this, SLOT(getNewComputerName()));
 
     if(departments.isEmpty()){
-        departments.insert("it", "IT");
-        departments.insert("ac", "Account");
-        departments.insert("ad", "AdminDept");
-        departments.insert("co", "Cost");
-        departments.insert("cu", "Custom");
-        departments.insert("gm", "GMO");
-        departments.insert("hr", "HR");
-        departments.insert("ma", "Marker");
-        departments.insert("pd", "PDS");
-        departments.insert("pg", "PG");
-        departments.insert("pl", "Plan");
-        departments.insert("pm", "PMC");
-        departments.insert("pu", "Purchase");
-        departments.insert("qc", "QC");
-        departments.insert("re", "Retail");
-        departments.insert("sa", "Sales");
-        //departmentsHash.insert("", "Sample");
-        departments.insert("se", "Secretary");
-        departments.insert("sh", "Ship");
-        departments.insert("sp", "Shop");
-        departments.insert("wh", "WHouse");
+        departments.insert("it", tr("IT"));
+        departments.insert("ac", tr("Accounting"));
+        departments.insert("ad", tr("Administration"));
+        departments.insert("co", tr("Cost Control"));
+        departments.insert("cu", tr("Custom"));
+        departments.insert("gm", tr("GMO"));
+        departments.insert("hr", tr("HR"));
+        departments.insert("ma", tr("Marker"));
+        departments.insert("pd", tr("PDS"));
+        departments.insert("pg", tr("PG"));
+        departments.insert("pl", tr("Planning"));
+        departments.insert("pm", tr("PMC"));
+        departments.insert("qc", tr("QC"));
+        departments.insert("re", tr("Retail"));
+        departments.insert("sa", tr("Sales"));
+        //departmentsHash.insert("", tr("Sample"));
+        departments.insert("se", tr("Secretary"));
+        departments.insert("sh", tr("Shipping"));
+        departments.insert("sp", tr("Shop"));
+        departments.insert("wh", tr("Warehouse"));
     }
     QString department = m_computerName.mid(2, 2).toLower();
     foreach (QString key, departments.keys()) {
@@ -181,7 +185,6 @@ SystemInfo::~SystemInfo() {
         sitoyDB.close();
     }
     QSqlDatabase::removeDatabase(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
-
 
 }
 
@@ -297,7 +300,6 @@ QString SystemInfo::getEnvironmentVariable(const QString &environmentVariable){
 QString SystemInfo::getJoinInformation(bool *isJoinedToDomain, const QString &serverName){
     qDebug()<<"--SystemInfo::getJoinInformation()";
 
-
     QString workgroupName = "";
     NET_API_STATUS err;
     LPWSTR lpNameBuffer = new wchar_t[256];
@@ -343,6 +345,8 @@ QString SystemInfo::getComputerName(){
 }
 
 bool SystemInfo::setComputerNameWithAPI(const QString &computerName) {
+
+    m_lastErrorString = "";
 
     QSettings settings("HKEY_LOCAL_MACHINE\\SYSTEM\\ControlSet001\\Services\\Tcpip\\Parameters", QSettings::NativeFormat, this);
     settings.setValue("NV Hostname", computerName);
@@ -1321,8 +1325,6 @@ void SystemInfo::getNewComputerName(){
 
 void SystemInfo::on_pushButtonRenameComputer_clicked(){
 
-
-
     QString text = tr("Do you really want to <b><font color = 'red'>rename</font></b> the computer? ");
     int ret = QMessageBox::question(this, tr("Question"), text, QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
     if(ret == QMessageBox::No){
@@ -1347,10 +1349,45 @@ void SystemInfo::on_pushButtonRenameComputer_clicked(){
         return;
     }
 
-    ok = setComputerNameWithAPI(newComputerName);
+
+    if(m_isJoinedToDomain){
+        QString adminName, adminPassword;
+
+        ok = false;
+        do {
+            adminName = QInputDialog::getText(this, tr("Authentication Required"),
+                                              tr("Domain Admin Name:"), QLineEdit::Normal,
+                                              "", &ok);
+            if (!ok){
+                return;
+            } if(adminName.isEmpty()){
+                QMessageBox::critical(this, tr("Error"), tr("Incorrect Domain Admin Name!"));
+            }else{
+                break;
+            }
+        } while (ok);
+
+        ok = false;
+        do {
+            adminPassword = QInputDialog::getText(this, tr("Authentication Required"),
+                                              tr("Domain Admin Password:"), QLineEdit::Password,
+                                              "", &ok);
+            if (!ok){
+                return;
+            } if(adminName.isEmpty()){
+                QMessageBox::critical(this, tr("Error"), tr("Incorrect Domain Admin Password!"));
+            }else{
+                break;
+            }
+        } while (ok);
+
+        ok = renameMachineInDomain(newComputerName, adminName, adminPassword, "");
+    }else{
+        ok = setComputerNameWithAPI(newComputerName);
+    }
+
     if(!ok){
-        setComputerName(newComputerName);
-        //QMessageBox::critical(this, tr("Error"), tr("Can not rename computer to '%1'!<br>%2").arg(newComputerName).arg(m_rtp->lastErrorString()));
+        return;
     }
 
     ui.pushButtonRenameComputer->setEnabled(false);
@@ -1408,6 +1445,93 @@ void SystemInfo::setComputerName(const QString &newName){
 
 }
 
+bool SystemInfo::renameMachineInDomain(const QString &newMachineName, const QString &accountName, const QString &password, const QString &serverName){
+
+    m_lastErrorString = "";
+
+    LPCWSTR pszServerName = NULL; // The server is the default local computer.
+    if(!serverName.trimmed().isEmpty()){
+        pszServerName = serverName.toStdWString().c_str();
+    }
+
+    NET_API_STATUS err = NetRenameMachineInDomain(pszServerName, newMachineName.toStdWString().c_str(), accountName.toStdWString().c_str(), password.toStdWString().c_str(), NETSETUP_JOIN_DOMAIN | NETSETUP_ACCT_CREATE | NETSETUP_JOIN_WITH_NEW_NAME);
+    switch(err){
+    case NERR_Success:
+        return true;
+        break;
+    case ERROR_INVALID_PARAMETER:
+        m_lastErrorString = tr("A parameter is incorrect.");
+        break;
+    case NERR_SetupNotJoined:
+        m_lastErrorString = tr("The computer is not currently joined to a domain.");
+        break;
+    case NERR_SetupDomainController:
+        m_lastErrorString = tr("This computer is a domain controller and cannot be unjoined from a domain.");
+        break;
+    default:
+        m_lastErrorString = tr("Failed to rename machine in domain! Error code: %1").arg(err);
+        break;
+    }
+
+
+    qWarning()<< "Can not set computer name to " << newMachineName;
+    QMessageBox::critical(this, tr("Error"), tr("Can not set computer name to '%1'! \r\n %2").arg(newMachineName).arg(m_lastErrorString));
+
+    return false;
+
+}
+
+bool SystemInfo::getComputerNameInfo(QString *dnsDomain, QString *dnsHostname, QString *netBIOSName){
+
+    m_lastErrorString = "";
+
+    bool ok = false;
+    COMPUTER_NAME_FORMAT nameType;
+    wchar_t buffer[512];
+    ZeroMemory(buffer, 512);
+    DWORD size = sizeof(buffer);
+
+    if(dnsDomain){
+        nameType = ComputerNameDnsDomain;
+        ok = GetComputerNameExW(nameType, buffer, &size);
+        if(ok){
+            *dnsDomain = QString::fromWCharArray(buffer);
+        }else{
+            m_lastErrorString += tr("\nFailed to get dns domain! Error Code: %1").arg(GetLastError());
+        }
+    }
+
+    if(dnsHostname){
+        ZeroMemory(buffer, size);
+
+        nameType = ComputerNameDnsHostname;
+        ok = GetComputerNameExW(nameType, buffer, &size);
+        if(ok){
+            *dnsHostname = QString::fromWCharArray(buffer);
+        }else{
+            m_lastErrorString += tr("\nFailed to get dns hostname! Error Code: %1").arg(GetLastError());
+        }
+    }
+
+    if(netBIOSName){
+        ZeroMemory(buffer, size);
+
+        nameType = ComputerNameNetBIOS;
+        ok = GetComputerNameExW(nameType, buffer, &size);
+        if(ok){
+            *netBIOSName = QString::fromWCharArray(buffer);
+        }else{
+            m_lastErrorString += tr("\nFailed to get NetBIOS name! Error Code: %1").arg(GetLastError());
+        }
+    }
+
+    if(!ok){
+        qWarning()<< m_lastErrorString;
+        QMessageBox::critical(this, tr("Error"), m_lastErrorString);
+    }
+
+    return ok;
+}
 
 
 

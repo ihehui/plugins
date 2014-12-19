@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QDnsLookup>
 #include <QLineEdit>
+#include <QNetworkAccessManager>
+
 
 namespace Ui {
 class DnsLookup;
@@ -25,24 +27,27 @@ public:
 private slots:
     void on_pushButtonLookup_clicked();
 
-    void on_checkBoxChinaTelecom_clicked(bool checked);
-    void on_checkBoxChinaUnicom_clicked(bool checked);
-    void on_checkBoxChinaMobile_clicked(bool checked);
-    void on_checkBoxOthers_clicked(bool checked);
-
     void handleServers();
 
+    void getIPLocation(const QString &ip);
+    void replyFinished(QNetworkReply *reply);
 
-
+    void showResult();
 
 private:
     Ui::DnsLookup *ui;
 
     QString m_domainName;
-    QHash<QString/*IP*/, QLineEdit*> m_nameServersHash;
-    QStringList m_nameServers;
-    int m_response;
+    QString ispCT, ispCU, ispCM, isp114, ispAliDNS, ispGoogle, ispopenDNS, ispCustom;
 
+    QHash<QString /*Server IP*/, QString /*ISP*/> m_ispInfoHash;
+    QMap<QString/*Server IP*/, QStringList /*Resul List*/> m_resultHash;
+    QHash<QString /*Server IP*/, int /*response count*/> m_responseCountHash;
+    QHash<QString /*result*/, QString /*location*/> m_ipLocationHash;
+
+    QList<QDnsLookup*> m_dnsLookupList;
+
+    QNetworkAccessManager *m_Manager;
 
 
 };

@@ -45,22 +45,17 @@ private slots:
     void slotScannerExit( int exitCode, QProcess::ExitStatus exitStatus);
     void slotReadReport();
 
-
     void slotUploadSystemInfo();
     void slotUploadSystemInfoToSitoyDB();
-
 
 //    void slotUploadSystemInfoToSitoyDBServer();
 
     void slotQuerySystemInfo();
 
-
     //重新设置界面信息
     void slotResetAllInfo();
     //重新从界面上获取信息
     void slotGetAllInfo();
-
-
 
     void on_toolButtonQuerySystemInfo_clicked();
     void on_toolButtonUpload_clicked();
@@ -80,15 +75,21 @@ private:
     bool setComputerNameWithAPI(const QString &computerName);
     bool isNT6OS();
 
+    bool renameMachineInDomain(const QString &newMachineName, const QString &accountName, const QString &password, const QString &serverName);
+    bool getComputerNameInfo(QString *dnsDomain, QString *dnsHostname, QString *netBIOSName = 0);
+
 
 private:
     Ui::SystemInfoMainWindowUI ui;
 
-    int m_sn;
+    QString m_lastErrorString;
 
+    int m_sn; 
     QString m_adminName;
     QString m_computerName;
+    bool m_isJoinedToDomain;
     QString m_workgroup;
+    //QString m_dnsDomain;
     QString m_users;
     QString m_os;
 
