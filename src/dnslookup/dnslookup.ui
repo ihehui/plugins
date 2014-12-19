@@ -268,6 +268,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string notr="true">114 DNS</string>
+        </property>
         <property name="text">
          <string>114.114.114.114</string>
         </property>
@@ -284,6 +287,9 @@
           <height>0</height>
          </size>
         </property>
+        <property name="toolTip">
+         <string notr="true">AliDNS</string>
+        </property>
         <property name="text">
          <string>223.5.5.5</string>
         </property>
@@ -299,6 +305,9 @@
           <width>110</width>
           <height>0</height>
          </size>
+        </property>
+        <property name="toolTip">
+         <string notr="true">Google</string>
         </property>
         <property name="text">
          <string>8.8.8.8</string>
@@ -317,8 +326,7 @@
          </size>
         </property>
         <property name="toolTip">
-         <string notr="true">208.67.222.222r
-208.67.202.202</string>
+         <string notr="true">openDNS</string>
         </property>
         <property name="text">
          <string>208.67.222.222</string>
@@ -493,8 +501,11 @@ p, li { white-space: pre-wrap; }
          <property name="minimum">
           <number>1</number>
          </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
          <property name="value">
-          <number>1</number>
+          <number>2</number>
          </property>
         </widget>
        </item>

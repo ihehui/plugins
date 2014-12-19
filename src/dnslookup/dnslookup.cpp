@@ -313,7 +313,6 @@ void DnsLookupWidget::replyFinished(QNetworkReply *reply){
 
     if(reply->error() == QNetworkReply::NoError){
         QByteArray ba = reply->readAll();
-        qDebug()<<"------------------------------------:"<<ba;
         QJsonParseError error;
         QJsonDocument doc = QJsonDocument::fromJson(ba, &error);
         if(error.error != QJsonParseError::NoError){
@@ -381,6 +380,48 @@ void DnsLookupWidget::showResult(){
     html += "</tr>";
 
     ///////////////////////////////////
+    QStringList allResults = m_ipLocationHash.keys();
+    int allResultsSize = allResults.size();
+
+    html += "<tr>";
+
+    if(allResultsSize > 1){
+        html += QString("<td align=\"center\" valign=\"middle\" rowspan=\"%1\">%2</td>").arg(allResultsSize).arg(tr("ALL"));
+        html += QString("<td valign=\"middle\">%1</td>").arg(allResults.at(0));
+        //if(isTypeA){
+            html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(allResults.at(0)));
+        //}
+        html += "<td valign=\"middle\" >---2----</td>";
+        html += "</tr>";
+
+
+        allResults.removeAt(0);
+        //allResults.sort();
+        foreach (QString result, allResults) {
+            html += QString("<tr><td valign=\"middle\">%1</td>").arg(result);
+            //if(isTypeA){
+                html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(result));
+            //}
+            html += "<td>------1-------</td>";
+        }
+        html += "</tr>";
+
+        html += QString("<tr><td align=\"center\" colspan=\"4\">%1</td></tr>").arg(tr("Details"));
+
+    }/*else if(allResultsSize == 1){
+        html += QString("<td align=\"center\" valign=\"middle\" >%1</td>").arg("ALL Results:");
+        html += QString("<td valign=\"middle\">%1</td>").arg(allResults.at(0));
+        //if(isTypeA){
+            html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(allResults.at(0)));
+        //}
+        html += "<td valign=\"middle\" >---2----</td>";
+        html += "</tr>";
+    }*/
+
+
+
+    html += "</tr>";
+    ////////////////////////////////////
 
     int index = 0;
     //int indexResult = 1;
@@ -389,7 +430,7 @@ void DnsLookupWidget::showResult(){
     QStringList nameServers = m_resultHash.keys();
     foreach (QString nameServer, nameServers) {
         QStringList results = m_resultHash.value(nameServer);
-        if(results.size() < ui->spinBoxRepeat->value()){
+        if(m_responseCountHash.value(nameServer) < ui->spinBoxRepeat->value()){
             done = false;
         }
         results.removeDuplicates();
@@ -453,7 +494,7 @@ void DnsLookupWidget::showResult(){
         ui->pushButtonLookup->setEnabled(true);
     }
 
-    qDebug()<<"html:\n"<<html;
+    //qDebug()<<"html:\n"<<html;
 
 }
 
