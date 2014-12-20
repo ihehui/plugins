@@ -48,6 +48,7 @@ private:
     QList<QDnsLookup*> m_dnsLookupList;
 
     QNetworkAccessManager *m_Manager;
+    bool m_useTaobao;
 
 
 };

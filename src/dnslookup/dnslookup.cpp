@@ -20,6 +20,9 @@ DnsLookupWidget::DnsLookupWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->lineEditDomainName->setFocus();
+
+
     ui->comboBoxType->addItem("A", QVariant(QDnsLookup::A));
     ui->comboBoxType->addItem("AAAA", QVariant(QDnsLookup::AAAA));
     ui->comboBoxType->addItem("ANY", QVariant(QDnsLookup::ANY));
@@ -31,6 +34,10 @@ DnsLookupWidget::DnsLookupWidget(QWidget *parent) :
     ui->comboBoxType->addItem("TXT", QVariant(QDnsLookup::TXT));
     ui->comboBoxType->setCurrentIndex(0);
 
+    ui->comboBoxGetIPAddressLocationFrom->addItem(tr("taobao.com(Chinese)"));
+    ui->comboBoxGetIPAddressLocationFrom->addItem(tr("telize.com(English)"));
+
+
     ispCT = tr("China Telecom");
     ispCU = tr("China Unicom");
     ispCM = tr("China Mobile");
@@ -41,6 +48,7 @@ DnsLookupWidget::DnsLookupWidget(QWidget *parent) :
     ispCustom = "Custom";
 
     m_Manager = 0;
+    m_useTaobao = true;
 
 
 }
@@ -154,6 +162,12 @@ void DnsLookupWidget::on_pushButtonLookup_clicked(){
     ui->comboBoxType->setEnabled(false);
     ui->lineEditNSIPCustom1->setReadOnly(true);
     ui->lineEditNSIPCustom2->setReadOnly(true);
+
+    if(ui->comboBoxGetIPAddressLocationFrom->currentIndex() == 0){
+        m_useTaobao = true;
+    }else{
+        m_useTaobao = false;
+    }
 
 
     QDnsLookup::Type type = QDnsLookup::Type(ui->comboBoxType->currentData().toUInt());
@@ -283,17 +297,18 @@ void DnsLookupWidget::handleServers(){
 
     m_resultHash[nameServer] = values;
 
-    showResult();
-
 
     int count = m_responseCountHash.value(nameServer) + 1;
+    m_responseCountHash[nameServer] = count;
     if(count < ui->spinBoxRepeat->value()){
         dnsLookup->lookup();
-        m_responseCountHash[nameServer] = count;
     }else{
         delete dnsLookup;
         dnsLookup = 0;
     }
+
+    showResult();
+
 
 
 }
@@ -304,7 +319,14 @@ void DnsLookupWidget::getIPLocation(const QString &ip){
         connect(m_Manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
     }
 
-    m_Manager->get(QNetworkRequest(QUrl(QString("http://ip.taobao.com/service/getIpInfo.php?ip=%1").arg(ip))));
+    QString queryString;
+    if(m_useTaobao){
+        queryString = QString("http://ip.taobao.com/service/getIpInfo.php?ip=%1").arg(ip);
+    }else{
+        queryString = QString("http://www.telize.com/geoip/%1").arg(ip);
+    }
+
+    m_Manager->get(QNetworkRequest(QUrl(queryString)));
 
 }
 
@@ -312,25 +334,31 @@ void DnsLookupWidget::replyFinished(QNetworkReply *reply){
 
 
     if(reply->error() == QNetworkReply::NoError){
-        QByteArray ba = reply->readAll();
+        QByteArray data = reply->readAll();
         QJsonParseError error;
-        QJsonDocument doc = QJsonDocument::fromJson(ba, &error);
+        QJsonDocument doc = QJsonDocument::fromJson(data, &error);
         if(error.error != QJsonParseError::NoError){
             qCritical()<<error.errorString();
-            reply->deleteLater();
             return;
         }
         QJsonObject obj = doc.object();
         bool err = obj["code"].toBool();
         if(err){
-            reply->deleteLater();
+            qCritical()<<"ERROR! Invalid data!";
             return;
         }
-        QJsonObject dataobj = obj["data"].toObject();
-        if(dataobj.isEmpty()){
-            reply->deleteLater();
-            return;
+
+        QJsonObject dataobj;
+        if(m_useTaobao){
+            dataobj = obj["data"].toObject();
+            if(dataobj.isEmpty()){
+                return;
+            }
+        }else{
+            dataobj = obj;
         }
+
+
         QString country = dataobj["country"].toString();
         //QString country_id = dataobj["country_id"].toString();
         QString region = dataobj["region"].toString();
@@ -343,9 +371,14 @@ void DnsLookupWidget::replyFinished(QNetworkReply *reply){
         location = location.trimmed();
         m_ipLocationHash[ip] = location;
 
+
+//        if(m_useTaobao){
+//            parseTaobaoReply(ba);
+//        }else{
+//            parseTelizeReply(ba);
+//        }
+
         showResult();
-
-
     }else{
         qCritical()<<"ERROR!"<<reply->errorString();
     }
@@ -383,15 +416,15 @@ void DnsLookupWidget::showResult(){
     QStringList allResults = m_ipLocationHash.keys();
     int allResultsSize = allResults.size();
 
-    html += "<tr>";
 
     if(allResultsSize > 1){
+        html += "<tr>";
         html += QString("<td align=\"center\" valign=\"middle\" rowspan=\"%1\">%2</td>").arg(allResultsSize).arg(tr("ALL"));
         html += QString("<td valign=\"middle\">%1</td>").arg(allResults.at(0));
         //if(isTypeA){
             html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(allResults.at(0)));
         //}
-        html += "<td valign=\"middle\" >---2----</td>";
+        html += "<td valign=\"middle\" ></td>";
         html += "</tr>";
 
 
@@ -402,25 +435,25 @@ void DnsLookupWidget::showResult(){
             //if(isTypeA){
                 html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(result));
             //}
-            html += "<td>------1-------</td>";
+            html += "<td></td>";
         }
         html += "</tr>";
 
         html += QString("<tr><td align=\"center\" colspan=\"4\">%1</td></tr>").arg(tr("Details"));
-
+        html += "</tr>";
     }/*else if(allResultsSize == 1){
+       html += "<tr>";
         html += QString("<td align=\"center\" valign=\"middle\" >%1</td>").arg("ALL Results:");
         html += QString("<td valign=\"middle\">%1</td>").arg(allResults.at(0));
         //if(isTypeA){
             html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(allResults.at(0)));
         //}
-        html += "<td valign=\"middle\" >---2----</td>";
+        html += "<td valign=\"middle\" ></td>";
         html += "</tr>";
     }*/
 
 
 
-    html += "</tr>";
     ////////////////////////////////////
 
     int index = 0;
@@ -449,7 +482,7 @@ void DnsLookupWidget::showResult(){
             //if(isTypeA){
                 html += QString("<td>%1</td>").arg(m_ipLocationHash.value(results.at(0)));
             //}
-            html += "<td>-------0-------</td>";
+            html += "<td></td>";
             html += "</tr>";
 
             //index++;
@@ -463,7 +496,7 @@ void DnsLookupWidget::showResult(){
                 //if(isTypeA){
                     html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(result));
                 //}
-                html += "<td>------1-------</td>";
+                html += "<td></td>";
                 //indexResult++;
             }
             html += "</tr>";
@@ -474,7 +507,7 @@ void DnsLookupWidget::showResult(){
             //if(isTypeA){
                 html += QString("<td valign=\"middle\">%1</td>").arg(m_ipLocationHash.value(results.at(0)));
             //}
-            html += "<td valign=\"middle\" >---2----</td>";
+            html += "<td valign=\"middle\" ></td>";
             html += "</tr>";
 
             index++;

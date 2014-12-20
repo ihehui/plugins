@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>751</width>
-    <height>462</height>
+    <height>627</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -32,7 +32,7 @@
          </size>
         </property>
         <property name="text">
-         <string>202.96.128.86</string>
+         <string notr="true">202.96.128.86</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -48,7 +48,7 @@
          </size>
         </property>
         <property name="text">
-         <string>202.96.128.166</string>
+         <string notr="true">202.96.128.166</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -64,7 +64,7 @@
          </size>
         </property>
         <property name="text">
-         <string>202.96.134.33</string>
+         <string notr="true">202.96.134.33</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -80,7 +80,7 @@
          </size>
         </property>
         <property name="text">
-         <string>202.96.134.133</string>
+         <string notr="true">202.96.134.133</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -99,7 +99,7 @@
       <bool>true</bool>
      </property>
      <property name="checked">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -111,7 +111,7 @@
          </size>
         </property>
         <property name="text">
-         <string>221.5.88.88</string>
+         <string notr="true">221.5.88.88</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -127,7 +127,7 @@
          </size>
         </property>
         <property name="text">
-         <string>221.4.66.66</string>
+         <string notr="true">221.4.66.66</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -143,7 +143,7 @@
          </size>
         </property>
         <property name="text">
-         <string>202.14.67.14</string>
+         <string notr="true">202.14.67.14</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -159,7 +159,7 @@
          </size>
         </property>
         <property name="text">
-         <string>120.80.88.88</string>
+         <string notr="true">120.80.88.88</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -178,7 +178,7 @@
       <bool>true</bool>
      </property>
      <property name="checked">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
@@ -190,7 +190,7 @@
          </size>
         </property>
         <property name="text">
-         <string>61.235.70.98</string>
+         <string notr="true">61.235.70.98</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -206,7 +206,7 @@
          </size>
         </property>
         <property name="text">
-         <string>61.235.70.252</string>
+         <string notr="true">61.235.70.252</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -222,7 +222,7 @@
          </size>
         </property>
         <property name="text">
-         <string>211.98.2.4</string>
+         <string notr="true">211.98.2.4</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -238,7 +238,7 @@
          </size>
         </property>
         <property name="text">
-         <string>211.98.4.1</string>
+         <string notr="true">211.98.4.1</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -257,7 +257,7 @@
       <bool>true</bool>
      </property>
      <property name="checked">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -272,7 +272,7 @@
          <string notr="true">114 DNS</string>
         </property>
         <property name="text">
-         <string>114.114.114.114</string>
+         <string notr="true">114.114.114.114</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -291,7 +291,7 @@
          <string notr="true">AliDNS</string>
         </property>
         <property name="text">
-         <string>223.5.5.5</string>
+         <string notr="true">223.5.5.5</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -310,7 +310,7 @@
          <string notr="true">Google</string>
         </property>
         <property name="text">
-         <string>8.8.8.8</string>
+         <string notr="true">8.8.8.8</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -329,7 +329,7 @@
          <string notr="true">openDNS</string>
         </property>
         <property name="text">
-         <string>208.67.222.222</string>
+         <string notr="true">208.67.222.222</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -471,7 +471,7 @@ p, li { white-space: pre-wrap; }
        <item>
         <widget class="QLineEdit" name="lineEditDomainName">
          <property name="text">
-          <string>www.126.com</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -490,9 +490,22 @@ p, li { white-space: pre-wrap; }
      <item row="1" column="0">
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Repeat:</string>
+          <string>Lookup</string>
          </property>
         </widget>
        </item>
@@ -510,12 +523,9 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QCheckBox" name="checkBoxSkip">
+        <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Skip invalid server</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
+          <string>Time(s)</string>
          </property>
         </widget>
        </item>
@@ -533,7 +543,33 @@ p, li { white-space: pre-wrap; }
         </spacer>
        </item>
        <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>Get IP address location from:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="comboBoxGetIPAddressLocationFrom"/>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QCheckBox" name="checkBoxPing">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Ping Target</string>
          </property>
@@ -562,12 +598,51 @@ p, li { white-space: pre-wrap; }
        <property name="text">
         <string>Lookup</string>
        </property>
+       <property name="shortcut">
+        <string>Ctrl+Return</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>lineEditDomainName</tabstop>
+  <tabstop>comboBoxType</tabstop>
+  <tabstop>pushButtonLookup</tabstop>
+  <tabstop>spinBoxRepeat</tabstop>
+  <tabstop>groupBoxChinaTelecom</tabstop>
+  <tabstop>checkBoxCT1</tabstop>
+  <tabstop>checkBoxCT2</tabstop>
+  <tabstop>checkBoxCT3</tabstop>
+  <tabstop>checkBoxCT4</tabstop>
+  <tabstop>groupBoxChinaUnicom</tabstop>
+  <tabstop>checkBoxCU1</tabstop>
+  <tabstop>checkBoxCU2</tabstop>
+  <tabstop>checkBoxCU3</tabstop>
+  <tabstop>checkBoxCU4</tabstop>
+  <tabstop>groupBoxChinaMobile</tabstop>
+  <tabstop>checkBoxCM1</tabstop>
+  <tabstop>checkBoxCM2</tabstop>
+  <tabstop>checkBoxCM3</tabstop>
+  <tabstop>checkBoxCM4</tabstop>
+  <tabstop>groupBoxPublicDNS</tabstop>
+  <tabstop>checkBox114</tabstop>
+  <tabstop>checkBoxAliDNS</tabstop>
+  <tabstop>checkBoxGoogle</tabstop>
+  <tabstop>checkBoxOpenDNS</tabstop>
+  <tabstop>groupBoxCustom</tabstop>
+  <tabstop>lineEditNSIPCustom1</tabstop>
+  <tabstop>lineEditNSIPCustom2</tabstop>
+  <tabstop>lineEditNSIPCustom3</tabstop>
+  <tabstop>lineEditNSIPCustom4</tabstop>
+  <tabstop>textBrowserResult</tabstop>
+  <tabstop>checkBoxPing</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
