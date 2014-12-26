@@ -54,10 +54,11 @@ public:
     SqlExplorerPlugin();
     virtual ~SqlExplorerPlugin();
 
-    bool isSingle();
     QString name () const;
     QString version() const;
     QString description() const;
+
+    bool isSingle();
 
     QIcon icon () const;
     QString whatsThis () const;

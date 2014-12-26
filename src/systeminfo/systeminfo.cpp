@@ -21,16 +21,69 @@
 
 #endif
 
-#ifndef SITOY_MSSQLSERVER_DB_CONNECTION_NAME
-#define SITOY_MSSQLSERVER_DB_CONNECTION_NAME "200.200.200.2/MIS/AssetsInfo"
+//#ifndef REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME
+//#define REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME "200.200.200.2/MIS/AssetsInfo"
+//#endif
+
+
+
+
+//MySQL
+#ifndef REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME
+#define REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME	"200.200.200.17/sitoycomputers/systeminfo"
 #endif
 
-#ifndef MYSQL_DB_CONNECTION_NAME
-#define MYSQL_DB_CONNECTION_NAME "200.200.200.17/sitoycomputers/systeminfo"
+#ifndef REMOTE_SITOY_COMPUTERS_DB_DRIVER
+#define REMOTE_SITOY_COMPUTERS_DB_DRIVER	"QMYSQL"
+#endif
+
+#ifndef REMOTE_SITOY_COMPUTERS_DB_SERVER_HOST
+#define REMOTE_SITOY_COMPUTERS_DB_SERVER_HOST	"200.200.200.40"
+#endif
+
+#ifndef REMOTE_SITOY_COMPUTERS_DB_SERVER_PORT
+#define REMOTE_SITOY_COMPUTERS_DB_SERVER_PORT	3306
+#endif
+
+#ifndef REMOTE_SITOY_COMPUTERS_DB_USER_NAME
+#define REMOTE_SITOY_COMPUTERS_DB_USER_NAME	"hehui"
+#endif
+
+#ifndef REMOTE_SITOY_COMPUTERS_DB_USER_PASSWORD
+#define REMOTE_SITOY_COMPUTERS_DB_USER_PASSWORD	"hehui"
 #endif
 
 #ifndef REMOTE_SITOY_ASSETS_DB_NAME
 #define REMOTE_SITOY_ASSETS_DB_NAME "sitoyassets"
+#endif
+
+//Sitoy SQL Server
+#ifndef REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME
+#define REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME	"200.200.200.2/MIS/AssetsInfo"
+#endif
+
+#ifndef REMOTE_SITOY_SQLSERVER_DB_DRIVER
+#define REMOTE_SITOY_SQLSERVER_DB_DRIVER	"QODBC"
+#endif
+
+#ifndef REMOTE_SITOY_SQLSERVER_DB_NAME
+#define REMOTE_SITOY_SQLSERVER_DB_NAME	"mis"
+#endif
+
+#ifndef REMOTE_SITOY_SQLSERVER_DB_HOST_NAME
+#define REMOTE_SITOY_SQLSERVER_DB_HOST_NAME	"200.200.200.2"
+#endif
+
+#ifndef REMOTE_SITOY_SQLSERVER_DB_HOST_PORT
+#define REMOTE_SITOY_SQLSERVER_DB_HOST_PORT	1433
+#endif
+
+#ifndef REMOTE_SITOY_SQLSERVER_DB_USER_NAME
+#define REMOTE_SITOY_SQLSERVER_DB_USER_NAME	"appuser"
+#endif
+
+#ifndef REMOTE_SITOY_SQLSERVER_DB_USER_PASSWORD
+#define REMOTE_SITOY_SQLSERVER_DB_USER_PASSWORD	"apppswd"
 #endif
 
 
@@ -168,23 +221,23 @@ SystemInfo::~SystemInfo() {
     }
 
 
-//    QSqlDatabase msSQLServerDB = QSqlDatabase::database(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
+//    QSqlDatabase msSQLServerDB = QSqlDatabase::database(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 //    if(msSQLServerDB.isOpen()){
 //        msSQLServerDB.close();
 //    }
-//    QSqlDatabase::removeDatabase(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
+//    QSqlDatabase::removeDatabase(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 
-    QSqlDatabase mySQLDB = QSqlDatabase::database(MYSQL_DB_CONNECTION_NAME);
+    QSqlDatabase mySQLDB = QSqlDatabase::database(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME);
     if(mySQLDB.isValid() && mySQLDB.isOpen()){
         mySQLDB.close();
     }
-    QSqlDatabase::removeDatabase(MYSQL_DB_CONNECTION_NAME);
+    QSqlDatabase::removeDatabase(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME);
 
-    QSqlDatabase sitoyDB = QSqlDatabase::database(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
+    QSqlDatabase sitoyDB = QSqlDatabase::database(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
     if(sitoyDB.isValid() && sitoyDB.isOpen()){
         sitoyDB.close();
     }
-    QSqlDatabase::removeDatabase(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
+    QSqlDatabase::removeDatabase(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 
 }
 
@@ -649,7 +702,7 @@ void SystemInfo::slotUploadSystemInfo(){
     //QApplication::setOverrideCursor(Qt::WaitCursor);
 
     //DatabaseConnecter dc(this);
-    if(!dc->isDatabaseOpened(MYSQL_DB_CONNECTION_NAME,
+    if(!dc->isDatabaseOpened(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME,
                              REMOTE_SITOY_COMPUTERS_DB_DRIVER,
                              REMOTE_SITOY_COMPUTERS_DB_SERVER_HOST,
                              REMOTE_SITOY_COMPUTERS_DB_SERVER_PORT,
@@ -666,7 +719,7 @@ void SystemInfo::slotUploadSystemInfo(){
 
 
     QSqlDatabase db;
-    db = QSqlDatabase::database(MYSQL_DB_CONNECTION_NAME);
+    db = QSqlDatabase::database(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME);
 
     QSqlQuery query(db);
 
@@ -790,7 +843,7 @@ void SystemInfo::slotUploadSystemInfoToSitoyDB(){
     //QApplication::setOverrideCursor(Qt::WaitCursor);
 
     //DatabaseConnecter dc(this);
-    if(!dc->isDatabaseOpened(SITOY_MSSQLSERVER_DB_CONNECTION_NAME,
+    if(!dc->isDatabaseOpened(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME,
                              REMOTE_SITOY_SQLSERVER_DB_DRIVER,
                              REMOTE_SITOY_SQLSERVER_DB_HOST_NAME,
                              REMOTE_SITOY_SQLSERVER_DB_HOST_PORT,
@@ -807,7 +860,7 @@ void SystemInfo::slotUploadSystemInfoToSitoyDB(){
 
 
     QSqlDatabase db;
-    db = QSqlDatabase::database(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
+    db = QSqlDatabase::database(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 
     QSqlQuery query(db);
 
@@ -951,7 +1004,7 @@ void SystemInfo::retranslateUi() {
 
 //    //DatabaseConnecter dc(this);
 //    //QString connectionName = "200.200.200.2/MIS/PC";
-//    if(!dc->isDatabaseOpened(SITOY_MSSQLSERVER_DB_CONNECTION_NAME,
+//    if(!dc->isDatabaseOpened(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME,
 //                             "QODBC",
 //                             "200.200.200.2",
 //                             1433,
@@ -968,7 +1021,7 @@ void SystemInfo::retranslateUi() {
 
 
 //    QSqlDatabase db;
-//    db = QSqlDatabase::database(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
+//    db = QSqlDatabase::database(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 //    QSqlQuery query(db);
 
 //    bool recordExistsInSitoyDB = false;
@@ -1057,7 +1110,7 @@ void SystemInfo::slotQuerySystemInfo(){
     QApplication::setOverrideCursor(Qt::WaitCursor);
 
 //    DatabaseConnecter dc(this);
-//    if(!dc.isDatabaseOpened(MYSQL_DB_CONNECTION_NAME,
+//    if(!dc.isDatabaseOpened(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME,
 //                            REMOTE_SITOY_COMPUTERS_DB_DRIVER,
 //                            REMOTE_SITOY_COMPUTERS_DB_SERVER_HOST,
 //                            REMOTE_SITOY_COMPUTERS_DB_SERVER_PORT,
@@ -1066,7 +1119,7 @@ void SystemInfo::slotQuerySystemInfo(){
 //                            REMOTE_SITOY_ASSETS_DB_NAME,
 //                            HEHUI::MYSQL
 //                            )){
-    if(!dc->isDatabaseOpened(SITOY_MSSQLSERVER_DB_CONNECTION_NAME,
+    if(!dc->isDatabaseOpened(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME,
                              REMOTE_SITOY_SQLSERVER_DB_DRIVER,
                              REMOTE_SITOY_SQLSERVER_DB_HOST_NAME,
                              REMOTE_SITOY_SQLSERVER_DB_HOST_PORT,
@@ -1084,7 +1137,7 @@ void SystemInfo::slotQuerySystemInfo(){
 
 
     QSqlDatabase db;
-    db = QSqlDatabase::database(SITOY_MSSQLSERVER_DB_CONNECTION_NAME);
+    db = QSqlDatabase::database(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 
 
     if(!queryModel){
@@ -1105,7 +1158,7 @@ void SystemInfo::slotQuerySystemInfo(){
         //MySQL数据库重启，重新连接
         if(error.number() == 2006){
             db.close();
-            QSqlDatabase::removeDatabase(MYSQL_DB_CONNECTION_NAME);
+            QSqlDatabase::removeDatabase(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME);
             return;
         }
 
