@@ -20,7 +20,7 @@ DnsLookupWidget::DnsLookupWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->lineEditDomainName->setFocus();
+    ui->comboBoxDomainName->setFocus();
 
 
     ui->comboBoxType->addItem("A", QVariant(QDnsLookup::A));
@@ -64,13 +64,19 @@ DnsLookupWidget::~DnsLookupWidget()
 
 void DnsLookupWidget::on_pushButtonLookup_clicked(){
 
-    QUrl url = QUrl::fromUserInput(ui->lineEditDomainName->text().trimmed());
+    QUrl url = QUrl::fromUserInput(ui->comboBoxDomainName->currentText().trimmed());
     if(!url.isValid() || url.isLocalFile()){
         QMessageBox::critical(this, tr("Error"), tr("Invalid Domain Name!"));
         return;
     }
     m_domainName = url.host();
-    ui->lineEditDomainName->setText(m_domainName);
+
+    int index = ui->comboBoxDomainName->findText(m_domainName, Qt::MatchFixedString);
+    if(-1 == index){
+        ui->comboBoxDomainName->insertItem(0, m_domainName);
+        index = 0;
+    }
+    ui->comboBoxDomainName->setCurrentIndex(index);
     ui->textBrowserResult->clear();
 
     m_ispInfoHash.clear();
@@ -158,7 +164,7 @@ void DnsLookupWidget::on_pushButtonLookup_clicked(){
 //    }
 
     ui->pushButtonLookup->setEnabled(false);
-    ui->lineEditDomainName->setReadOnly(true);
+    ui->comboBoxDomainName->setEnabled(false);
     ui->comboBoxType->setEnabled(false);
     ui->lineEditNSIPCustom1->setReadOnly(true);
     ui->lineEditNSIPCustom2->setReadOnly(true);
@@ -522,7 +528,7 @@ void DnsLookupWidget::showResult(){
     ui->textBrowserResult->setHtml(html);
 
     if(done){
-        ui->lineEditDomainName->setReadOnly(false);
+        ui->comboBoxDomainName->setEnabled(true);
         ui->comboBoxType->setEnabled(true);
         ui->pushButtonLookup->setEnabled(true);
     }

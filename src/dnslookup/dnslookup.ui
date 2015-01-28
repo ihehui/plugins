@@ -469,9 +469,15 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEditDomainName">
-         <property name="text">
-          <string/>
+        <widget class="QComboBox" name="comboBoxDomainName">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -611,7 +617,6 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <tabstops>
-  <tabstop>lineEditDomainName</tabstop>
   <tabstop>comboBoxType</tabstop>
   <tabstop>pushButtonLookup</tabstop>
   <tabstop>spinBoxRepeat</tabstop>
