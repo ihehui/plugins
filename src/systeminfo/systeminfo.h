@@ -42,7 +42,6 @@ private slots:
     void slotResetStatusBar(bool show);
 
     void slotScanSystem();
-    void slotScannerExit( int exitCode, QProcess::ExitStatus exitStatus);
     void slotReadReport();
 
     void slotUploadSystemInfo();

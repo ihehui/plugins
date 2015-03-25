@@ -34,6 +34,9 @@
 
 #include "settingsdialog.h"
 
+#ifdef Q_OS_WIN32
+#include "HHSharedWindowsManagement/WinUtilities"
+#endif
 
 
 namespace HEHUI {
@@ -50,7 +53,7 @@ SettingsDialog::SettingsDialog(const QString &userID, WindowsManagement *wm, int
     
     ui.stackedWidget->setCurrentWidget(ui.pageUserSettings);
     
-    ui.lineEditCurPCName->setText(wm->getComputerName());
+    ui.lineEditCurPCName->setText(WinUtilities::getComputerName());
     
     ui.comboBoxLocation->setCurrentIndex(defaultLocationIndex);
         

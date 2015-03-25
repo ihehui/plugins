@@ -48,8 +48,10 @@
 
 #include "usermanagermainwindow.h"
 #include "modifyuserinfo/modifyuserinfodialog.h"
+
 #ifdef Q_OS_WIN32
-#include "settingsdialog/settingsdialog.h"
+    #include "settingsdialog/settingsdialog.h"
+    #include "HHSharedWindowsManagement/WinUtilities"
 #endif
 
 
@@ -144,12 +146,12 @@ UserManagerMainWindow::UserManagerMainWindow(bool isYDAdmin, QWidget *parent)
 //    wm->test();
 
 
-    m_joinInfo = wm->getJoinInformation(&m_isJoinedToDomain);
+    m_joinInfo = WinUtilities::getJoinInformation(&m_isJoinedToDomain);
     if(m_joinInfo.trimmed().isEmpty()){
         QMessageBox::critical(this, tr("Error"), tr("Failed to get join information!"));
     }
     if(m_isJoinedToDomain){
-        wm->getComputerNameInfo(&m_joinInfo, 0, 0);
+        WinUtilities::getComputerNameInfo(&m_joinInfo, 0, 0);
     }
 
     QString appDataCommonDir = wm->getEnvironmentVariable("ALLUSERSPROFILE") + "\\Application Data";
@@ -173,8 +175,8 @@ UserManagerMainWindow::UserManagerMainWindow(bool isYDAdmin, QWidget *parent)
     }
 
 
-    QStringList users = wm->localCreatedUsers();
-    wm->getAllUsersLoggedOn(&users);
+    QStringList users = WinUtilities::localCreatedUsers();
+    WinUtilities::getAllUsersLoggedOn(&users);
     users.removeDuplicates();
 
     ui.userIDComboBox->addItems(users);
@@ -956,7 +958,7 @@ void UserManagerMainWindow::slotCreateEmailAccounts(){
 
         CreateDirectoryW(storeRoot.toStdWString().c_str(), NULL);
 
-        QString userName = wm->getUserNameOfCurrentThread();
+        QString userName = WinUtilities::getUserNameOfCurrentThread();
         if(wm->isNT6OS()){
             if(intMail){wm->addLiveMailAccount(userName, "", true, storeRoot, emailAccount);}
             if(extMail){wm->addLiveMailAccount(userName, "", false, storeRoot, emailAccount);}
@@ -1026,7 +1028,7 @@ void UserManagerMainWindow::updateActions() {
 
     ui.actionAutoLogon->setEnabled(enableExp);
     if(!m_isJoinedToDomain){
-        ui.actionAutoLogon->setEnabled(enableExp && (wm->localUsers().contains(UserID(), Qt::CaseInsensitive)) ) ;
+        ui.actionAutoLogon->setEnabled(enableExp && (WinUtilities::localUsers().contains(UserID(), Qt::CaseInsensitive)) ) ;
     }
 #endif
 

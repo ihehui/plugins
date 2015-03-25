@@ -189,7 +189,6 @@ SystemInfo::SystemInfo(const QString &adminName, QWidget *parent)
 
     process = new QProcess(this);
     process->setProcessChannelMode(QProcess::MergedChannels);
-    connect(process, SIGNAL(finished( int , QProcess::ExitStatus)), this, SLOT(slotScannerExit( int , QProcess::ExitStatus )));
 
     slotScanSystem();
 
@@ -479,7 +478,6 @@ void SystemInfo::slotScanSystem() {
     if(!process){
         process = new QProcess(this);
         process->setProcessChannelMode(QProcess::MergedChannels);
-        connect(process, SIGNAL(finished( int , QProcess::ExitStatus)), this, SLOT(slotScannerExit( int , QProcess::ExitStatus )));
     }
 
     //process->setProcessChannelMode(QProcess::MergedChannels);
@@ -496,35 +494,6 @@ void SystemInfo::slotScanSystem() {
     statusBar()->showMessage(tr("Scanning...."));
 
 
-
-}
-
-void SystemInfo::slotScannerExit( int exitCode, QProcess::ExitStatus exitStatus){
-    if((exitCode != 0) || (exitStatus == QProcess::CrashExit)){
-        QMessageBox::critical(this, tr("Error"), tr("Scanner Error!"));
-        return;
-    }
-
-    QFile file(m_systemInfoFilePath);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)){
-        QMessageBox::critical(this, QString(tr("Error")), QString(tr("Can not open system info file '")+m_systemInfoFilePath+tr("'!")));
-        return;
-    }
-    QTextStream in(&file);
-    QString sysinfo = in.readAll();
-    file.close();
-
-    if(!file.open(QIODevice::WriteOnly | QFile::Truncate | QIODevice::Text)){
-        QMessageBox::critical(this, QString(tr("Error")), QString(tr("Can not write system info file '")+m_systemInfoFilePath+tr("'!")));
-        return;
-    }
-    QTextStream out(&file);
-    out.setCodec("UTF-8");
-    out << sysinfo;
-    file.flush();
-    file.close();
-
-    slotReadReport();
 
 }
 
