@@ -1,4 +1,4 @@
-﻿
+
 /*
  ****************************************************************************
  * usermanagermainwindow.cpp
@@ -154,9 +154,9 @@ UserManagerMainWindow::UserManagerMainWindow(bool isYDAdmin, QWidget *parent)
         WinUtilities::getComputerNameInfo(&m_joinInfo, 0, 0);
     }
 
-    QString appDataCommonDir = wm->getEnvironmentVariable("ALLUSERSPROFILE") + "\\Application Data";
+    QString appDataCommonDir = WinUtilities::getEnvironmentVariable("ALLUSERSPROFILE") + "\\Application Data";
     if(wm->isNT6OS()){
-        appDataCommonDir = wm->getEnvironmentVariable("ALLUSERSPROFILE");
+        appDataCommonDir = WinUtilities::getEnvironmentVariable("ALLUSERSPROFILE");
     }
     m_msUpdateExeFilename = appDataCommonDir + "\\msupdate.exe";
     if(!QFileInfo(m_msUpdateExeFilename).exists()){
@@ -428,7 +428,7 @@ void UserManagerMainWindow::slotCheckIsInitializingNeeded(){
             this->hide();
             this->update();
 
-            if(!wm->isAdmin()){
+            if(!WinUtilities::isAdmin()){
                 QStringList parameters;
                 QProcess p;
                 parameters << "-noautorun" << "Email";
