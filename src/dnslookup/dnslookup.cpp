@@ -402,7 +402,7 @@ void DnsLookupWidget::showResult(){
             "</style>"
             "</head><body>"
             ;
-    html += "<table  border=\"0\" cellpadding=\"5\" cellspacing=\"1\"  >"
+    html += "<table width=\"100%\" border=\"0\" cellpadding=\"5\" cellspacing=\"1\"  >"
             "<tr>"
               "<td align=\"center\" colspan=\"4\">Result</td>"
             "</tr>"
