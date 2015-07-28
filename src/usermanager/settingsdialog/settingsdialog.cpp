@@ -35,7 +35,7 @@
 #include "settingsdialog.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/WinUtilities"
+#include "HHSharedSystemUtilities/WinUtilities"
 #endif
 
 

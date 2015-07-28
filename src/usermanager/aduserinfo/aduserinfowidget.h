@@ -1,4 +1,4 @@
-﻿#ifndef ADUSERINFOWIDGET_H
+#ifndef ADUSERINFOWIDGET_H
 #define ADUSERINFOWIDGET_H
 
 #include <QWidget>
@@ -7,7 +7,7 @@
 #include "aduser.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/hadsi.h"
+#include "HHSharedSystemUtilities/hadsi.h"
 #endif
 
 

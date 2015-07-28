@@ -41,7 +41,7 @@
 #include "ui_settingsdialog.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/hwindowsmanagement.h"
+#include "HHSharedSystemUtilities/hwindowsmanagement.h"
 #endif
 
 

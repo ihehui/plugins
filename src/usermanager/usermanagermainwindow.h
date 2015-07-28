@@ -49,7 +49,7 @@
 #include "HHSharedGUI/hprogressdlg.h"
 #ifdef Q_OS_WIN32
 #include "aduserinfo/adusermanagerwidget.h"
-#include "HHSharedWindowsManagement/hwindowsmanagement.h"
+#include "HHSharedSystemUtilities/hwindowsmanagement.h"
 #endif
 
 

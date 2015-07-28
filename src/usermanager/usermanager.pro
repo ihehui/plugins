@@ -15,7 +15,7 @@ include( ../config.pri )
 HHSharedLibs += HHSharedCore \
     HHSharedGUI
 win32 {
-    HHSharedLibs += HHSharedWindowsManagement
+    HHSharedLibs += HHSharedSysUtilities
 }
 include(../../HHSharedLibs.pri)
 

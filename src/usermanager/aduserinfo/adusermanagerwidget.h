@@ -39,7 +39,7 @@
 #include "aduserinfomodel.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/hadsi.h"
+#include "HHSharedSystemUtilities/hadsi.h"
 #endif
 
 
