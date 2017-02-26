@@ -12,10 +12,12 @@
 
 #include "HHSharedGUI/hdatabaseconnecter.h"
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
-class SystemInfo: public QMainWindow {
+class SystemInfo: public QMainWindow
+{
     Q_OBJECT
 
 public:
@@ -23,7 +25,10 @@ public:
     SystemInfo(const QString &adminName, QWidget *parent = 0);
     ~SystemInfo();
 
-    static bool isRunning(){return running;}
+    static bool isRunning()
+    {
+        return running;
+    }
 
     void retranslateUi();
 
@@ -83,7 +88,7 @@ private:
 
     QString m_lastErrorString;
 
-    int m_sn; 
+    int m_sn;
     QString m_adminName;
     QString m_computerName;
     bool m_isJoinedToDomain;
@@ -100,7 +105,7 @@ private:
     //bool isUploadedToSitoyDB;
 
     QWidget *m_progressWidget;
-    QLayout* hlayout;
+    QLayout *hlayout;
     QLabel *label;
     QProgressBar *progressBar;
 
@@ -121,7 +126,7 @@ private:
 
 
 
- ///////////////////////////////////
+///////////////////////////////////
     //DevicesInfo
     QString cpu;
     QString memory;

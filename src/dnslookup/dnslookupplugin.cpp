@@ -40,52 +40,65 @@
 #include "dnslookupplugin.h"
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-DnsLookupPlugin::DnsLookupPlugin() {
+DnsLookupPlugin::DnsLookupPlugin()
+{
     widgetList = QList<QWidget *> ();
 }
 
-DnsLookupPlugin::~DnsLookupPlugin() {
+DnsLookupPlugin::~DnsLookupPlugin()
+{
     //unload();
 }
 
-bool DnsLookupPlugin::isSingle(){
+bool DnsLookupPlugin::isSingle()
+{
     return false;
 }
 
-QString DnsLookupPlugin::name () const{
+QString DnsLookupPlugin::name () const
+{
     return QString(tr("DNS Lookup"));
 }
 
-QString DnsLookupPlugin::version() const{
+QString DnsLookupPlugin::version() const
+{
     return "2014.09.17";
 }
 
-QString DnsLookupPlugin::description() const{
+QString DnsLookupPlugin::description() const
+{
     return QString(tr("DNS Lookup Plugin"));
 }
 
-QIcon DnsLookupPlugin::icon () const{
+QIcon DnsLookupPlugin::icon () const
+{
     return QIcon(":/resources/images/dnslookup.png");
 }
 
-QString DnsLookupPlugin::whatsThis () const{
+QString DnsLookupPlugin::whatsThis () const
+{
     return QString(tr("DNS Lookup"));
 }
 
-QString DnsLookupPlugin::toolTip () const{
+QString DnsLookupPlugin::toolTip () const
+{
     return QString(tr("DNS Lookup"));
 }
 
-bool DnsLookupPlugin::unload(){
+bool DnsLookupPlugin::unload()
+{
     qDebug("----DnsLookupPlugin::unload()");
 
     //emit signalPluginToBeUnloaded();
 
-    foreach(QWidget *wgt, widgetList){
-        if(!wgt){continue;}
-        if(wgt->close()){
+    foreach(QWidget *wgt, widgetList) {
+        if(!wgt) {
+            continue;
+        }
+        if(wgt->close()) {
             //widgetList.removeAll(wgt);
             delete wgt;
             wgt = 0;
@@ -95,17 +108,18 @@ bool DnsLookupPlugin::unload(){
     return widgetList.isEmpty();
 }
 
-void DnsLookupPlugin::slotMainActionForMenuTriggered(){
+void DnsLookupPlugin::slotMainActionForMenuTriggered()
+{
 
     QWidget *parentWidget = qobject_cast<QWidget *> (parent());
     DnsLookupWidget *wgt = new DnsLookupWidget(parentWidget);
     //connect(wgt, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
 
     QMdiArea *mdiArea = 0;
-    if(parentWidget){
+    if(parentWidget) {
         mdiArea = qobject_cast<QMdiArea *>(parentWidget);
     }
-    if(mdiArea){
+    if(mdiArea) {
         QMdiSubWindow *subWindow = new QMdiSubWindow;
         subWindow->setWidget(wgt);
         subWindow->setAttribute(Qt::WA_DeleteOnClose);
@@ -114,7 +128,7 @@ void DnsLookupPlugin::slotMainActionForMenuTriggered(){
 
         connect(subWindow, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(subWindow);
-    }else{
+    } else {
         connect(wgt, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(wgt);
     }
@@ -143,11 +157,12 @@ void DnsLookupPlugin::slotMainActionForMenuTriggered(){
     wgt->show();
 }
 
-void DnsLookupPlugin::slotWidgetDestoryed(QObject * obj){
+void DnsLookupPlugin::slotWidgetDestoryed(QObject *obj)
+{
     qDebug("--DnsLookupPlugin::slotWidgetDestoryed(QObject * obj )");
 
     QWidget *wgt = static_cast<QWidget *> (sender());
-    if(wgt){
+    if(wgt) {
         widgetList.removeAll(wgt);
     }
 

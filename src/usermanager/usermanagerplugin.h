@@ -40,9 +40,11 @@
 //#include "../../shared/gui/plugin/guipluginbase.h"
 #include "HHSharedGUI/hguipluginbase.h"
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-class UserManagerPlugin : public GUIPluginBase  {
+class UserManagerPlugin : public GUIPluginBase
+{
     Q_OBJECT
 
     //Export Plugin

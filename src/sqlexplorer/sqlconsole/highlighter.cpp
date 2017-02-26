@@ -17,23 +17,27 @@ Highlighter::Highlighter(QTextEdit *parent) :
 
 
 
-QStringList Highlighter::loadKeywordFromFile(const QString &fileName){
+QStringList Highlighter::loadKeywordFromFile(const QString &fileName)
+{
 
     QFile file(fileName);
-    if (!file.open(QFile::ReadOnly))
+    if (!file.open(QFile::ReadOnly)) {
         return QStringList();
+    }
 
     QStringList words;
     while (!file.atEnd()) {
         QByteArray line = file.readLine();
-        if (!line.isEmpty())
+        if (!line.isEmpty()) {
             words << line.trimmed();
+        }
     }
 
     return words;
 }
 
-void Highlighter::addKeywords(const QStringList &keywordList){
+void Highlighter::addKeywords(const QStringList &keywordList)
+{
 
     HighlightingRule rule;
 
@@ -48,7 +52,8 @@ void Highlighter::addKeywords(const QStringList &keywordList){
 }
 
 
-void Highlighter::highlightBlock(const QString &text){
+void Highlighter::highlightBlock(const QString &text)
+{
 
     foreach (const HighlightingRule &rule, highlightingRules) {
         QRegExp expression(rule.pattern);

@@ -2,7 +2,7 @@
 #define SQLCONSOLE_H
 
 #ifndef MAX_COM_NUM
-#define MAX_COM_NUM 5
+    #define MAX_COM_NUM 5
 #endif
 
 
@@ -20,61 +20,64 @@
 #include "highlighter.h"
 
 
-class SqlConsole : public QWidget {
-Q_OBJECT
+class SqlConsole : public QWidget
+{
+    Q_OBJECT
 
 public:
-	SqlConsole(QWidget *parent= 0/*, MainWindow *h*/);
-	~SqlConsole();
+    SqlConsole(QWidget *parent = 0/*, MainWindow *h*/);
+    ~SqlConsole();
 
 
 
 protected:
-	void languageChange();
+    void languageChange();
 
 signals:
-	void signalQueryRequested(const QString &queryString);
+    void signalQueryRequested(const QString &queryString);
 
 public slots:
 
-        void on_toolButtonOpenSQLScriptFile_clicked();
+    void on_toolButtonOpenSQLScriptFile_clicked();
 
-        void on_submitButton_clicked();
+    void on_submitButton_clicked();
 
-	void on_clearButton_clicked() {
-		ui.textEdit->clear();
-		ui.textEdit->setFocus();
-	}
+    void on_clearButton_clicked()
+    {
+        ui.textEdit->clear();
+        ui.textEdit->setFocus();
+    }
 
 private slots:
 
-	void on_useSQLConsoleGB_clicked() {
-		if (ui.useSQLConsoleGB->isChecked()) {
-			ui.textEdit->clear();
-			ui.textEdit->setFocus();
-		}
-		//	ui.clearButton->setEnabled(ui.useSQLConsoleGB->isChecked());	
-	}
+    void on_useSQLConsoleGB_clicked()
+    {
+        if (ui.useSQLConsoleGB->isChecked()) {
+            ui.textEdit->clear();
+            ui.textEdit->setFocus();
+        }
+        //	ui.clearButton->setEnabled(ui.useSQLConsoleGB->isChecked());
+    }
 
-	void saveCommand(const QString &command);
-	void setCommand(int index);
+    void saveCommand(const QString &command);
+    void setCommand(int index);
 
 
 
 protected:
-	bool eventFilter(QObject *obj, QEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
 
 private:
-	Ui::SqlConsoleUI ui;
+    Ui::SqlConsoleUI ui;
 
-	//MainWindow *mw;
-	QAbstractItemModel *modelFromFile(const QString& fileName);
-	QCompleter *completer;
+    //MainWindow *mw;
+    QAbstractItemModel *modelFromFile(const QString &fileName);
+    QCompleter *completer;
 
-	QStringList commandList;
-	int cmdIndex;
+    QStringList commandList;
+    int cmdIndex;
 
-        Highlighter *highlighter;
+    Highlighter *highlighter;
 
 
 };

@@ -40,9 +40,11 @@
 //#include "../../shared/gui/plugin/guipluginbase.h"
 #include "HHSharedGUI/hguipluginbase.h"
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-class SqlExplorerPlugin : public GUIPluginBase {
+class SqlExplorerPlugin : public GUIPluginBase
+{
     Q_OBJECT
 
     //Export Plugin
@@ -71,7 +73,7 @@ public:
 
 private slots:
     void slotMainActionForMenuTriggered();
-    void slotWidgetDestoryed(QObject * obj );
+    void slotWidgetDestoryed(QObject *obj );
 
 private:
     QList<QWidget *> widgetList;

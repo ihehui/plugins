@@ -39,9 +39,11 @@
 #include "dnslookup.h"
 #include "HHSharedGUI/hguipluginbase.h"
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-class DnsLookupPlugin : public GUIPluginBase {
+class DnsLookupPlugin : public GUIPluginBase
+{
     Q_OBJECT
 
     //Export Plugin
@@ -68,7 +70,7 @@ public:
 
 private slots:
     void slotMainActionForMenuTriggered();
-    void slotWidgetDestoryed(QObject * obj );
+    void slotWidgetDestoryed(QObject *obj );
 
 private:
     QList<QWidget *> widgetList;

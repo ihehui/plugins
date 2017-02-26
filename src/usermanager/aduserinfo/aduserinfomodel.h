@@ -10,9 +10,11 @@
 
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-class ADUserInfoModel : public QAbstractTableModel {
+class ADUserInfoModel : public QAbstractTableModel
+{
     Q_OBJECT
 
 public:
@@ -20,13 +22,13 @@ public:
     virtual ~ADUserInfoModel();
 
 
-    int rowCount ( const QModelIndex & parent = QModelIndex() ) const ;
-    int	columnCount ( const QModelIndex & parent = QModelIndex() ) const;
-    QVariant data ( const QModelIndex & index, int role = Qt::DisplayRole ) const ;
+    int rowCount ( const QModelIndex &parent = QModelIndex() ) const ;
+    int	columnCount ( const QModelIndex &parent = QModelIndex() ) const;
+    QVariant data ( const QModelIndex &index, int role = Qt::DisplayRole ) const ;
     QVariant headerData ( int section, Qt::Orientation orientation, int role = Qt::DisplayRole ) const;
 
     void setADUserItems(const QStringList &attributeNames, const QList<QStringList/*Attribute Values*/> &userItems);
-    ADUser * getADUser(const QModelIndex & index);
+    ADUser *getADUser(const QModelIndex &index);
 
 private:
     void clearUsers();
@@ -39,7 +41,8 @@ private:
 
 };
 
-class ADUserInfoSortFilterProxyModel : public QSortFilterProxyModel{
+class ADUserInfoSortFilterProxyModel : public QSortFilterProxyModel
+{
     Q_OBJECT
 
 public:

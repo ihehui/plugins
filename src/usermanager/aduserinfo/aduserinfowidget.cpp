@@ -9,7 +9,8 @@
 
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
 ADUserInfoWidget::ADUserInfoWidget(ADSI *adsi, ADUser *adUser, QWidget *parent) :
@@ -32,7 +33,7 @@ ADUserInfoWidget::ADUserInfoWidget(ADSI *adsi, ADUser *adUser, QWidget *parent) 
     m_simpleOUString = "";
     m_fullOUString = "";
 
-    if(adUser){
+    if(adUser) {
         m_adUser = *adUser;
     }
 
@@ -46,9 +47,10 @@ ADUserInfoWidget::~ADUserInfoWidget()
 
 }
 
-void ADUserInfoWidget::on_pushButtonEdit_clicked(){
+void ADUserInfoWidget::on_pushButtonEdit_clicked()
+{
 
-    if(ui.lineEditDisplayName->isReadOnly()){
+    if(ui.lineEditDisplayName->isReadOnly()) {
         switchToEditMode();
         return;
     }
@@ -57,7 +59,8 @@ void ADUserInfoWidget::on_pushButtonEdit_clicked(){
 
 }
 
-void ADUserInfoWidget::on_pushButtonClose_clicked(){
+void ADUserInfoWidget::on_pushButtonClose_clicked()
+{
 
 //    if(!ui.lineEditDisplayName->isReadOnly()){
 
@@ -72,10 +75,10 @@ void ADUserInfoWidget::on_pushButtonClose_clicked(){
 //                || m_description != description || m_userWorkstations != userWorkstations
 //                || m_telephone != telephone || m_simpleOUString != ouString){
 
-            int rep = QMessageBox::question(this, tr("Question"), tr("Do you want to save changes before quit?"), QMessageBox::Yes|QMessageBox::No, QMessageBox::Yes);
-            if(rep == QMessageBox::Yes){
-                saveChanges();
-            }
+    int rep = QMessageBox::question(this, tr("Question"), tr("Do you want to save changes before quit?"), QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+    if(rep == QMessageBox::Yes) {
+        saveChanges();
+    }
 
 //        }
 //    }
@@ -85,26 +88,30 @@ void ADUserInfoWidget::on_pushButtonClose_clicked(){
 
 }
 
-void ADUserInfoWidget::on_checkBoxUserMustChangePassword_clicked(){
-    if(ui.checkBoxUserMustChangePassword->isChecked()){
+void ADUserInfoWidget::on_checkBoxUserMustChangePassword_clicked()
+{
+    if(ui.checkBoxUserMustChangePassword->isChecked()) {
         ui.checkBoxUserCannotChangePassword->setChecked(false);
         ui.checkBoxPasswordNeverExpires->setChecked(false);
     }
 }
 
-void ADUserInfoWidget::on_checkBoxUserCannotChangePassword_clicked(){
-    if(ui.checkBoxUserCannotChangePassword->isChecked()){
+void ADUserInfoWidget::on_checkBoxUserCannotChangePassword_clicked()
+{
+    if(ui.checkBoxUserCannotChangePassword->isChecked()) {
         ui.checkBoxUserMustChangePassword->setChecked(false);
     }
 }
 
-void ADUserInfoWidget::on_checkBoxPasswordNeverExpires_clicked(){
-    if(ui.checkBoxPasswordNeverExpires->isChecked()){
+void ADUserInfoWidget::on_checkBoxPasswordNeverExpires_clicked()
+{
+    if(ui.checkBoxPasswordNeverExpires->isChecked()) {
         ui.checkBoxUserMustChangePassword->setChecked(false);
     }
 }
 
-void ADUserInfoWidget::saveChanges(){
+void ADUserInfoWidget::saveChanges()
+{
 
     int pos = 0;
     QRegExpValidator rxValidator(this);
@@ -113,21 +120,21 @@ void ADUserInfoWidget::saveChanges(){
     QString accountName = ui.lineEditSAMAccount->text().trimmed();
     rx.setPattern("^\\w+$");
     rxValidator.setRegExp(rx);
-    if(rxValidator.validate(accountName, pos) != QValidator::Acceptable){
+    if(rxValidator.validate(accountName, pos) != QValidator::Acceptable) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Account Name!"));
         ui.lineEditSAMAccount->setFocus();
         return ;
     }
 
     QString displayName = ui.lineEditDisplayName->text();
-    if(displayName.contains(";") || displayName.contains("|")){
+    if(displayName.contains(";") || displayName.contains("|")) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Display Name!"));
         ui.lineEditDisplayName->setFocus();
         return ;
     }
 
     QString description = ui.lineEditDescription->text();
-    if(description.contains(";") || description.contains("|")){
+    if(description.contains(";") || description.contains("|")) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Description!"));
         ui.lineEditDescription->setFocus();
         return ;
@@ -141,65 +148,65 @@ void ADUserInfoWidget::saveChanges(){
 //        ui.lineEditUserWorkstations->setFocus();
 //        return ;
 //    }
-    if(userWorkstations.contains(";") || userWorkstations.contains("|")){
+    if(userWorkstations.contains(";") || userWorkstations.contains("|")) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Workstations!"));
         ui.lineEditUserWorkstations->setFocus();
         return ;
     }
 
     QString telephone = ui.lineEditTelephone->text();
-    if(telephone.contains(";") || telephone.contains("|")){
+    if(telephone.contains(";") || telephone.contains("|")) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Telephone Number!"));
         ui.lineEditTelephone->setFocus();
         return ;
     }
 
     QString department = ui.lineEditDepartment->text();
-    if(department.contains(";") || department.contains("|")){
+    if(department.contains(";") || department.contains("|")) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Department!"));
         ui.lineEditDepartment->setFocus();
         return ;
     }
 
     QString title = ui.lineEditTitle->text();
-    if(title.contains(";") || title.contains("|")){
+    if(title.contains(";") || title.contains("|")) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Title!"));
         ui.lineEditTitle->setFocus();
         return ;
     }
 
     QString ouString = ui.comboBoxOU->currentText();
-    if( (!m_simpleOUString.isEmpty()) && (ouString.isEmpty()) ){
+    if( (!m_simpleOUString.isEmpty()) && (ouString.isEmpty()) ) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid OU!"));
         ui.comboBoxOU->setFocus();
         return ;
     }
 
     QString password = ui.lineEditPassword->text();
-    if(password != ui.lineEditConfirmPassword->text()){
+    if(password != ui.lineEditConfirmPassword->text()) {
         QMessageBox::critical(this, tr("Error"), tr("Passwords do not match!"));
         return;
     }
 
 
     m_fullOUString = ouString;
-    if(m_fullOUString.contains("\\")){
+    if(m_fullOUString.contains("\\")) {
         QStringList ousList = m_fullOUString.split("\\");
         m_fullOUString = "";
         while (!ousList.isEmpty()) {
             m_fullOUString = m_fullOUString + "OU=" + ousList.takeLast() + ",";
         }
         m_fullOUString += ADUser::getADDefaultNamingContext();
-    }else if(!m_fullOUString.isEmpty()){
+    } else if(!m_fullOUString.isEmpty()) {
         m_fullOUString = "OU=" + m_fullOUString + "," + ADUser::getADDefaultNamingContext();
     }
 
     bool ok = false;
     bool saved = true;
 
-    if(m_accountName != accountName){
+    if(m_accountName != accountName) {
         ok = m_adsi->AD_CreateUser(m_fullOUString, accountName, "");
-        if(!ok){
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), tr("Failed to create new account! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             return;
         }
@@ -218,7 +225,7 @@ void ADUserInfoWidget::saveChanges(){
         ui.lineEditSID->setText(m_sid);
 //        ui.lineEditSID->show();
 
-        if(password.isEmpty()){
+        if(password.isEmpty()) {
             QMessageBox::critical(this, tr("Error"), tr("Password is required!"));
             ui.lineEditPassword->setFocus();
             return;
@@ -227,143 +234,143 @@ void ADUserInfoWidget::saveChanges(){
         ui.pushButtonEdit->setText(tr("&Save"));
     }
 
-    if(!password.isEmpty()){
+    if(!password.isEmpty()) {
         ok = m_adsi->AD_SetPassword(accountName, password);
-        if(!ok){
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), QString("Failed to set password for user '%1'! \r\n %2").arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
             saved = false;
         }
     }
 
-    if(m_displayName != displayName){
+    if(m_displayName != displayName) {
         ok = m_adsi->AD_ModifyAttribute(accountName, "displayName", displayName, 0);
-        if(!ok){
+        if(!ok) {
             m_displayName = m_adsi->AD_GetObjectAttribute(accountName, "displayName");
             ui.lineEditDisplayName->setText(m_displayName);
             QMessageBox::critical(this, tr("Error"), tr("Failed to update display name! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             saved = false;
-        }else{
+        } else {
             m_displayName = displayName;
         }
     }
 
-    if(m_description != description){
+    if(m_description != description) {
         ok = m_adsi->AD_ModifyAttribute(accountName, "description", description, 0);
-        if(!ok){
+        if(!ok) {
             m_description = m_adsi->AD_GetObjectAttribute(accountName, "description");
             ui.lineEditDescription->setText(m_description);
             QMessageBox::critical(this, tr("Error"), tr("Failed to update description! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             saved = false;
-        }else{
+        } else {
             m_description = description;
         }
     }
 
-    if(m_userWorkstations != userWorkstations){
+    if(m_userWorkstations != userWorkstations) {
         ok = m_adsi->AD_ModifyAttribute(accountName, "userWorkstations", userWorkstations);
-        if(!ok){
+        if(!ok) {
             m_userWorkstations = m_adsi->AD_GetObjectAttribute(accountName, "userWorkstations");
             ui.lineEditUserWorkstations->setText(m_userWorkstations);
             QMessageBox::critical(this, tr("Error"), tr("Failed to update user workstations! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             saved = false;
-        }else{
+        } else {
             m_userWorkstations = userWorkstations;
         }
     }
 
-    if(m_telephone != telephone){
+    if(m_telephone != telephone) {
         ok = m_adsi->AD_ModifyAttribute(accountName, "telephoneNumber", telephone, 0);
-        if(!ok){
+        if(!ok) {
             m_telephone = m_adsi->AD_GetObjectAttribute(accountName, "telephoneNumber");
             ui.lineEditTelephone->setText(m_telephone);
             QMessageBox::critical(this, tr("Error"), tr("Failed to update telephone number! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             saved = false;
-        }else{
+        } else {
             m_telephone = telephone;
         }
     }
 
-    if(m_department != department){
+    if(m_department != department) {
         ok = m_adsi->AD_ModifyAttribute(accountName, "department", department, 0);
-        if(!ok){
+        if(!ok) {
             m_department = m_adsi->AD_GetObjectAttribute(accountName, "department");
             ui.lineEditDepartment->setText(m_department);
             QMessageBox::critical(this, tr("Error"), tr("Failed to update department ! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             saved = false;
-        }else{
+        } else {
             m_department = department;
         }
     }
 
-    if(m_title != title){
+    if(m_title != title) {
         ok = m_adsi->AD_ModifyAttribute(accountName, "title", title, 0);
-        if(!ok){
+        if(!ok) {
             m_department = m_adsi->AD_GetObjectAttribute(accountName, "title");
             ui.lineEditTitle->setText(title);
             QMessageBox::critical(this, tr("Error"), tr("Failed to update title ! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             saved = false;
-        }else{
+        } else {
             m_title = title;
         }
     }
 
-    if( (m_simpleOUString != ouString) && (!ouString.isEmpty()) ){
+    if( (m_simpleOUString != ouString) && (!ouString.isEmpty()) ) {
         ok = m_adsi->AD_MoveObject(m_fullOUString, accountName);
-        if(!ok){
+        if(!ok) {
             ui.comboBoxOU->setCurrentIndex(ui.comboBoxOU->findText(m_simpleOUString));
             QMessageBox::critical(this, tr("Error"), tr("Failed to move user! \r\n %1").arg(m_adsi->AD_GetLastErrorString()));
             saved = false;
-        }else{
+        } else {
             m_simpleOUString = ouString;
         }
     }
 
     bool accountDisabled = ui.checkBoxAccountDisabled->isChecked();
-    if(m_adsi->accountDisabled(accountName) != accountDisabled){
+    if(m_adsi->accountDisabled(accountName) != accountDisabled) {
         ok = m_adsi->AD_EnableObject(accountName, !accountDisabled);
-        if(!ok){
-            QMessageBox::critical(this, tr("Error"), QString("Failed to %1 user '%2'! \r\n %3").arg((!accountDisabled)?tr("enable"):tr("disable")).arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
+        if(!ok) {
+            QMessageBox::critical(this, tr("Error"), QString("Failed to %1 user '%2'! \r\n %3").arg((!accountDisabled) ? tr("enable") : tr("disable")).arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
             saved = false;
         }
     }
 
-    if(ui.checkBoxUnlockAccount->isChecked()){
+    if(ui.checkBoxUnlockAccount->isChecked()) {
         ok = m_adsi->AD_UnlockObject(accountName);
-        if(!ok){
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), QString("Failed to unlock user '%1'! \r\n %2").arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
             saved = false;
         }
     }
 
     bool userMustChangePassword = ui.checkBoxUserMustChangePassword->isChecked();
-    if(userMustChangePassword != m_adsi->userMustChangePassword(accountName)){
-        ok = m_adsi->AD_ModifyAttribute(accountName, "pwdLastSet", userMustChangePassword?"0":"-1");
-        if(!ok){
+    if(userMustChangePassword != m_adsi->userMustChangePassword(accountName)) {
+        ok = m_adsi->AD_ModifyAttribute(accountName, "pwdLastSet", userMustChangePassword ? "0" : "-1");
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), QString("Operation Failed! \r\n %1").arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
             saved = false;
         }
     }
 
     bool userCannotChangePassword = ui.checkBoxUserCannotChangePassword->isChecked();
-    if(userCannotChangePassword != m_adsi->userCannotChangePassword(accountName)){
+    if(userCannotChangePassword != m_adsi->userCannotChangePassword(accountName)) {
         ok = m_adsi->AD_SetUserCannotChangePassword(accountName, userCannotChangePassword);
-        if(!ok){
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), QString("Operation Failed! \r\n %1").arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
             saved = false;
         }
     }
 
     bool passwordNeverExpires = ui.checkBoxPasswordNeverExpires->isChecked();
-    if(passwordNeverExpires != m_adsi->passwordNeverExpires(accountName)){
+    if(passwordNeverExpires != m_adsi->passwordNeverExpires(accountName)) {
         ok = m_adsi->AD_SetPasswordExpire(accountName, !passwordNeverExpires);
-        if(!ok){
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), QString("Operation Failed! \r\n %1").arg(accountName).arg(m_adsi->AD_GetLastErrorString()) );
             saved = false;
         }
     }
 
 
-    if(saved){
+    if(saved) {
         switchToViewMode();
     }
 
@@ -372,14 +379,15 @@ void ADUserInfoWidget::saveChanges(){
 }
 
 
-void ADUserInfoWidget::initUI(){
-    qDebug()<<"--ADUserInfoWidget::initUI()";
+void ADUserInfoWidget::initUI()
+{
+    qDebug() << "--ADUserInfoWidget::initUI()";
 
     m_accountName = m_adUser.getAttribute("sAMAccountName");
     ui.comboBoxOU->addItem("");
     ui.comboBoxOU->addItems(ADUser::getOUList());
 
-    if(m_accountName.isEmpty()){
+    if(m_accountName.isEmpty()) {
         switchToCreatingMode();
         return;
     }
@@ -408,7 +416,7 @@ void ADUserInfoWidget::initUI(){
 
     QString m_cn = m_adsi->AD_GetObjectAttribute(m_accountName, "cn");
     QString m_distinguishedName = m_adsi->AD_GetObjectAttribute(m_accountName, "distinguishedName");
-    if(m_distinguishedName.contains("OU=")){
+    if(m_distinguishedName.contains("OU=")) {
         int idx =  m_distinguishedName.indexOf("OU=");
         QString temp = m_distinguishedName.replace(0, idx, "");
         //QString temp = m_distinguishedName.remove("CN=" + m_cn + "," ) ;
@@ -442,7 +450,7 @@ void ADUserInfoWidget::initUI(){
     ui.checkBoxPasswordNeverExpires->setChecked(passwordNeverExpires);
 
 
-    if(m_distinguishedName.contains(",CN=Users")){
+    if(m_distinguishedName.contains(",CN=Users")) {
         ui.pushButtonEdit->setEnabled(false);
         ui.pushButtonEdit->setVisible(false);
     }
@@ -474,7 +482,8 @@ void ADUserInfoWidget::initUI(){
 
 }
 
-void ADUserInfoWidget::switchToCreatingMode(){
+void ADUserInfoWidget::switchToCreatingMode()
+{
 
     switchToEditMode();
 
@@ -487,7 +496,8 @@ void ADUserInfoWidget::switchToCreatingMode(){
     ui.pushButtonEdit->setText(tr("&Create"));
 }
 
-void ADUserInfoWidget::switchToEditMode(){
+void ADUserInfoWidget::switchToEditMode()
+{
 
     ui.lineEditSAMAccount->setReadOnly(true);
     ui.lineEditDisplayName->setReadOnly(false);
@@ -513,7 +523,8 @@ void ADUserInfoWidget::switchToEditMode(){
 
 }
 
-void ADUserInfoWidget::switchToViewMode(){
+void ADUserInfoWidget::switchToViewMode()
+{
 
     ui.lineEditSAMAccount->setReadOnly(true);
     ui.lineEditDisplayName->setReadOnly(true);

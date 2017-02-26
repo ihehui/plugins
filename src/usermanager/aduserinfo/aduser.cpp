@@ -6,7 +6,8 @@
 #include "aduser.h"
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
 QHash<QString/*AD Attribute Name*/, QString/*Common Attribute Name*/> *ADUser::commonAttributeNameHash = 0;
@@ -17,7 +18,7 @@ QString ADUser::m_ADDefaultNamingContext = "";
 ADUser::ADUser()
 {
 
-    if(!commonAttributeNameHash){
+    if(!commonAttributeNameHash) {
         commonAttributeNameHash = new QHash<QString, QString>();
         commonAttributeNameHash->insert("accountExpires", QObject::tr("Account Expires"));
         commonAttributeNameHash->insert("badPasswordTime", QObject::tr("Bad Password Time"));
@@ -71,19 +72,23 @@ ADUser::ADUser()
 
 }
 
-void ADUser::setAttribute(const QString &attributeName, const QString &attributeValue){
+void ADUser::setAttribute(const QString &attributeName, const QString &attributeValue)
+{
     attributeHash.insert(attributeName, attributeValue);
 }
 
-QString ADUser::getAttribute(const QString &attributeName){
+QString ADUser::getAttribute(const QString &attributeName)
+{
     return attributeHash.value(attributeName);
 }
 
-bool ADUser::accountDisabled(){
+bool ADUser::accountDisabled()
+{
     return m_isAccountDisabled;
 }
 
-void ADUser::setAccountDisabled(bool disabled){
+void ADUser::setAccountDisabled(bool disabled)
+{
     m_isAccountDisabled = disabled;
 }
 
@@ -95,11 +100,13 @@ void ADUser::setAccountDisabled(bool disabled){
 //    m_isAccountLocked = locked;
 //}
 
-bool ADUser::userMustChangePassword(){
+bool ADUser::userMustChangePassword()
+{
     return m_userMustChangePassword;
 }
 
-void ADUser::setUserMustChangePassword(bool userMustChangePassword){
+void ADUser::setUserMustChangePassword(bool userMustChangePassword)
+{
     m_userMustChangePassword = userMustChangePassword;
 }
 
@@ -107,11 +114,13 @@ void ADUser::setUserMustChangePassword(bool userMustChangePassword){
 //    return m_userCanChangePassword;
 //}
 
-void ADUser::setUserCanChangePassword(bool userCanChangePassword){
+void ADUser::setUserCanChangePassword(bool userCanChangePassword)
+{
     m_userCanChangePassword = userCanChangePassword;
 }
 
-bool ADUser::passwordNeverExpires(){
+bool ADUser::passwordNeverExpires()
+{
     return m_passwordNeverExpires;
 //    unsigned long ADS_UF_DONT_EXPIRE_PASSWD = 0x10000;
 //    unsigned long userAccountControl = attributeHash.value("userAccountControl").toULong();
@@ -125,32 +134,38 @@ bool ADUser::passwordNeverExpires(){
 
 }
 
-void ADUser::setPasswordNeverExpires(bool passwordNeverExpires){
+void ADUser::setPasswordNeverExpires(bool passwordNeverExpires)
+{
     m_passwordNeverExpires = passwordNeverExpires;
 }
 
-QString ADUser::CommonAttributeName(const QString &attributeName){
+QString ADUser::CommonAttributeName(const QString &attributeName)
+{
     QString name = commonAttributeNameHash->value(attributeName);
-    if(name.isEmpty()){
+    if(name.isEmpty()) {
         name = attributeName;
     }
 
     return name;
 }
 
-void ADUser::setOUList(const QStringList &ouList){
+void ADUser::setOUList(const QStringList &ouList)
+{
     m_ouList = ouList;
 }
 
-QStringList ADUser::getOUList(){
+QStringList ADUser::getOUList()
+{
     return m_ouList;
 }
 
-void ADUser::setADDefaultNamingContext(const QString &adDefaultNamingContext){
+void ADUser::setADDefaultNamingContext(const QString &adDefaultNamingContext)
+{
     m_ADDefaultNamingContext = adDefaultNamingContext;
 }
 
-QString ADUser::getADDefaultNamingContext(){
+QString ADUser::getADDefaultNamingContext()
+{
     return m_ADDefaultNamingContext;
 }
 

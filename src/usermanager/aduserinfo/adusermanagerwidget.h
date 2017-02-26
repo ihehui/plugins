@@ -39,17 +39,18 @@
 #include "aduserinfomodel.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/hadsi.h"
+    #include "HHSharedWindowsManagement/hadsi.h"
 #endif
 
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 class ADUserManagerWidget : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit ADUserManagerWidget(QWidget *parent = 0);
     ~ADUserManagerWidget();
@@ -86,7 +87,7 @@ private slots:
     void slotResetADUserPassword();
 
 
-    void slotShowCustomContextMenu(const QPoint & pos);
+    void slotShowCustomContextMenu(const QPoint &pos);
     void updateActions();
     void getSelectedADUser(const QModelIndex &index);
 

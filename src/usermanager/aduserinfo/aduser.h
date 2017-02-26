@@ -6,7 +6,8 @@
 
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
 class ADUser
@@ -49,7 +50,7 @@ private:
     static QString m_ADDefaultNamingContext;
 
     QHash<QString/*AD Attribute Name*/, QString/*Attribute Value*/> attributeHash;
-    
+
     bool m_isAccountDisabled;
 //    bool m_isAccountLocked;
     bool m_userMustChangePassword;

@@ -42,9 +42,11 @@
 
 #include "HHSharedGUI/hguipluginbase.h"
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-class SystemInfoPlugin : public GUIPluginBase{
+class SystemInfoPlugin : public GUIPluginBase
+{
     Q_OBJECT
 
     //Export Plugin
@@ -69,7 +71,7 @@ public:
 
 public slots:
     void slotMainActionForMenuTriggered();
-    void slotWidgetDestoryed(QObject * obj);
+    void slotWidgetDestoryed(QObject *obj);
 
 private:
     QList<QWidget *> widgetList;

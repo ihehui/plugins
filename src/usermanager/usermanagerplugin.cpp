@@ -38,14 +38,17 @@
 #include "HHSharedGUI/hloginbase.h"
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
-UserManagerPlugin::UserManagerPlugin() {
+UserManagerPlugin::UserManagerPlugin()
+{
     widgetList = QList<QWidget *> ();
 }
 
-UserManagerPlugin::~UserManagerPlugin() {
+UserManagerPlugin::~UserManagerPlugin()
+{
     //unload();
 }
 
@@ -86,42 +89,52 @@ QWidget * UserManagerPlugin::parentWidgetOfPlugin(){
 */
 
 
-bool UserManagerPlugin::isSingle(){
+bool UserManagerPlugin::isSingle()
+{
     return true;
 }
 
-QString UserManagerPlugin::name () const{
+QString UserManagerPlugin::name () const
+{
     return QString(tr("User Manager"));
 }
 
-QString UserManagerPlugin::version() const{
+QString UserManagerPlugin::version() const
+{
     return "2010.05.10";
 }
 
-QString UserManagerPlugin::description() const{
+QString UserManagerPlugin::description() const
+{
     return QString(tr("User Manager For Sitoy"));
 }
 
-QIcon UserManagerPlugin::icon () const{
+QIcon UserManagerPlugin::icon () const
+{
     return QIcon(":/resources/images/usermanager.png");
 }
 
-QString UserManagerPlugin::whatsThis () const{
+QString UserManagerPlugin::whatsThis () const
+{
     return QString(tr("User Manager"));
 }
 
-QString UserManagerPlugin::toolTip () const{
+QString UserManagerPlugin::toolTip () const
+{
     return QString(tr("User Manager"));
 }
 
-bool UserManagerPlugin::unload(){
+bool UserManagerPlugin::unload()
+{
     qDebug("----UserManagerPlugin::unload()");
 
     //emit signalPluginToBeUnloaded();
 
-    foreach(QWidget *wgt, widgetList){
-        if(!wgt){continue;}
-        if(wgt->close()){
+    foreach(QWidget *wgt, widgetList) {
+        if(!wgt) {
+            continue;
+        }
+        if(wgt->close()) {
             //widgetList.removeAll(wgt);
             delete wgt;
             wgt = 0;
@@ -131,10 +144,11 @@ bool UserManagerPlugin::unload(){
     return widgetList.isEmpty();
 }
 
-void UserManagerPlugin::slotMainActionForMenuTriggered(){
-    if(isSingle() && UserManagerMainWindow::isRunning()){
+void UserManagerPlugin::slotMainActionForMenuTriggered()
+{
+    if(isSingle() && UserManagerMainWindow::isRunning()) {
         //TODO: Activate the widget
-        qDebug()<<"----UserManagerPlugin::slotRun():UserManager Is Running!";
+        qDebug() << "----UserManagerPlugin::slotRun():UserManager Is Running!";
         return;
     }
 
@@ -147,9 +161,9 @@ void UserManagerPlugin::slotMainActionForMenuTriggered(){
     }
 
     bool isYDAdmin = false;
-    if(user.getBusinessAddress() == "DG"){
+    if(user.getBusinessAddress() == "DG") {
         isYDAdmin = false;
-    }else if(user.getBusinessAddress() == "YD"){
+    } else if(user.getBusinessAddress() == "YD") {
         isYDAdmin = true;
     }
 
@@ -157,10 +171,10 @@ void UserManagerPlugin::slotMainActionForMenuTriggered(){
     //connect(userManager, SIGNAL(destroyed(QObject *)), this, SLOT(slotUserManagerWidgetDestoryed(QObject *)));
 
     QMdiArea *mdiArea = 0;
-    if(parentWidget){
+    if(parentWidget) {
         mdiArea = qobject_cast<QMdiArea *>(parentWidget);
     }
-    if(mdiArea){
+    if(mdiArea) {
         QMdiSubWindow *subWindow = new QMdiSubWindow;
         subWindow->setWidget(wgt);
         subWindow->setAttribute(Qt::WA_DeleteOnClose);
@@ -169,7 +183,7 @@ void UserManagerPlugin::slotMainActionForMenuTriggered(){
 
         connect(subWindow, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(subWindow);
-    }else{
+    } else {
         connect(wgt, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(wgt);
     }
@@ -195,11 +209,12 @@ void UserManagerPlugin::slotMainActionForMenuTriggered(){
 
 }
 
-void UserManagerPlugin::slotWidgetDestoryed(QObject *obj){
+void UserManagerPlugin::slotWidgetDestoryed(QObject *obj)
+{
     qDebug("--UserManagerPlugin::slotWidgetDestoryed(QObject *obj)");
 
     QWidget *wgt = static_cast<QWidget *> (sender());
-    if(wgt){
+    if(wgt) {
         widgetList.removeAll(wgt);
     }
 

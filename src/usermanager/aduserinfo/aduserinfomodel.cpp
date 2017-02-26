@@ -2,29 +2,33 @@
 
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 ADUserInfoModel::ADUserInfoModel(QObject *parent)
-    :QAbstractTableModel(parent)
+    : QAbstractTableModel(parent)
 {
     // TODO Auto-generated constructor stub
 
 }
 
-ADUserInfoModel::~ADUserInfoModel() {
+ADUserInfoModel::~ADUserInfoModel()
+{
     usersList.clear();
 }
 
-int ADUserInfoModel::rowCount ( const QModelIndex & parent) const {
-    if(parent.isValid()){
+int ADUserInfoModel::rowCount ( const QModelIndex &parent) const
+{
+    if(parent.isValid()) {
         return 0;
     }
     return usersList.size();
 
 }
 
-int	 ADUserInfoModel::columnCount ( const QModelIndex & parent) const{
-    if(parent.isValid()){
+int	 ADUserInfoModel::columnCount ( const QModelIndex &parent) const
+{
+    if(parent.isValid()) {
         return 0;
     }
 
@@ -32,21 +36,22 @@ int	 ADUserInfoModel::columnCount ( const QModelIndex & parent) const{
 
 }
 
-QVariant ADUserInfoModel::data ( const QModelIndex & index, int role) const{
-    if(!index.isValid()){
+QVariant ADUserInfoModel::data ( const QModelIndex &index, int role) const
+{
+    if(!index.isValid()) {
         return QVariant();
     }
 
     int row = index.row();
-    if((row < 0) || (row >= usersList.size())){
+    if((row < 0) || (row >= usersList.size())) {
         return QVariant();
     }
 
-    if(role == Qt::DisplayRole || role == Qt::EditRole){
-            ADUser *info = static_cast<ADUser *> (usersList.at(row));
-            return info->getAttribute(m_attributeNames.at(index.column()));
+    if(role == Qt::DisplayRole || role == Qt::EditRole) {
+        ADUser *info = static_cast<ADUser *> (usersList.at(row));
+        return info->getAttribute(m_attributeNames.at(index.column()));
     }
-    if(role == Qt::UserRole){
+    if(role == Qt::UserRole) {
         return row;
     }
 
@@ -54,12 +59,13 @@ QVariant ADUserInfoModel::data ( const QModelIndex & index, int role) const{
 
 }
 
-QVariant ADUserInfoModel::headerData ( int section, Qt::Orientation orientation, int role) const{
-    if(role != Qt::DisplayRole){
+QVariant ADUserInfoModel::headerData ( int section, Qt::Orientation orientation, int role) const
+{
+    if(role != Qt::DisplayRole) {
         return QVariant();
     }
 
-    if(orientation ==  Qt::Horizontal){
+    if(orientation ==  Qt::Horizontal) {
         return ADUser::CommonAttributeName(m_attributeNames.at(section));
     }
 
@@ -67,15 +73,16 @@ QVariant ADUserInfoModel::headerData ( int section, Qt::Orientation orientation,
 
 }
 
-void ADUserInfoModel::setADUserItems(const QStringList &attributeNames, const QList<QStringList/*Attribute Values*/> &userItems){
+void ADUserInfoModel::setADUserItems(const QStringList &attributeNames, const QList<QStringList/*Attribute Values*/> &userItems)
+{
 
     clearUsers();
 
-    if(attributeNames.isEmpty() || userItems.isEmpty()){
+    if(attributeNames.isEmpty() || userItems.isEmpty()) {
         return;
     }
 
-    m_attributeNames =attributeNames;
+    m_attributeNames = attributeNames;
 
     beginResetModel();
 
@@ -83,7 +90,7 @@ void ADUserInfoModel::setADUserItems(const QStringList &attributeNames, const QL
         Q_ASSERT(attributeNames.size() == attributeValues.size());
 
         ADUser *user = new ADUser();
-        for(int i=0;i<attributeNames.size();i++){
+        for(int i = 0; i < attributeNames.size(); i++) {
             user->setAttribute(attributeNames.at(i), attributeValues.at(i));
         }
         usersList.append(user);
@@ -96,9 +103,10 @@ void ADUserInfoModel::setADUserItems(const QStringList &attributeNames, const QL
 
 }
 
-void ADUserInfoModel::clearUsers(){
+void ADUserInfoModel::clearUsers()
+{
 
-    if(usersList.isEmpty()){
+    if(usersList.isEmpty()) {
         return;
     }
 
@@ -116,8 +124,9 @@ void ADUserInfoModel::clearUsers(){
 
 }
 
-ADUser * ADUserInfoModel::getADUser(const QModelIndex & index){
-    if(!index.isValid()){
+ADUser *ADUserInfoModel::getADUser(const QModelIndex &index)
+{
+    if(!index.isValid()) {
         return 0;
     }
 
@@ -127,7 +136,7 @@ ADUser * ADUserInfoModel::getADUser(const QModelIndex & index){
 ////////////////////////////////////////////////////////////
 
 ADUserInfoSortFilterProxyModel::ADUserInfoSortFilterProxyModel(QObject *parent)
-    :QSortFilterProxyModel(parent)
+    : QSortFilterProxyModel(parent)
 {
 
 //    computerName = QRegExp(".*", Qt::CaseInsensitive);

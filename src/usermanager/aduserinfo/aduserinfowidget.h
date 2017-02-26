@@ -7,13 +7,14 @@
 #include "aduser.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/hadsi.h"
+    #include "HHSharedWindowsManagement/hadsi.h"
 #endif
 
 
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
 //namespace Ui {
@@ -23,11 +24,11 @@ namespace HEHUI {
 class ADUserInfoWidget : public QWidget
 {
     Q_OBJECT
-    
+
 public:
     explicit ADUserInfoWidget(ADSI *adsi, ADUser *adUser, QWidget *parent = 0);
     ~ADUserInfoWidget();
-    
+
 signals:
     void signalCloseWidget();
     void signalChangesSaved();

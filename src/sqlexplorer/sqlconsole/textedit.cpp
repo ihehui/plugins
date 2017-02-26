@@ -44,7 +44,8 @@ TextEdit::~TextEdit()
 
 }
 
-void TextEdit::setCommand(const QString &cmd){
+void TextEdit::setCommand(const QString &cmd)
+{
     //setText(cmd);
     QTextCursor tc = textCursor();
     tc.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
@@ -55,19 +56,21 @@ void TextEdit::setCommand(const QString &cmd){
 
 void TextEdit::setCompleter(QCompleter *completer)
 {
-    if (c)
+    if (c) {
         QObject::disconnect(c, 0, this, 0);
+    }
 
     c = completer;
 
-    if (!c)
+    if (!c) {
         return;
+    }
 
     c->setWidget(this);
     c->setCompletionMode(QCompleter::PopupCompletion);
     c->setCaseSensitivity(Qt::CaseInsensitive);
-    QObject::connect(completer, SIGNAL(activated(const QString&)),
-                     this, SLOT(insertCompletion(const QString&)));
+    QObject::connect(completer, SIGNAL(activated(const QString &)),
+                     this, SLOT(insertCompletion(const QString &)));
 }
 
 
@@ -76,7 +79,7 @@ QCompleter *TextEdit::completer() const
     return c;
 }
 
-void TextEdit::insertCompletion(const QString& completion)
+void TextEdit::insertCompletion(const QString &completion)
 {
     QTextCursor tc = textCursor();
 
@@ -108,9 +111,9 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
 {
     bool isZoomIn = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_BracketLeft);
     bool isZoomOut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_BracketRight);
-    if(isZoomIn){
+    if(isZoomIn) {
         zoomIn(1);
-    }else if(isZoomOut){
+    } else if(isZoomOut) {
         zoomOut(1);
     }
 
@@ -131,18 +134,20 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
 
     //bool isShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
     bool isShortcut = ((e->modifiers() & Qt::AltModifier) && e->key() == Qt::Key_Slash); // CTRL+/
-    if (!c || !isShortcut) // dont process the shortcut when we have a completer
+    if (!c || !isShortcut) { // dont process the shortcut when we have a completer
         QTextEdit::keyPressEvent(e);
+    }
 
     const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
-    if (!c || (ctrlOrShift && e->text().isEmpty()))
+    if (!c || (ctrlOrShift && e->text().isEmpty())) {
         return;
+    }
 
     static QString eow("~!@#$%^&*()_+{}|:\"<>?,./;'[]\\-="); // end of word
     bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
     QString completionPrefix = textUnderCursor();
 
-    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3
+    if (!isShortcut && (hasModifier || e->text().isEmpty() || completionPrefix.length() < 3
                         || eow.contains(e->text().right(1)))) {
         c->popup()->hide();
         return;
@@ -159,20 +164,21 @@ void TextEdit::keyPressEvent(QKeyEvent *e)
 }
 
 
-void TextEdit::wheelEvent( QWheelEvent * e){
-    if(QApplication::keyboardModifiers() == Qt::ControlModifier){
+void TextEdit::wheelEvent( QWheelEvent *e)
+{
+    if(QApplication::keyboardModifiers() == Qt::ControlModifier) {
 
         int numDegrees = e->delta() / 8;
         int numSteps = numDegrees / 15;
 
-        int newFontWeight = fontWeight()+numSteps;
-        if(newFontWeight>=0 && newFontWeight<=99){
+        int newFontWeight = fontWeight() + numSteps;
+        if(newFontWeight >= 0 && newFontWeight <= 99) {
             zoomIn(numSteps);
             //update();
         }
 
         e->accept();
-    }else{
+    } else {
 
         QTextEdit::wheelEvent(e);
     }

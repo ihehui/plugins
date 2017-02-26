@@ -40,13 +40,16 @@
 #include "HHSharedGUI/hloginbase.h"
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-SystemInfoPlugin::SystemInfoPlugin() {
+SystemInfoPlugin::SystemInfoPlugin()
+{
     widgetList = QList<QWidget *> ();
 }
 
-SystemInfoPlugin::~SystemInfoPlugin() {
+SystemInfoPlugin::~SystemInfoPlugin()
+{
     //unload();
 }
 
@@ -87,42 +90,52 @@ QWidget * SystemInfoPlugin::parentWidgetOfPlugin(){
 
 */
 
-bool SystemInfoPlugin::isSingle(){
+bool SystemInfoPlugin::isSingle()
+{
     return true;
 }
 
-QString SystemInfoPlugin::name () const{
+QString SystemInfoPlugin::name () const
+{
     return QString(tr("System Information"));
 }
 
-QString SystemInfoPlugin::version() const{
+QString SystemInfoPlugin::version() const
+{
     return "2010.05.10";
 }
 
-QString SystemInfoPlugin::description() const{
+QString SystemInfoPlugin::description() const
+{
     return QString(tr("System Information Plugin"));
 }
 
-QIcon SystemInfoPlugin::icon () const{
+QIcon SystemInfoPlugin::icon () const
+{
     return QIcon(":/resources/images/systeminfo.png");
 }
 
-QString SystemInfoPlugin::whatsThis () const{
+QString SystemInfoPlugin::whatsThis () const
+{
     return QString(tr("System Information"));
 }
 
-QString SystemInfoPlugin::toolTip () const{
+QString SystemInfoPlugin::toolTip () const
+{
     return QString(tr("System Information"));
 }
 
-bool SystemInfoPlugin::unload(){
+bool SystemInfoPlugin::unload()
+{
     qDebug("----SystemInfoPlugin::unload()");
 
     //emit signalPluginToBeUnloaded();
 
-    foreach(QWidget *wgt, widgetList){
-        if(!wgt){continue;}
-        if(wgt->close()){
+    foreach(QWidget *wgt, widgetList) {
+        if(!wgt) {
+            continue;
+        }
+        if(wgt->close()) {
             //widgetList.removeAll(wgt);
             delete wgt;
             wgt = 0;
@@ -133,8 +146,9 @@ bool SystemInfoPlugin::unload(){
 
 }
 
-void SystemInfoPlugin::slotMainActionForMenuTriggered(){
-    if(isSingle() && SystemInfo::isRunning()){
+void SystemInfoPlugin::slotMainActionForMenuTriggered()
+{
+    if(isSingle() && SystemInfo::isRunning()) {
         //TODO: Activate the widget
         return;
     }
@@ -148,9 +162,9 @@ void SystemInfoPlugin::slotMainActionForMenuTriggered(){
     }
 
     bool isYDAdmin = false;
-    if(user.getBusinessAddress() == "DG"){
+    if(user.getBusinessAddress() == "DG") {
         isYDAdmin = false;
-    }else if(user.getBusinessAddress() == "YD"){
+    } else if(user.getBusinessAddress() == "YD") {
         isYDAdmin = true;
     }
 
@@ -158,10 +172,10 @@ void SystemInfoPlugin::slotMainActionForMenuTriggered(){
     //connect(systemInfo, SIGNAL(destroyed(QObject *)), SLOT(slotSysteminfoWidgetDestoryed(QObject *)));
 
     QMdiArea *mdiArea = 0;
-    if(parentWidget){
+    if(parentWidget) {
         mdiArea = qobject_cast<QMdiArea *>(parentWidget);
     }
-    if(mdiArea){
+    if(mdiArea) {
         QMdiSubWindow *subWindow = new QMdiSubWindow;
         subWindow->setWidget(wgt);
         subWindow->setAttribute(Qt::WA_DeleteOnClose);
@@ -170,7 +184,7 @@ void SystemInfoPlugin::slotMainActionForMenuTriggered(){
 
         connect(subWindow, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(subWindow);
-    }else{
+    } else {
         connect(wgt, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(wgt);
     }
@@ -196,11 +210,12 @@ void SystemInfoPlugin::slotMainActionForMenuTriggered(){
     wgt->show();
 }
 
-void SystemInfoPlugin::slotWidgetDestoryed(QObject * obj){
+void SystemInfoPlugin::slotWidgetDestoryed(QObject *obj)
+{
     qDebug("----SystemInfoPlugin::slotWidgetDestoryed(QObject * obj)");
 
     QWidget *wgt = static_cast<QWidget *> (sender());
-    if(wgt){
+    if(wgt) {
         widgetList.removeAll(wgt);
     }
 

@@ -7,11 +7,13 @@
 #include <QNetworkAccessManager>
 
 
-namespace Ui {
+namespace Ui
+{
 class DnsLookup;
 }
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
 class DnsLookupWidget : public QWidget
@@ -45,7 +47,7 @@ private:
     QHash<QString /*Server IP*/, int /*response count*/> m_responseCountHash;
     QHash<QString /*result*/, QString /*location*/> m_ipLocationHash;
 
-    QList<QDnsLookup*> m_dnsLookupList;
+    QList<QDnsLookup *> m_dnsLookupList;
 
     QNetworkAccessManager *m_Manager;
     bool m_useTaobao;

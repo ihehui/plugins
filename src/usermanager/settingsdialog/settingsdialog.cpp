@@ -35,11 +35,12 @@
 #include "settingsdialog.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/WinUtilities"
+    #include "HHSharedWindowsManagement/WinUtilities"
 #endif
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
 SettingsDialog::SettingsDialog(const QString &userID, WindowsManagement *wm, int defaultLocationIndex, QWidget *parent)
@@ -47,16 +48,16 @@ SettingsDialog::SettingsDialog(const QString &userID, WindowsManagement *wm, int
 {
 
     Q_ASSERT_X(wm != NULL, "SettingsDialog::SettingsDialog(...)", "'wm' is NULL!");
-    
+
     ui.setupUi(this);
     setWindowTitle(userID);
-    
+
     ui.stackedWidget->setCurrentWidget(ui.pageUserSettings);
-    
+
     ui.lineEditCurPCName->setText(WinUtilities::getComputerName());
-    
+
     ui.comboBoxLocation->setCurrentIndex(defaultLocationIndex);
-        
+
 
 
 
@@ -64,14 +65,15 @@ SettingsDialog::SettingsDialog(const QString &userID, WindowsManagement *wm, int
 
 SettingsDialog::~SettingsDialog()
 {
-    
+
 }
 
-void SettingsDialog::on_comboBoxLocation_currentIndexChanged ( int index ){
+void SettingsDialog::on_comboBoxLocation_currentIndexChanged ( int index )
+{
     //qWarning()<<"--------"<<index;
 
     QString m_computerName = "";
-    switch(index){
+    switch(index) {
     case 0:
         wm->setLocation(WindowsManagement::No1_Branch_Factory);
         m_computerName = QString(m_userID + "-BF1").left(15);
@@ -105,7 +107,8 @@ void SettingsDialog::on_comboBoxLocation_currentIndexChanged ( int index ){
 
 }
 
-void SettingsDialog::on_pushButtonOK_clicked(){
+void SettingsDialog::on_pushButtonOK_clicked()
+{
 
 //    if(wm){
 //        QString computerName =ui.lineEditNewPCName->text().trimmed().toLower();
@@ -114,7 +117,7 @@ void SettingsDialog::on_pushButtonOK_clicked(){
 //            ui.lineEditNewPCName->setFocus();
 //            return;
 //        }
-    
+
 //        wm->setNewComputerNameToBeUsed(computerName);
 //    }
 

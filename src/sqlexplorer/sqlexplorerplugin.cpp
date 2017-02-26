@@ -45,52 +45,65 @@
 #include "HHSharedCore/huser.h"
 #include "HHSharedGUI/hloginbase.h"
 
-namespace HEHUI {
+namespace HEHUI
+{
 
-SqlExplorerPlugin::SqlExplorerPlugin() {
+SqlExplorerPlugin::SqlExplorerPlugin()
+{
     widgetList = QList<QWidget *> ();
 }
 
-SqlExplorerPlugin::~SqlExplorerPlugin() {
+SqlExplorerPlugin::~SqlExplorerPlugin()
+{
     //unload();
 }
 
-bool SqlExplorerPlugin::isSingle(){
+bool SqlExplorerPlugin::isSingle()
+{
     return true;
 }
 
-QString SqlExplorerPlugin::name () const{
+QString SqlExplorerPlugin::name () const
+{
     return QString(tr("SQL Explorer"));
 }
 
-QString SqlExplorerPlugin::version() const{
+QString SqlExplorerPlugin::version() const
+{
     return "2010.05.10";
 }
 
-QString SqlExplorerPlugin::description() const{
+QString SqlExplorerPlugin::description() const
+{
     return QString(tr("SQL Explorer Plugin"));
 }
 
-QIcon SqlExplorerPlugin::icon () const{
+QIcon SqlExplorerPlugin::icon () const
+{
     return QIcon(":/resources/images/console.png");
 }
 
-QString SqlExplorerPlugin::whatsThis () const{
+QString SqlExplorerPlugin::whatsThis () const
+{
     return QString(tr("SQL Explorer"));
 }
 
-QString SqlExplorerPlugin::toolTip () const{
+QString SqlExplorerPlugin::toolTip () const
+{
     return QString(tr("SQL Explorer"));
 }
 
-bool SqlExplorerPlugin::unload(){
+bool SqlExplorerPlugin::unload()
+{
     qDebug("----SqlExplorerPlugin::unload()");
 
     //emit signalPluginToBeUnloaded();
 
-    foreach(QWidget *wgt, widgetList){
-        if(!wgt){continue;}
-        if(wgt->close()){
+    foreach(QWidget *wgt, widgetList) {
+        if(!wgt) {
+            continue;
+        }
+        if(wgt->close()) {
             //widgetList.removeAll(wgt);
             delete wgt;
             wgt = 0;
@@ -101,16 +114,18 @@ bool SqlExplorerPlugin::unload(){
 
 }
 
-bool SqlExplorerPlugin::verifyUser(){
+bool SqlExplorerPlugin::verifyUser()
+{
     return true;
 }
 
-void SqlExplorerPlugin::slotMainActionForMenuTriggered(){
+void SqlExplorerPlugin::slotMainActionForMenuTriggered()
+{
 
-    if(isSingle() && SqlExplorer::isRunning()){
+    if(isSingle() && SqlExplorer::isRunning()) {
         //TODO: Activate the widget
         return;
-    }else{
+    } else {
         QString msg = tr("<p>Make sure you are familiar with database systems, SQL and the operating mechanism of this plugin!</p>");
         msg += tr("<p>It is also highly recommended that you close all other plugins first! </p>");
         msg += tr("<font color = 'red'><b>It may cause unexpected behavior!</b></font>");
@@ -124,7 +139,7 @@ void SqlExplorerPlugin::slotMainActionForMenuTriggered(){
         msgBox.setDefaultButton(abortButton);
 
         msgBox.exec();
-        if(msgBox.clickedButton() == abortButton){
+        if(msgBox.clickedButton() == abortButton) {
             return;
         }
     }
@@ -141,10 +156,10 @@ void SqlExplorerPlugin::slotMainActionForMenuTriggered(){
     //connect(sqlExplorer, SIGNAL(destroyed(QObject *)), this, SLOT(slotSqlExplorerWidgetDestoryed(QObject *)));
 
     QMdiArea *mdiArea = 0;
-    if(parentWidget){
+    if(parentWidget) {
         mdiArea = qobject_cast<QMdiArea *>(parentWidget);
     }
-    if(mdiArea){
+    if(mdiArea) {
         QMdiSubWindow *subWindow = new QMdiSubWindow;
         subWindow->setWidget(wgt);
         subWindow->setAttribute(Qt::WA_DeleteOnClose);
@@ -153,7 +168,7 @@ void SqlExplorerPlugin::slotMainActionForMenuTriggered(){
 
         connect(subWindow, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(subWindow);
-    }else{
+    } else {
         connect(wgt, SIGNAL(destroyed(QObject *)), this, SLOT(slotWidgetDestoryed(QObject *)));
         widgetList.append(wgt);
     }
@@ -179,11 +194,12 @@ void SqlExplorerPlugin::slotMainActionForMenuTriggered(){
     wgt->show();
 }
 
-void SqlExplorerPlugin::slotWidgetDestoryed(QObject * obj){
+void SqlExplorerPlugin::slotWidgetDestoryed(QObject *obj)
+{
     qDebug("--SqlExplorerPlugin::slotWidgetDestoryed(QObject * obj )");
 
     QWidget *wgt = static_cast<QWidget *> (sender());
-    if(wgt){
+    if(wgt) {
         widgetList.removeAll(wgt);
     }
 

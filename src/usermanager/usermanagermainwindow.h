@@ -48,15 +48,16 @@
 #include "HHSharedCore/hmysharedlib_global.h"
 #include "HHSharedGUI/hprogressdlg.h"
 #ifdef Q_OS_WIN32
-#include "aduserinfo/adusermanagerwidget.h"
-#include "HHSharedWindowsManagement/hwindowsmanagement.h"
+    #include "aduserinfo/adusermanagerwidget.h"
+    #include "HHSharedWindowsManagement/hwindowsmanagement.h"
 #endif
 
 
 
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 
 class UserManagerMainWindow : public QMainWindow
@@ -67,7 +68,10 @@ public:
     UserManagerMainWindow(bool isYDAdmin = false, QWidget *parent = 0);
     ~UserManagerMainWindow();
 
-    static bool isRunning(){return running;}
+    static bool isRunning()
+    {
+        return running;
+    }
 
     void retranslateUi();
 
@@ -87,16 +91,28 @@ private slots:
     void slotAddUserButtonClicked();
     void slotShowUserInfo(const QModelIndex &index);
 
-    void on_actionExport_triggered(){slotExportQueryResult();}
-    void on_actionPrint_triggered(){slotPrintQueryResult();}
-    void on_actionEdit_triggered(){slotModifyUserInfo();}
-    void on_actionCreateEmailAccount_triggered(){slotCreateEmailAccounts();}
+    void on_actionExport_triggered()
+    {
+        slotExportQueryResult();
+    }
+    void on_actionPrint_triggered()
+    {
+        slotPrintQueryResult();
+    }
+    void on_actionEdit_triggered()
+    {
+        slotModifyUserInfo();
+    }
+    void on_actionCreateEmailAccount_triggered()
+    {
+        slotCreateEmailAccounts();
+    }
     void on_actionAutoLogon_triggered();//{setAutoLogon(true);}
     void slotExportQueryResult();
     void slotPrintQueryResult();
     void slotModifyUserInfo();
     void slotCreateEmailAccounts();
-    void slotShowCustomContextMenu(const QPoint & pos);
+    void slotShowCustomContextMenu(const QPoint &pos);
     void updateActions();
 
     void slotAddingUserJobDone(bool result);
@@ -143,7 +159,7 @@ private:
 
 
     QWidget *m_progressWidget;
-    QLayout* hlayout;
+    QLayout *hlayout;
     QLabel *label;
     QProgressBar *progressBar;
 

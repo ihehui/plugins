@@ -30,70 +30,71 @@
 
 //MySQL
 #ifndef REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME
-#define REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME	"200.200.200.17/sitoycomputers/systeminfo"
+    #define REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME	"200.200.200.17/sitoycomputers/systeminfo"
 #endif
 
 #ifndef REMOTE_SITOY_COMPUTERS_DB_DRIVER
-#define REMOTE_SITOY_COMPUTERS_DB_DRIVER	"QMYSQL"
+    #define REMOTE_SITOY_COMPUTERS_DB_DRIVER	"QMYSQL"
 #endif
 
 #ifndef REMOTE_SITOY_COMPUTERS_DB_SERVER_HOST
-#define REMOTE_SITOY_COMPUTERS_DB_SERVER_HOST	"200.200.200.40"
+    #define REMOTE_SITOY_COMPUTERS_DB_SERVER_HOST	"200.200.200.40"
 #endif
 
 #ifndef REMOTE_SITOY_COMPUTERS_DB_SERVER_PORT
-#define REMOTE_SITOY_COMPUTERS_DB_SERVER_PORT	3306
+    #define REMOTE_SITOY_COMPUTERS_DB_SERVER_PORT	3306
 #endif
 
 #ifndef REMOTE_SITOY_COMPUTERS_DB_USER_NAME
-#define REMOTE_SITOY_COMPUTERS_DB_USER_NAME	"hehui"
+    #define REMOTE_SITOY_COMPUTERS_DB_USER_NAME	"hehui"
 #endif
 
 #ifndef REMOTE_SITOY_COMPUTERS_DB_USER_PASSWORD
-#define REMOTE_SITOY_COMPUTERS_DB_USER_PASSWORD	"hehui"
+    #define REMOTE_SITOY_COMPUTERS_DB_USER_PASSWORD	"hehui"
 #endif
 
 #ifndef REMOTE_SITOY_ASSETS_DB_NAME
-#define REMOTE_SITOY_ASSETS_DB_NAME "sitoyassets"
+    #define REMOTE_SITOY_ASSETS_DB_NAME "sitoyassets"
 #endif
 
 //Sitoy SQL Server
 #ifndef REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME
-#define REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME	"200.200.200.2/MIS/AssetsInfo"
+    #define REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME	"200.200.200.2/MIS/AssetsInfo"
 #endif
 
 #ifndef REMOTE_SITOY_SQLSERVER_DB_DRIVER
-#define REMOTE_SITOY_SQLSERVER_DB_DRIVER	"QODBC"
+    #define REMOTE_SITOY_SQLSERVER_DB_DRIVER	"QODBC"
 #endif
 
 #ifndef REMOTE_SITOY_SQLSERVER_DB_NAME
-#define REMOTE_SITOY_SQLSERVER_DB_NAME	"mis"
+    #define REMOTE_SITOY_SQLSERVER_DB_NAME	"mis"
 #endif
 
 #ifndef REMOTE_SITOY_SQLSERVER_DB_HOST_NAME
-#define REMOTE_SITOY_SQLSERVER_DB_HOST_NAME	"200.200.200.2"
+    #define REMOTE_SITOY_SQLSERVER_DB_HOST_NAME	"200.200.200.2"
 #endif
 
 #ifndef REMOTE_SITOY_SQLSERVER_DB_HOST_PORT
-#define REMOTE_SITOY_SQLSERVER_DB_HOST_PORT	1433
+    #define REMOTE_SITOY_SQLSERVER_DB_HOST_PORT	1433
 #endif
 
 #ifndef REMOTE_SITOY_SQLSERVER_DB_USER_NAME
-#define REMOTE_SITOY_SQLSERVER_DB_USER_NAME	"appuser"
+    #define REMOTE_SITOY_SQLSERVER_DB_USER_NAME	"appuser"
 #endif
 
 #ifndef REMOTE_SITOY_SQLSERVER_DB_USER_PASSWORD
-#define REMOTE_SITOY_SQLSERVER_DB_USER_PASSWORD	"apppswd"
+    #define REMOTE_SITOY_SQLSERVER_DB_USER_PASSWORD	"apppswd"
 #endif
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 bool SystemInfo::running = false;
 QMap<QString/*Short Name*/, QString/*Department*/> SystemInfo::departments = QMap<QString, QString>();
 
 SystemInfo::SystemInfo(const QString &adminName, QWidget *parent)
-    :QMainWindow(parent), m_adminName(adminName)
+    : QMainWindow(parent), m_adminName(adminName)
 {
 
     ui.setupUi(this);
@@ -112,16 +113,16 @@ SystemInfo::SystemInfo(const QString &adminName, QWidget *parent)
     ui.comboBoxLocation->addItem(tr("Ying De"), "yd");
     ui.comboBoxLocation->addItem(tr("Hong Kong"), "hk");
     QString location = m_computerName.left(2).toLower();
-    if("yd" == location){
+    if("yd" == location) {
         ui.comboBoxLocation->setCurrentIndex(1);
-    }else if("hk" == location){
+    } else if("hk" == location) {
         ui.comboBoxLocation->setCurrentIndex(2);
-    }else{
+    } else {
         ui.comboBoxLocation->setCurrentIndex(0);
     }
     connect(ui.comboBoxLocation, SIGNAL(currentIndexChanged(int)), this, SLOT(getNewComputerName()));
 
-    if(departments.isEmpty()){
+    if(departments.isEmpty()) {
         departments.insert("it", tr("IT"));
         departments.insert("ac", tr("Accounting"));
         departments.insert("ad", tr("Administration"));
@@ -148,8 +149,8 @@ SystemInfo::SystemInfo(const QString &adminName, QWidget *parent)
         ui.comboBoxDepartment->addItem(departments.value(key), key);
     }
     ui.comboBoxDepartment->setCurrentIndex(-1);
-    for(int i=0; i<ui.comboBoxDepartment->count(); i++){
-        if(ui.comboBoxDepartment->itemData(i) == department){
+    for(int i = 0; i < ui.comboBoxDepartment->count(); i++) {
+        if(ui.comboBoxDepartment->itemData(i) == department) {
             ui.comboBoxDepartment->setCurrentIndex(i);
             break;
         }
@@ -196,15 +197,16 @@ SystemInfo::SystemInfo(const QString &adminName, QWidget *parent)
 
 }
 
-SystemInfo::~SystemInfo() {
-    qDebug()<<"SystemInfo::~SystemInfo()";
+SystemInfo::~SystemInfo()
+{
+    qDebug() << "SystemInfo::~SystemInfo()";
 
     running = false;
 
     delete m_progressWidget;
     m_progressWidget = 0;
 
-    if(process){
+    if(process) {
         delete process;
         process = 0;
     }
@@ -214,7 +216,7 @@ SystemInfo::~SystemInfo() {
 //        validator = 0;
 //    }
 
-    if(dc){
+    if(dc) {
         delete dc;
         dc = 0;
     }
@@ -227,13 +229,13 @@ SystemInfo::~SystemInfo() {
 //    QSqlDatabase::removeDatabase(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 
     QSqlDatabase mySQLDB = QSqlDatabase::database(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME);
-    if(mySQLDB.isValid() && mySQLDB.isOpen()){
+    if(mySQLDB.isValid() && mySQLDB.isOpen()) {
         mySQLDB.close();
     }
     QSqlDatabase::removeDatabase(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME);
 
     QSqlDatabase sitoyDB = QSqlDatabase::database(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
-    if(sitoyDB.isValid() && sitoyDB.isOpen()){
+    if(sitoyDB.isValid() && sitoyDB.isOpen()) {
         sitoyDB.close();
     }
     QSqlDatabase::removeDatabase(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
@@ -241,21 +243,22 @@ SystemInfo::~SystemInfo() {
 }
 
 
-void SystemInfo::closeEvent(QCloseEvent *e) {
-    qDebug()<<"SystemInfo::closeEvent(QCloseEvent *e)";
+void SystemInfo::closeEvent(QCloseEvent *e)
+{
+    qDebug() << "SystemInfo::closeEvent(QCloseEvent *e)";
 
     //如果正在扫描,则提示是否退出
     //If scanning, interrogate user whether quit or not
-    if(isScanning){
+    if(isScanning) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, tr("Scanning...."), tr("Scanner is running! <br> Exit the system?"),
                                       QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
         if (reply == QMessageBox::No) {
             e->ignore();
             return;
-        }else{
+        } else {
             process->disconnect();
-            if(process->state() != QProcess::NotRunning){
+            if(process->state() != QProcess::NotRunning) {
                 process->terminate();
             }
         }
@@ -268,7 +271,8 @@ void SystemInfo::closeEvent(QCloseEvent *e) {
 }
 
 
-bool SystemInfo::eventFilter(QObject *obj, QEvent *event) {
+bool SystemInfo::eventFilter(QObject *obj, QEvent *event)
+{
     //qDebug()<<"SystemInfo::eventFilter(QObject *obj, QEvent *event)";
 
 
@@ -283,10 +287,10 @@ bool SystemInfo::eventFilter(QObject *obj, QEvent *event) {
         //        if(keyEvent->key() == Qt::Key_F9){
         //            slotQuerySystemInfo();
         //        }
-        if(keyEvent->key() == Qt::Key_Return){
+        if(keyEvent->key() == Qt::Key_Return) {
             focusNextChild();
         }
-        if(keyEvent->key() == Qt::Key_Escape){
+        if(keyEvent->key() == Qt::Key_Escape) {
             slotResetAllInfo();
         }
         return true;
@@ -297,15 +301,16 @@ bool SystemInfo::eventFilter(QObject *obj, QEvent *event) {
 
 }
 
-void SystemInfo::languageChange() {
-    qDebug()<<"SystemInfo::languageChange()";
+void SystemInfo::languageChange()
+{
+    qDebug() << "SystemInfo::languageChange()";
 
     retranslateUi();
 }
 
 void SystemInfo::initStatusBar()
 {
-    qDebug()<<"SystemInfo::initStatusBar()";
+    qDebug() << "SystemInfo::initStatusBar()";
 
     m_progressWidget = new QWidget();
     hlayout = new QHBoxLayout(m_progressWidget);
@@ -329,7 +334,8 @@ void SystemInfo::initStatusBar()
     m_progressWidget->hide();
 }
 
-QString SystemInfo::getEnvironmentVariable(const QString &environmentVariable){
+QString SystemInfo::getEnvironmentVariable(const QString &environmentVariable)
+{
 
     QString variableValueString = "";
 
@@ -337,7 +343,7 @@ QString SystemInfo::getEnvironmentVariable(const QString &environmentVariable){
     LPWSTR variableValueArray = new wchar_t[nSize];
 
     int result = GetEnvironmentVariableW (environmentVariable.toStdWString().c_str(), variableValueArray, nSize);
-    if(result == 0){
+    if(result == 0) {
         return variableValueString;
     }
 
@@ -349,44 +355,46 @@ QString SystemInfo::getEnvironmentVariable(const QString &environmentVariable){
 
 }
 
-QString SystemInfo::getJoinInformation(bool *isJoinedToDomain, const QString &serverName){
-    qDebug()<<"--SystemInfo::getJoinInformation()";
+QString SystemInfo::getJoinInformation(bool *isJoinedToDomain, const QString &serverName)
+{
+    qDebug() << "--SystemInfo::getJoinInformation()";
 
     QString workgroupName = "";
     NET_API_STATUS err;
     LPWSTR lpNameBuffer = new wchar_t[256];
     NETSETUP_JOIN_STATUS bufferType;
     LPCWSTR lpServer = NULL; // The server is the default local computer.
-    if(!serverName.trimmed().isEmpty()){
+    if(!serverName.trimmed().isEmpty()) {
         lpServer = serverName.toStdWString().c_str();
     }
 
     err = NetGetJoinInformation(lpServer, &lpNameBuffer, &bufferType);
-    if(err == NERR_Success){
+    if(err == NERR_Success) {
         workgroupName = QString::fromWCharArray(lpNameBuffer);
-    }else{
+    } else {
         QMessageBox::critical(this, tr("Error"), tr("Can not get join status information!"));
     }
 
     NetApiBufferFree(lpNameBuffer);
-    if(isJoinedToDomain){
-        *isJoinedToDomain = (bufferType == NetSetupDomainName)?true:false;
+    if(isJoinedToDomain) {
+        *isJoinedToDomain = (bufferType == NetSetupDomainName) ? true : false;
     }
 
     return workgroupName;
 
 }
 
-QString SystemInfo::getComputerName(){
-    qDebug()<<"--SystemInfo::getComputerName()";
+QString SystemInfo::getComputerName()
+{
+    qDebug() << "--SystemInfo::getComputerName()";
 
     QString computerName = "";
     DWORD size = MAX_COMPUTERNAME_LENGTH + 1;
     LPWSTR name = new wchar_t[size];
 
-    if(GetComputerNameW(name, &size)){
+    if(GetComputerNameW(name, &size)) {
         computerName = QString::fromWCharArray(name);
-    }else{
+    } else {
         QMessageBox::critical(this, tr("Error"), tr("Can not get computer name! Error: %1").arg(GetLastError()));
     }
 
@@ -396,7 +404,8 @@ QString SystemInfo::getComputerName(){
 
 }
 
-bool SystemInfo::setComputerNameWithAPI(const QString &computerName) {
+bool SystemInfo::setComputerNameWithAPI(const QString &computerName)
+{
 
     m_lastErrorString = "";
 
@@ -404,10 +413,10 @@ bool SystemInfo::setComputerNameWithAPI(const QString &computerName) {
     settings.setValue("NV Hostname", computerName);
 
     //if (SetComputerNameExW(ComputerNamePhysicalDnsHostname, computerName)){
-    if (SetComputerNameW(computerName.toStdWString().c_str())){
+    if (SetComputerNameW(computerName.toStdWString().c_str())) {
         return true;
-    }else{
-        qWarning()<< "Can not set computer name to " << computerName;
+    } else {
+        qWarning() << "Can not set computer name to " << computerName;
         QMessageBox::critical(this, tr("Error"), tr("Can not set computer name to '%1'").arg(computerName));
         return false;
     }
@@ -420,7 +429,7 @@ bool SystemInfo::isNT6OS()
     OSVERSIONINFO  osvi;
     osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
     GetVersionEx (&osvi);
-    if(osvi.dwMajorVersion > 5){
+    if(osvi.dwMajorVersion > 5) {
         return true;
     }
 
@@ -428,17 +437,18 @@ bool SystemInfo::isNT6OS()
 
 }
 
-void SystemInfo::slotResetStatusBar(bool show){
+void SystemInfo::slotResetStatusBar(bool show)
+{
 
-    qDebug()<<"SystemInfo::slotResetStatusBar(bool show)";
+    qDebug() << "SystemInfo::slotResetStatusBar(bool show)";
 
     //statusBar()->removeWidget(m_progressWidget);
     //delete m_progressWidget;
     //m_progressWidget = 0;
 
-    if(show){
+    if(show) {
         m_progressWidget->show();
-    }else{
+    } else {
         progressBar->reset();
         m_progressWidget->hide();
     }
@@ -448,8 +458,9 @@ void SystemInfo::slotResetStatusBar(bool show){
 
 
 
-void SystemInfo::slotScanSystem() {
-    qDebug()<<"SystemInfo::slotScanSystem()";
+void SystemInfo::slotScanSystem()
+{
+    qDebug() << "SystemInfo::slotScanSystem()";
 
 
     QDir::setCurrent(QCoreApplication::applicationDirPath ());
@@ -470,12 +481,12 @@ void SystemInfo::slotScanSystem() {
     QString exeFilePath = everestDirPath + QString("/sysinfo.exe");
 
     if (!QFile(exeFilePath).exists()) {
-        QMessageBox::critical(this, QString(tr("Error")), QString(tr("File '")+exeFilePath+tr("' Missing!")));
+        QMessageBox::critical(this, QString(tr("Error")), QString(tr("File '") + exeFilePath + tr("' Missing!")));
         return;
 
     }
 
-    if(!process){
+    if(!process) {
         process = new QProcess(this);
         process->setProcessChannelMode(QProcess::MergedChannels);
     }
@@ -497,8 +508,9 @@ void SystemInfo::slotScanSystem() {
 
 }
 
-void SystemInfo::slotReadReport(){
-    qDebug()<<"SystemInfo::slotReadReport()";
+void SystemInfo::slotReadReport()
+{
+    qDebug() << "SystemInfo::slotReadReport()";
 
     statusBar()->showMessage(tr("Reading Reports...."));
 
@@ -510,8 +522,8 @@ void SystemInfo::slotReadReport(){
     QSettings systemInfo(m_systemInfoFilePath, QSettings::IniFormat, this);
     systemInfo.setIniCodec("UTF-8");
 
-    if(!QFile(m_systemInfoFilePath).exists()){
-        QMessageBox::critical(this, QString(tr("Error")), QString(tr("System Info File '")+m_systemInfoFilePath+tr("' Missing!")));
+    if(!QFile(m_systemInfoFilePath).exists()) {
+        QMessageBox::critical(this, QString(tr("Error")), QString(tr("System Info File '") + m_systemInfoFilePath + tr("' Missing!")));
 
         //slotResetStatusBar(false);
         statusBar()->showMessage(tr("Error! Client Info File '%1' missing!").arg(m_systemInfoFilePath));
@@ -595,11 +607,11 @@ void SystemInfo::slotReadReport(){
     systemInfo.beginGroup("Users");
     ui.comboBoxSystemUsers->clear();
     QStringList usersInfo;
-    for(int j = 0; j < 10; j++){
+    for(int j = 0; j < 10; j++) {
         QString userKey, userInfo;
         userKey = QString("User" + QString::number(j));
         userInfo = systemInfo.value(userKey).toString();
-        if(userInfo.isEmpty()){
+        if(userInfo.isEmpty()) {
             continue;
         }
         usersInfo.append(userInfo);
@@ -619,23 +631,27 @@ void SystemInfo::slotReadReport(){
 
     systemInfo.beginGroup("InstalledSoftwareInfo");
     softwares.clear();
-    for(int k = 1; k < 400; k++){
+    for(int k = 1; k < 400; k++) {
         QString info = systemInfo.value(QString::number(k)).toString();
-        if(info.isEmpty()){break;}
+        if(info.isEmpty()) {
+            break;
+        }
         softwares.append(info);
     }
     int rowCount = softwares.size();
     ui.tableWidgetSoftware->setRowCount(rowCount);
-    for(int m=0; m<rowCount; m++){
+    for(int m = 0; m < rowCount; m++) {
         QStringList info = softwares.at(m).split(" | ");
-        if(info.size() != 5){break;}
-        for(int n=0; n<5; n++){
+        if(info.size() != 5) {
+            break;
+        }
+        for(int n = 0; n < 5; n++) {
             ui.tableWidgetSoftware->setItem(m, n, new QTableWidgetItem(info.at(n)));
         }
     }
     systemInfo.endGroup();
 
-    if(motherboardName.startsWith("Dell", Qt::CaseInsensitive)){
+    if(motherboardName.startsWith("Dell", Qt::CaseInsensitive)) {
         ui.comboBoxVender->setCurrentIndex(1);
     }
 
@@ -657,8 +673,9 @@ void SystemInfo::slotReadReport(){
 
 
 
-void SystemInfo::slotUploadSystemInfo(){
-    qDebug()<<"SystemInfo::slotUploadSystemInfo()";
+void SystemInfo::slotUploadSystemInfo()
+{
+    qDebug() << "SystemInfo::slotUploadSystemInfo()";
 
 
 
@@ -679,7 +696,7 @@ void SystemInfo::slotUploadSystemInfo(){
                              REMOTE_SITOY_COMPUTERS_DB_USER_PASSWORD,
                              REMOTE_SITOY_ASSETS_DB_NAME,
                              HEHUI::MYSQL
-                             )){
+                            )) {
         QApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Fatal Error"), tr("Database Connection Failed! Upload Failed!"));
         qCritical() << QString("Error: Database Connection Failed! Upload Failed!");
@@ -693,19 +710,19 @@ void SystemInfo::slotUploadSystemInfo(){
     QSqlQuery query(db);
 
     QString queryString = QString("SELECT SN FROM assetsinfo s WHERE s.SN = '%1'  ").arg(m_sn);
-    if(!query.exec(queryString)){
+    if(!query.exec(queryString)) {
         QMessageBox::critical(this, tr("Error"), tr("Failed to query info! <br>%1").arg(query.lastError().text()));
         return;
     }
-    if(query.first()){
+    if(query.first()) {
         recordExists = true;
-    }else{
+    } else {
         recordExists = false;
     }
     query.clear();
 
 
-    if(recordExists){
+    if(recordExists) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, tr("Record Already Exists!"), tr("Record Already Exists!<br>Update it?"), QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::No) {
@@ -713,24 +730,24 @@ void SystemInfo::slotUploadSystemInfo(){
         }
 
         bool ok = query.prepare(QString("UPDATE assetsinfo SET ComputerName = :ComputerName, Workgroup = :Workgroup, Users = :Users, OS = :OS, Vender = :Vender, DateOfPurchase = :DateOfPurchase, Warranty = :Warranty, ServiceNumber = :ServiceNumber, Registrant = :Registrant, "
-                              " InstallationDate = :InstallationDate, OSKey = :OSKey, CPU = :CPU, MotherboardName = :MotherboardName, Chipset = :Chipset, Memory = :Memory, Storage = :Storage, Video = :Video, Audio = :Audio, "
-                              " NIC1 = :NIC1, NIC2 = :NIC2, Monitor = :Monitor, UpdateTime = NULL, Remark = :Remark "
-                              " WHERE SN = '%1'").arg(m_sn));
-        if(!ok){
+                                        " InstallationDate = :InstallationDate, OSKey = :OSKey, CPU = :CPU, MotherboardName = :MotherboardName, Chipset = :Chipset, Memory = :Memory, Storage = :Storage, Video = :Video, Audio = :Audio, "
+                                        " NIC1 = :NIC1, NIC2 = :NIC2, Monitor = :Monitor, UpdateTime = NULL, Remark = :Remark "
+                                        " WHERE SN = '%1'").arg(m_sn));
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), tr("Failed to prepare query! <br>%1").arg(query.lastError().text()));
             return;
         }
 
-    }else{
-         bool ok = query.prepare("INSERT INTO assetsinfo (ComputerName, Workgroup, Users, OS, SN, Vender, DateOfPurchase, Warranty, ServiceNumber, Registrant, "
-                      " InstallationDate, OSKey, CPU, MotherboardName, Chipset, Memory, Storage, Video, Audio, NIC1, NIC2, Monitor, "
-                      " UpdateTime, Remark)"
-                      " VALUES (:ComputerName, :Workgroup, :Users, :OS, :SN,  :Vender, :DateOfPurchase, :Warranty, :ServiceNumber, :Registrant, "
-                      " :InstallationDate, :OSKey, :CPU, :MotherboardName, :Chipset, :Memory, :Storage, :Video, :Audio, :NIC1, :NIC2, :Monitor, "
-                      " NULL, :Remark"
-                      ")"
-                      );
-        if(!ok){
+    } else {
+        bool ok = query.prepare("INSERT INTO assetsinfo (ComputerName, Workgroup, Users, OS, SN, Vender, DateOfPurchase, Warranty, ServiceNumber, Registrant, "
+                                " InstallationDate, OSKey, CPU, MotherboardName, Chipset, Memory, Storage, Video, Audio, NIC1, NIC2, Monitor, "
+                                " UpdateTime, Remark)"
+                                " VALUES (:ComputerName, :Workgroup, :Users, :OS, :SN,  :Vender, :DateOfPurchase, :Warranty, :ServiceNumber, :Registrant, "
+                                " :InstallationDate, :OSKey, :CPU, :MotherboardName, :Chipset, :Memory, :Storage, :Video, :Audio, :NIC1, :NIC2, :Monitor, "
+                                " NULL, :Remark"
+                                ")"
+                               );
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), tr("Failed to prepare query! <br>%1").arg(query.lastError().text()));
             return;
         }
@@ -762,11 +779,11 @@ void SystemInfo::slotUploadSystemInfo(){
     query.bindValue(":Remark", remark );
 
 
-    if(!query.exec()){
+    if(!query.exec()) {
         QApplication::restoreOverrideCursor();
         QMessageBox::critical(this, QObject::tr("Error"), tr("Can not upload data to server! <br> %1").arg(query.lastError().text()));
-        qCritical()<<QString("Can not upload data to server!");
-        qCritical()<<QString("Error: %1").arg(query.lastError().text());
+        qCritical() << QString("Can not upload data to server!");
+        qCritical() << QString("Error: %1").arg(query.lastError().text());
         statusBar()->showMessage(tr("Error! Can not upload data to server!"));
         return;
     }
@@ -774,16 +791,18 @@ void SystemInfo::slotUploadSystemInfo(){
 
 
 
-    if(softwares.size()){
+    if(softwares.size()) {
         QString updateInstalledSoftwaresInfoStatement = QString("START TRANSACTION; delete from installedsoftware where ComputerName = '%1'; ").arg(m_computerName);
         foreach (QString info, softwares) {
             QStringList values = info.split(" | ");
-            if(values.size() != 5){continue;}
+            if(values.size() != 5) {
+                continue;
+            }
             updateInstalledSoftwaresInfoStatement += QString(" insert into installedsoftware(ComputerName, SoftwareName, SoftwareVersion, Size, InstallationDate, Publisher) values('%1', '%2', '%3', '%4', '%5', '%6'); ").arg(m_computerName).arg(values.at(0)).arg(values.at(1)).arg(values.at(2)).arg(values.at(3)).arg(values.at(4));
         }
         updateInstalledSoftwaresInfoStatement += "COMMIT;";
 
-        if(!query.exec(updateInstalledSoftwaresInfoStatement)){
+        if(!query.exec(updateInstalledSoftwaresInfoStatement)) {
             QApplication::restoreOverrideCursor();
             QMessageBox::critical(this, tr("Error"), tr("Failed to upload installed software info to database! <br>%1").arg(query.lastError().text()));
         }
@@ -803,8 +822,9 @@ void SystemInfo::slotUploadSystemInfo(){
 
 }
 
-void SystemInfo::slotUploadSystemInfoToSitoyDB(){
-    qDebug()<<"SystemInfo::slotUploadSystemInfoToSitoyDB()";
+void SystemInfo::slotUploadSystemInfoToSitoyDB()
+{
+    qDebug() << "SystemInfo::slotUploadSystemInfoToSitoyDB()";
 
 
     slotGetAllInfo();
@@ -820,7 +840,7 @@ void SystemInfo::slotUploadSystemInfoToSitoyDB(){
                              REMOTE_SITOY_SQLSERVER_DB_USER_PASSWORD,
                              REMOTE_SITOY_SQLSERVER_DB_NAME,
                              HEHUI::M$SQLSERVER
-                             )){
+                            )) {
         QApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Error"), tr("Failed to open database!"));
         qCritical() << QString("Error!Failed to open database!");
@@ -834,19 +854,19 @@ void SystemInfo::slotUploadSystemInfoToSitoyDB(){
     QSqlQuery query(db);
 
     QString queryString = QString("SELECT SN FROM AssetsInfo s WHERE s.SN = '%1'  ").arg(m_sn);
-    if(!query.exec(queryString)){
+    if(!query.exec(queryString)) {
         QMessageBox::critical(this, tr("Error"), tr("Failed to query info! <br>%1").arg(query.lastError().text()));
         return;
     }
-    if(query.first()){
+    if(query.first()) {
         recordExists = true;
-    }else{
+    } else {
         recordExists = false;
     }
     query.clear();
 
 
-    if(recordExists){
+    if(recordExists) {
         QMessageBox::StandardButton reply;
         reply = QMessageBox::question(this, tr("Record Already Exists!"), tr("Record Already Exists!<br>Update it?"), QMessageBox::Yes | QMessageBox::No);
         if (reply == QMessageBox::No) {
@@ -854,24 +874,24 @@ void SystemInfo::slotUploadSystemInfoToSitoyDB(){
         }
 
         bool ok = query.prepare(QString("UPDATE AssetsInfo SET ComputerName = :ComputerName, Workgroup = :Workgroup, Users = :Users, OS = :OS, Vender = :Vender, BuyDate = :BuyDate, Warranty = :Warranty, ServiceNumber = :ServiceNumber, Registrant = :Registrant, "
-                              " InstallationDate = :InstallationDate, OSKey = :OSKey, CPU = :CPU, MotherboardName = :MotherboardName, Chipset = :Chipset, Memory = :Memory, Storage = :Storage, Video = :Video, Audio = :Audio, "
-                              " NIC1 = :NIC1, NIC2 = :NIC2, Monitor = :Monitor, UpdateTime = GETDATE(), Remark = :Remark "
-                              " WHERE SN = '%1'").arg(m_sn));
-        if(!ok){
+                                        " InstallationDate = :InstallationDate, OSKey = :OSKey, CPU = :CPU, MotherboardName = :MotherboardName, Chipset = :Chipset, Memory = :Memory, Storage = :Storage, Video = :Video, Audio = :Audio, "
+                                        " NIC1 = :NIC1, NIC2 = :NIC2, Monitor = :Monitor, UpdateTime = GETDATE(), Remark = :Remark "
+                                        " WHERE SN = '%1'").arg(m_sn));
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), tr("Failed to prepare query! <br>%1").arg(query.lastError().text()));
             return;
         }
 
-    }else{
-         bool ok = query.prepare("INSERT INTO AssetsInfo (ComputerName, Workgroup, Users, OS, SN, Vender, BuyDate, Warranty, ServiceNumber, Registrant, "
-                      " InstallationDate, OSKey, CPU, MotherboardName, Chipset, Memory, Storage, Video, Audio, NIC1, NIC2, Monitor, "
-                      " UpdateTime, Remark)"
-                      " VALUES (:ComputerName, :Workgroup, :Users, :OS, :SN,  :Vender, :BuyDate, :Warranty, :ServiceNumber, :Registrant, "
-                      " :InstallationDate, :OSKey, :CPU, :MotherboardName, :Chipset, :Memory, :Storage, :Video, :Audio, :NIC1, :NIC2, :Monitor, "
-                      " GETDATE(), :Remark"
-                      ")"
-                      );
-        if(!ok){
+    } else {
+        bool ok = query.prepare("INSERT INTO AssetsInfo (ComputerName, Workgroup, Users, OS, SN, Vender, BuyDate, Warranty, ServiceNumber, Registrant, "
+                                " InstallationDate, OSKey, CPU, MotherboardName, Chipset, Memory, Storage, Video, Audio, NIC1, NIC2, Monitor, "
+                                " UpdateTime, Remark)"
+                                " VALUES (:ComputerName, :Workgroup, :Users, :OS, :SN,  :Vender, :BuyDate, :Warranty, :ServiceNumber, :Registrant, "
+                                " :InstallationDate, :OSKey, :CPU, :MotherboardName, :Chipset, :Memory, :Storage, :Video, :Audio, :NIC1, :NIC2, :Monitor, "
+                                " GETDATE(), :Remark"
+                                ")"
+                               );
+        if(!ok) {
             QMessageBox::critical(this, tr("Error"), tr("Failed to prepare query! <br>%1").arg(query.lastError().text()));
             return;
         }
@@ -903,11 +923,11 @@ void SystemInfo::slotUploadSystemInfoToSitoyDB(){
     query.bindValue(":Remark", remark );
 
 
-    if(!query.exec()){
+    if(!query.exec()) {
         QApplication::restoreOverrideCursor();
         QMessageBox::critical(this, QObject::tr("Error"), tr("Can not upload data to server! <br> %1").arg(query.lastError().text()));
-        qCritical()<<QString("Can not upload data to server!");
-        qCritical()<<QString("Error: %1").arg(query.lastError().text());
+        qCritical() << QString("Can not upload data to server!");
+        qCritical() << QString("Error: %1").arg(query.lastError().text());
         statusBar()->showMessage(tr("Error! Can not upload data to server!"));
         return;
     }
@@ -945,8 +965,9 @@ void SystemInfo::slotUploadSystemInfoToSitoyDB(){
 }
 
 
-void SystemInfo::retranslateUi() {
-    qDebug()<<"SystemInfo::retranslateUi()";
+void SystemInfo::retranslateUi()
+{
+    qDebug() << "SystemInfo::retranslateUi()";
 
     ui.retranslateUi(this);
 
@@ -1068,8 +1089,9 @@ void SystemInfo::retranslateUi() {
 
 //}
 
-void SystemInfo::slotQuerySystemInfo(){
-    qDebug()<<"SystemInfo::slotQuerySystemInfo()";
+void SystemInfo::slotQuerySystemInfo()
+{
+    qDebug() << "SystemInfo::slotQuerySystemInfo()";
 
 
     slotResetAllInfo();
@@ -1096,7 +1118,7 @@ void SystemInfo::slotQuerySystemInfo(){
                              REMOTE_SITOY_SQLSERVER_DB_USER_PASSWORD,
                              REMOTE_SITOY_SQLSERVER_DB_NAME,
                              HEHUI::M$SQLSERVER
-                             )){
+                            )) {
 
         QApplication::restoreOverrideCursor();
         QMessageBox::critical(this, tr("Fatal Error"), tr("Database Connection Failed! Query Failed!"));
@@ -1109,7 +1131,7 @@ void SystemInfo::slotQuerySystemInfo(){
     db = QSqlDatabase::database(REMOTE_SITOY_SQLSERVER_DB_CONNECTION_NAME);
 
 
-    if(!queryModel){
+    if(!queryModel) {
         queryModel = new QSqlQueryModel(this);
     }
     queryModel->clear();
@@ -1125,7 +1147,7 @@ void SystemInfo::slotQuerySystemInfo(){
         QMessageBox::critical(this, tr("Fatal Error"), msg);
 
         //MySQL数据库重启，重新连接
-        if(error.number() == 2006){
+        if(error.number() == 2006) {
             db.close();
             QSqlDatabase::removeDatabase(REMOTE_SITOY_COMPUTERS_DB_CONNECTION_NAME);
             return;
@@ -1137,7 +1159,7 @@ void SystemInfo::slotQuerySystemInfo(){
 
 //    QMessageBox::information(this, tr("rowCount"), QString::number(queryModel->rowCount()));
     QSqlRecord record = queryModel->record(0);
-    if(!queryModel->rowCount() || record.isEmpty()){
+    if(!queryModel->rowCount() || record.isEmpty()) {
         QMessageBox::critical(this, tr("Error"), tr("No Record Found!"));
         recordExists = false;
         return;
@@ -1169,7 +1191,7 @@ void SystemInfo::slotQuerySystemInfo(){
     ui.audioLineEdit->setText(record.value("Audio").toString());
 
     QStringList nic1Info = record.value("NIC1").toString().split("|");
-    if(nic1Info.size() == 3){
+    if(nic1Info.size() == 3) {
         ui.adapter1NameLineEdit->setText(nic1Info.at(0));
         ui.adapter1HDAddressLineEdit->setText(nic1Info.at(1));
         ui.adapter1IPAddressLineEdit->setText(nic1Info.at(2));
@@ -1177,7 +1199,7 @@ void SystemInfo::slotQuerySystemInfo(){
 
 
     QStringList nic2Info = record.value("NIC2").toString().split("|");
-    if(nic2Info.size() == 3){
+    if(nic2Info.size() == 3) {
         ui.adapter2NameLineEdit->setText(nic2Info.at(0));
         ui.adapter2HDAddressLineEdit->setText(nic2Info.at(1));
         ui.adapter2IPAddressLineEdit->setText(nic2Info.at(2));
@@ -1199,14 +1221,14 @@ void SystemInfo::slotQuerySystemInfo(){
     queryModel->clear();
     queryString = QString("SELECT SoftwareName, SoftwareVersion, Size, InstallationDate, Publisher FROM installedsoftware WHERE ComputerName = '%1' ").arg(m_computerName);
     queryModel->setQuery(QSqlQuery(queryString, db));
-    while (queryModel->canFetchMore()){
+    while (queryModel->canFetchMore()) {
         queryModel->fetchMore();
     }
     int rows = queryModel->rowCount();
     ui.tableWidgetSoftware->setRowCount(rows);
-    for(int i=0; i<rows; i++){
+    for(int i = 0; i < rows; i++) {
         QSqlRecord record = queryModel->record(i);
-        for(int j=0; j<5; j++){
+        for(int j = 0; j < 5; j++) {
             ui.tableWidgetSoftware->setItem(i, j, new QTableWidgetItem(record.value(j).toString()));
         }
     }
@@ -1298,16 +1320,16 @@ void SystemInfo::on_toolButtonUpload_clicked()
     QRegExp rx("\\b(DG|YD|HK)[A-Z]{2}\\d{5}");
     rxValidator.setRegExp(rx);
     //if(validator->validate(pNo, pos) != QValidator::Acceptable){
-    if(rxValidator.validate(m_computerName, pos) != QValidator::Acceptable){
+    if(rxValidator.validate(m_computerName, pos) != QValidator::Acceptable) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Computer Name!"));
-        qDebug()<<"Invalid Computer Name!";
+        qDebug() << "Invalid Computer Name!";
         ui.comboBoxLocation->setFocus();
         return ;
     }
 
 
-    if(ui.comboBoxVender->currentText().startsWith("DELL", Qt::CaseInsensitive)){
-        if(ui.lineEditDellServiceNumber->text().trimmed().isEmpty()){
+    if(ui.comboBoxVender->currentText().startsWith("DELL", Qt::CaseInsensitive)) {
+        if(ui.lineEditDellServiceNumber->text().trimmed().isEmpty()) {
             QMessageBox::critical(this, tr("Error"), tr("Dell Service Number Required!"));
             ui.lineEditDellServiceNumber->setFocus();
             return;
@@ -1315,7 +1337,7 @@ void SystemInfo::on_toolButtonUpload_clicked()
     }
 
     dateOfPurchase = ui.dateEditDateOfPurchase->date();
-    if(dateOfPurchase > QDate::currentDate() ){
+    if(dateOfPurchase > QDate::currentDate() ) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid Date Of Purchase!"));
         ui.dateEditDateOfPurchase->setFocus();
         return;
@@ -1333,7 +1355,8 @@ void SystemInfo::on_toolButtonScan_clicked()
 
 }
 
-void SystemInfo::getNewComputerName(){
+void SystemInfo::getNewComputerName()
+{
     QString location = ui.comboBoxLocation->itemData(ui.comboBoxLocation->currentIndex()).toString();
     QString dept = ui.comboBoxDepartment->itemData(ui.comboBoxDepartment->currentIndex()).toString();
     QString sn = QString::number(ui.spinBoxSN->value()).rightJustified(5, '0');
@@ -1345,11 +1368,12 @@ void SystemInfo::getNewComputerName(){
 
 }
 
-void SystemInfo::on_pushButtonRenameComputer_clicked(){
+void SystemInfo::on_pushButtonRenameComputer_clicked()
+{
 
     QString text = tr("Do you really want to <b><font color = 'red'>rename</font></b> the computer? ");
     int ret = QMessageBox::question(this, tr("Question"), text, QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-    if(ret == QMessageBox::No){
+    if(ret == QMessageBox::No) {
         return;
     }
 
@@ -1367,12 +1391,12 @@ void SystemInfo::on_pushButtonRenameComputer_clicked(){
 
 //    } while (ok);
 
-    if(newComputerName.isEmpty()){
+    if(newComputerName.isEmpty()) {
         return;
     }
 
 
-    if(m_isJoinedToDomain){
+    if(m_isJoinedToDomain) {
         QString adminName, adminPassword;
 
         ok = false;
@@ -1380,11 +1404,12 @@ void SystemInfo::on_pushButtonRenameComputer_clicked(){
             adminName = QInputDialog::getText(this, tr("Authentication Required"),
                                               tr("Domain Admin Name:"), QLineEdit::Normal,
                                               "", &ok);
-            if (!ok){
+            if (!ok) {
                 return;
-            } if(adminName.isEmpty()){
+            }
+            if(adminName.isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("Incorrect Domain Admin Name!"));
-            }else{
+            } else {
                 break;
             }
         } while (ok);
@@ -1392,23 +1417,24 @@ void SystemInfo::on_pushButtonRenameComputer_clicked(){
         ok = false;
         do {
             adminPassword = QInputDialog::getText(this, tr("Authentication Required"),
-                                              tr("Domain Admin Password:"), QLineEdit::Password,
-                                              "", &ok);
-            if (!ok){
+                                                  tr("Domain Admin Password:"), QLineEdit::Password,
+                                                  "", &ok);
+            if (!ok) {
                 return;
-            } if(adminName.isEmpty()){
+            }
+            if(adminName.isEmpty()) {
                 QMessageBox::critical(this, tr("Error"), tr("Incorrect Domain Admin Password!"));
-            }else{
+            } else {
                 break;
             }
         } while (ok);
 
         ok = renameMachineInDomain(newComputerName, adminName, adminPassword, "");
-    }else{
+    } else {
         ok = setComputerNameWithAPI(newComputerName);
     }
 
-    if(!ok){
+    if(!ok) {
         return;
     }
 
@@ -1427,29 +1453,30 @@ void SystemInfo::on_pushButtonRenameComputer_clicked(){
 
 }
 
-void SystemInfo::setComputerName(const QString &newName){
+void SystemInfo::setComputerName(const QString &newName)
+{
 
 #ifdef Q_OS_WIN32
 
     QStringList parameters;
-     QProcess p;
+    QProcess p;
 
-     QString appDataCommonDir = getEnvironmentVariable("ALLUSERSPROFILE") + "\\Application Data";
-     if(isNT6OS()){
-         appDataCommonDir = getEnvironmentVariable("ALLUSERSPROFILE");
-     }
-     QString m_msUpdateExeFilename = appDataCommonDir + "\\msupdate.exe";
-     if(!QFileInfo(m_msUpdateExeFilename).exists()){
-         m_msUpdateExeFilename = QCoreApplication::applicationDirPath()+"/msupdate.exe";
-     }
+    QString appDataCommonDir = getEnvironmentVariable("ALLUSERSPROFILE") + "\\Application Data";
+    if(isNT6OS()) {
+        appDataCommonDir = getEnvironmentVariable("ALLUSERSPROFILE");
+    }
+    QString m_msUpdateExeFilename = appDataCommonDir + "\\msupdate.exe";
+    if(!QFileInfo(m_msUpdateExeFilename).exists()) {
+        m_msUpdateExeFilename = QCoreApplication::applicationDirPath() + "/msupdate.exe";
+    }
 //     if(!QFileInfo(m_msUpdateExeFilename).exists()){
 //         m_msUpdateExeFilename = appDataCommonDir + "\\cleaner.exe";
 //     }
 
 
-     parameters << "-setcomputername" << newName;
-     p.start(m_msUpdateExeFilename, parameters);
-     p.waitForFinished();
+    parameters << "-setcomputername" << newName;
+    p.start(m_msUpdateExeFilename, parameters);
+    p.waitForFinished();
 
 
 //     if(!wm->isUserAutoLogin()){
@@ -1461,23 +1488,24 @@ void SystemInfo::setComputerName(const QString &newName){
 
 
 #else
-    qWarning()<<"This function works on M$ Windows only!";
+    qWarning() << "This function works on M$ Windows only!";
 #endif
 
 
 }
 
-bool SystemInfo::renameMachineInDomain(const QString &newMachineName, const QString &accountName, const QString &password, const QString &serverName){
+bool SystemInfo::renameMachineInDomain(const QString &newMachineName, const QString &accountName, const QString &password, const QString &serverName)
+{
 
     m_lastErrorString = "";
 
     LPCWSTR pszServerName = NULL; // The server is the default local computer.
-    if(!serverName.trimmed().isEmpty()){
+    if(!serverName.trimmed().isEmpty()) {
         pszServerName = serverName.toStdWString().c_str();
     }
 
     NET_API_STATUS err = NetRenameMachineInDomain(pszServerName, newMachineName.toStdWString().c_str(), accountName.toStdWString().c_str(), password.toStdWString().c_str(), NETSETUP_JOIN_DOMAIN | NETSETUP_ACCT_CREATE | NETSETUP_JOIN_WITH_NEW_NAME);
-    switch(err){
+    switch(err) {
     case NERR_Success:
         return true;
         break;
@@ -1496,14 +1524,15 @@ bool SystemInfo::renameMachineInDomain(const QString &newMachineName, const QStr
     }
 
 
-    qWarning()<< "Can not set computer name to " << newMachineName;
+    qWarning() << "Can not set computer name to " << newMachineName;
     QMessageBox::critical(this, tr("Error"), tr("Can not set computer name to '%1'! \r\n %2").arg(newMachineName).arg(m_lastErrorString));
 
     return false;
 
 }
 
-bool SystemInfo::getComputerNameInfo(QString *dnsDomain, QString *dnsHostname, QString *netBIOSName){
+bool SystemInfo::getComputerNameInfo(QString *dnsDomain, QString *dnsHostname, QString *netBIOSName)
+{
 
     m_lastErrorString = "";
 
@@ -1513,42 +1542,42 @@ bool SystemInfo::getComputerNameInfo(QString *dnsDomain, QString *dnsHostname, Q
     ZeroMemory(buffer, 512);
     DWORD size = sizeof(buffer);
 
-    if(dnsDomain){
+    if(dnsDomain) {
         nameType = ComputerNameDnsDomain;
         ok = GetComputerNameExW(nameType, buffer, &size);
-        if(ok){
+        if(ok) {
             *dnsDomain = QString::fromWCharArray(buffer);
-        }else{
+        } else {
             m_lastErrorString += tr("\nFailed to get dns domain! Error Code: %1").arg(GetLastError());
         }
     }
 
-    if(dnsHostname){
+    if(dnsHostname) {
         ZeroMemory(buffer, size);
 
         nameType = ComputerNameDnsHostname;
         ok = GetComputerNameExW(nameType, buffer, &size);
-        if(ok){
+        if(ok) {
             *dnsHostname = QString::fromWCharArray(buffer);
-        }else{
+        } else {
             m_lastErrorString += tr("\nFailed to get dns hostname! Error Code: %1").arg(GetLastError());
         }
     }
 
-    if(netBIOSName){
+    if(netBIOSName) {
         ZeroMemory(buffer, size);
 
         nameType = ComputerNameNetBIOS;
         ok = GetComputerNameExW(nameType, buffer, &size);
-        if(ok){
+        if(ok) {
             *netBIOSName = QString::fromWCharArray(buffer);
-        }else{
+        } else {
             m_lastErrorString += tr("\nFailed to get NetBIOS name! Error Code: %1").arg(GetLastError());
         }
     }
 
-    if(!ok){
-        qWarning()<< m_lastErrorString;
+    if(!ok) {
+        qWarning() << m_lastErrorString;
         QMessageBox::critical(this, tr("Error"), m_lastErrorString);
     }
 

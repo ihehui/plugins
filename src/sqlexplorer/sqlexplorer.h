@@ -6,7 +6,8 @@
 #include "ui_sqlexplorer.h"
 
 
-namespace HEHUI{
+namespace HEHUI
+{
 
 class SqlExplorer : public QMainWindow
 {
@@ -16,7 +17,10 @@ public:
     SqlExplorer(QWidget *parent = 0);
     ~SqlExplorer();
 
-    static bool isRunning(){return running;}
+    static bool isRunning()
+    {
+        return running;
+    }
 
     void setConfirmOnCloseDBConnection(bool confirm);
 
@@ -34,7 +38,7 @@ private:
 
 public slots:
     void slotTabPageChanged();
-    DataExplorer *slotNewDataExplorerTab(const QString &tabText= QString(tr("Untitled")));
+    DataExplorer *slotNewDataExplorerTab(const QString &tabText = QString(tr("Untitled")));
     void slotcloseTab();
 
     void slotOpenTable(const QString &tableName, bool openInNewPage);
@@ -50,8 +54,8 @@ private slots:
     void slotUpdateDatabaseComboBox(bool resetComboBox);
     void slotUpdateTableComboBox(bool resetComboBox);
 
-    void on_databaseComboBox_activated ( const QString & text);
-    void on_tableComboBox_activated ( const QString & text);
+    void on_databaseComboBox_activated ( const QString &text);
+    void on_tableComboBox_activated ( const QString &text);
     void on_pagingCheckBox_stateChanged ( int state );
     void on_metadataToolButton_clicked ();
 
@@ -60,7 +64,7 @@ private:
     Ui::SqlExplorerUI ui;
 
 
-    QList<QPair<DataExplorer*,QString> > dataExplorerTabPages;
+    QList<QPair<DataExplorer *, QString> > dataExplorerTabPages;
 
     static bool running;
 

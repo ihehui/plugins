@@ -41,11 +41,12 @@
 #include "ui_settingsdialog.h"
 
 #ifdef Q_OS_WIN32
-#include "HHSharedWindowsManagement/hwindowsmanagement.h"
+    #include "HHSharedWindowsManagement/hwindowsmanagement.h"
 #endif
 
 
-namespace HEHUI {
+namespace HEHUI
+{
 
 class SettingsDialog : public QDialog
 {
@@ -54,15 +55,15 @@ class SettingsDialog : public QDialog
 public:
     SettingsDialog(const QString &userID, WindowsManagement *wm, int defaultLocationIndex, QWidget *parent = 0);
     ~SettingsDialog();
-    
-    
+
+
 
 
 
 private slots:
     void on_comboBoxLocation_currentIndexChanged ( int index );
     void on_pushButtonOK_clicked();
-    
+
 
 
 private:

@@ -71,36 +71,40 @@ void ModifyUserInfoDialog::changeEvent(QEvent *e)
 
 }
 
-QString ModifyUserInfoDialog::newChineseName() const{
+QString ModifyUserInfoDialog::newChineseName() const
+{
     return ui.lineEditChineseName->text();
 }
 
-QString ModifyUserInfoDialog::newDepartment() const{
+QString ModifyUserInfoDialog::newDepartment() const
+{
     return ui.comboBoxUserDept->currentText();
 }
 
-QStringList ModifyUserInfoDialog::newEmailAccountStringList() const{
+QStringList ModifyUserInfoDialog::newEmailAccountStringList() const
+{
 
     QString emailAccount = ui.lineEditEmailAccount->text();
     QStringList emailAccountList;
     emailAccountList << "" << "";
-    if(ui.checkBoxExternalEmail->isChecked()){
-       emailAccountList[0] = (emailAccount + "@sitoy.com");
+    if(ui.checkBoxExternalEmail->isChecked()) {
+        emailAccountList[0] = (emailAccount + "@sitoy.com");
     }
 
-    if(ui.checkBoxInternalEmail->isChecked()){
-       emailAccountList[1] = (emailAccount + "@sitoydg.com");
+    if(ui.checkBoxInternalEmail->isChecked()) {
+        emailAccountList[1] = (emailAccount + "@sitoydg.com");
     }
 
     return emailAccountList;
 
 }
 
-void ModifyUserInfoDialog::on_comboBoxUserDept_currentIndexChanged (const QString & text){
+void ModifyUserInfoDialog::on_comboBoxUserDept_currentIndexChanged (const QString &text)
+{
 
     QString emailAccount = m_userID;
-    if(emailAccount.isEmpty()){
-        if(text.toLower() == "sales" && m_userID.left(2).toLower() == "sa"){
+    if(emailAccount.isEmpty()) {
+        if(text.toLower() == "sales" && m_userID.left(2).toLower() == "sa") {
             emailAccount.replace(0, 2, "sales_");
         }
 
@@ -110,7 +114,8 @@ void ModifyUserInfoDialog::on_comboBoxUserDept_currentIndexChanged (const QStrin
 
 }
 
-void ModifyUserInfoDialog::on_pushButtonOK_clicked(){
+void ModifyUserInfoDialog::on_pushButtonOK_clicked()
+{
 
     accept();
 

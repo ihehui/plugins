@@ -12,8 +12,8 @@
 SqlConsole::SqlConsole(QWidget *parent/*, MainWindow *h*/)
     : QWidget(parent)/*, completer(0), mw(h)*/
 {
-	ui.setupUi(this);
-	
+    ui.setupUi(this);
+
     completer = new QCompleter(this);
     completer->setModel(modelFromFile(":/text/resources/text/sqlkeyword"));
     completer->setModelSorting(QCompleter::CaseInsensitivelySortedModel);
@@ -29,52 +29,55 @@ SqlConsole::SqlConsole(QWidget *parent/*, MainWindow *h*/)
 }
 
 
-SqlConsole::~SqlConsole(){
-	commandList.clear();
+SqlConsole::~SqlConsole()
+{
+    commandList.clear();
 
 }
 
 void SqlConsole::languageChange()
 {
 
-	ui.retranslateUi(this);
+    ui.retranslateUi(this);
 
 }
 
 
-bool SqlConsole::eventFilter(QObject *obj, QEvent *event) {
-	if (obj == ui.textEdit && event->type() == QEvent::KeyRelease) {
-		QKeyEvent *keyEvent = static_cast<QKeyEvent *> (event);
-		if(keyEvent->key() == Qt::Key_Up ){
-			setCommand(++cmdIndex);
-		}else if(keyEvent->key() == Qt::Key_Down){
-			setCommand(--cmdIndex);
-		}
+bool SqlConsole::eventFilter(QObject *obj, QEvent *event)
+{
+    if (obj == ui.textEdit && event->type() == QEvent::KeyRelease) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *> (event);
+        if(keyEvent->key() == Qt::Key_Up ) {
+            setCommand(++cmdIndex);
+        } else if(keyEvent->key() == Qt::Key_Down) {
+            setCommand(--cmdIndex);
+        }
 
-		if(keyEvent->key() == Qt::Key_Escape){
-			ui.textEdit->clear();
-		}
+        if(keyEvent->key() == Qt::Key_Escape) {
+            ui.textEdit->clear();
+        }
 
 
-		return true;
-	}else{
-		// standard event processing
-		return QObject::eventFilter(obj, event);
-	}
+        return true;
+    } else {
+        // standard event processing
+        return QObject::eventFilter(obj, event);
+    }
 
 }
 
-void SqlConsole::on_toolButtonOpenSQLScriptFile_clicked(){
+void SqlConsole::on_toolButtonOpenSQLScriptFile_clicked()
+{
     QString fileName = QFileDialog::getOpenFileName(this, tr("SQL Script File"), QDir::currentPath(), tr("SQL Script (*.sql);;All Files (*.*)"));
-    if(fileName.trimmed().isEmpty()){
+    if(fileName.trimmed().isEmpty()) {
         return;
     }
 
     QFile file(fileName);
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QString msg = file.errorString();
         QMessageBox::critical(this, tr("Error"), msg);
-        qCritical()<< msg;
+        qCritical() << msg;
         return;
     }
 
@@ -89,7 +92,7 @@ void SqlConsole::on_toolButtonOpenSQLScriptFile_clicked(){
     }
 
     QString selectedCodec = QInputDialog::getItem(this, tr("Select Codec"), tr("Select the codec of the file:"), codecs, 0, false);
-    if(selectedCodec.isEmpty()){
+    if(selectedCodec.isEmpty()) {
         selectedCodec = locale;
     }
 
@@ -102,77 +105,79 @@ void SqlConsole::on_toolButtonOpenSQLScriptFile_clicked(){
 
 }
 
-void SqlConsole::on_submitButton_clicked() {
-	QString queryString = ui.textEdit->toPlainText();
+void SqlConsole::on_submitButton_clicked()
+{
+    QString queryString = ui.textEdit->toPlainText();
 
-	if(queryString.startsWith("delete", Qt::CaseInsensitive) || queryString.startsWith("drop", Qt::CaseInsensitive)){
-		QMessageBox::StandardButton reply;
-		reply = QMessageBox::question(this, tr("Dangerous Operation"), tr("<font color=red>Really delete data?</font>"),
-					QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
-		if (reply == QMessageBox::No) {
-			return;
-		}
-	}
+    if(queryString.startsWith("delete", Qt::CaseInsensitive) || queryString.startsWith("drop", Qt::CaseInsensitive)) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, tr("Dangerous Operation"), tr("<font color=red>Really delete data?</font>"),
+                                      QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+        if (reply == QMessageBox::No) {
+            return;
+        }
+    }
 
 
-	emit signalQueryRequested(queryString);
+    emit signalQueryRequested(queryString);
 
-	saveCommand(queryString);
-	ui.textEdit->clear();
-	ui.textEdit->setFocus();
-	cmdIndex = -1;
+    saveCommand(queryString);
+    ui.textEdit->clear();
+    ui.textEdit->setFocus();
+    cmdIndex = -1;
 
 }
 
 
 void SqlConsole::saveCommand(const QString &command)
 {
-	//TODO:
-	//QStringList commandList = Settings::instance()->getCommandList();
+    //TODO:
+    //QStringList commandList = Settings::instance()->getCommandList();
 //	if(commandList.count()>=MAX_COM_NUM){
 //		commandList.pop_back();
 //		commandList.prepend(command);
 //	}
-	//Settings::instance()->setCommandList(commandList);
+    //Settings::instance()->setCommandList(commandList);
 
 
 
-	if(commandList.count()>=MAX_COM_NUM){
-		commandList.pop_back();
-	}
-	commandList.prepend(command);
+    if(commandList.count() >= MAX_COM_NUM) {
+        commandList.pop_back();
+    }
+    commandList.prepend(command);
 
 
 }
 
 
-void SqlConsole::setCommand(int index){
-	ui.textEdit->clear();
+void SqlConsole::setCommand(int index)
+{
+    ui.textEdit->clear();
 
-	int cmdCount = commandList.size();
-	if(!cmdCount){
-		cmdIndex = -1;
-		return;
-	}
+    int cmdCount = commandList.size();
+    if(!cmdCount) {
+        cmdIndex = -1;
+        return;
+    }
 
-	QString cmd;
+    QString cmd;
 
-	if(index >= cmdCount){
-		index = cmdCount-1;
-		//ui.textEdit->setText(commandList.at(index));
-		cmd = commandList.at(index);
-	}else if(index < 0){
-		//ui.textEdit->setText("");
-		cmd = "";
-		index = -1;
-	}else{
-		//ui.textEdit->setText(commandList.at(index));
-		cmd = commandList.at(index);
-	}
+    if(index >= cmdCount) {
+        index = cmdCount - 1;
+        //ui.textEdit->setText(commandList.at(index));
+        cmd = commandList.at(index);
+    } else if(index < 0) {
+        //ui.textEdit->setText("");
+        cmd = "";
+        index = -1;
+    } else {
+        //ui.textEdit->setText(commandList.at(index));
+        cmd = commandList.at(index);
+    }
 
-	cmdIndex = index;
+    cmdIndex = index;
 
-	ui.textEdit->setCommand(cmd);
+    ui.textEdit->setCommand(cmd);
 
 //	QTextCursor tc = ui.textEdit->textCursor();
 //	tc.movePosition(QTextCursor::End, QTextCursor::MoveAnchor);
@@ -183,19 +188,21 @@ void SqlConsole::setCommand(int index){
 
 
 
-QAbstractItemModel *SqlConsole::modelFromFile(const QString& fileName)
+QAbstractItemModel *SqlConsole::modelFromFile(const QString &fileName)
 {
     QFile file(fileName);
-    if (!file.open(QFile::ReadOnly))
+    if (!file.open(QFile::ReadOnly)) {
         return new QStringListModel(completer);
+    }
 
     QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     QStringList words;
-    
+
     while (!file.atEnd()) {
         QByteArray line = file.readLine();
-        if (!line.isEmpty())
+        if (!line.isEmpty()) {
             words << line.trimmed();
+        }
     }
 
     QApplication::restoreOverrideCursor();

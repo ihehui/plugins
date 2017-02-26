@@ -18,21 +18,21 @@ public:
     void setCompleter(QCompleter *c);
 
     QCompleter *completer() const;
-    
+
 
 
 protected:
     void keyPressEvent(QKeyEvent *e);
-    void wheelEvent( QWheelEvent * e);
+    void wheelEvent( QWheelEvent *e);
 
 public slots:
-	void setCommand(const QString &cmd);
+    void setCommand(const QString &cmd);
 
 private slots:
     void insertCompletion(const QString &completion);
 
 private:
-    
+
     QString textUnderCursor() const;
 
 private:

@@ -56,7 +56,7 @@ protected:
 
 private slots:
     void on_pushButtonOK_clicked();
-    void on_comboBoxUserDept_currentIndexChanged (const QString & text);
+    void on_comboBoxUserDept_currentIndexChanged (const QString &text);
 
 
 private:
