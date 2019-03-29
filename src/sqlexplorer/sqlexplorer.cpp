@@ -2,9 +2,9 @@
 #include <QtSql>
 
 #include "sqlexplorer.h"
-//#include "../../shared/gui/databaseconnecter/databaseconnecter.h"
-#include "HHSharedGUI/hdatabaseconnecter.h"
-#include "HHSharedCore/hdatabaseutility.h"
+
+#include "HHSharedGUI/DatabaseConnecter"
+#include "HHSharedCore/DatabaseUtility"
 
 
 namespace HEHUI

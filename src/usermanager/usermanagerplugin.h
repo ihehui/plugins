@@ -29,7 +29,6 @@
 
 
 
-
 #ifndef USERMANAGERPLUGIN_H_
 #define USERMANAGERPLUGIN_H_
 
@@ -37,8 +36,8 @@
 
 #include "usermanagermainwindow.h"
 
-//#include "../../shared/gui/plugin/guipluginbase.h"
-#include "HHSharedGUI/hguipluginbase.h"
+#include "HHSharedGUI/GUIPluginBase"
+
 
 namespace HEHUI
 {

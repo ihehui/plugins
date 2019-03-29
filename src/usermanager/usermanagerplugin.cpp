@@ -32,10 +32,9 @@
 
 #include "usermanagerplugin.h"
 
-//#include "../../shared/core/user.h"
-//#include "../../shared/gui/login/loginbase.h"
-#include "HHSharedCore/huser.h"
-#include "HHSharedGUI/hloginbase.h"
+
+#include "HHSharedCore/User"
+#include "HHSharedGUI/LoginBase"
 
 
 namespace HEHUI

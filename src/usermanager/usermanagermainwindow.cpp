@@ -55,10 +55,10 @@
 #endif
 
 
-#include "HHSharedCore/hglobal_core.h"
-#include "HHSharedCore/hutilities.h"
-#include "HHSharedGUI/hdatabaseconnecter.h"
-#include "HHSharedGUI/hdataoutputdialog.h"
+#include "HHSharedCore/GlobalCore"
+#include "HHSharedCore/CoreUtilities"
+#include "HHSharedGUI/DatabaseConnecter"
+#include "HHSharedGUI/DataOutputDialog"
 
 
 
@@ -130,7 +130,7 @@ UserManagerMainWindow::UserManagerMainWindow(bool isYDAdmin, QWidget *parent)
 
 
     ui.userIDComboBox->clear();
-    QString username = Utilities::currentUserNameOfOS();
+    QString username = CoreUtilities::currentUserNameOfOS();
 
     progressDlg = 0;
 

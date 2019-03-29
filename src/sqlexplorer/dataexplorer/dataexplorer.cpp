@@ -19,10 +19,9 @@
 
 
 #include "dataexplorer.h"
-//#include "dataiodialog.h"
 #include "../databaseexplorer/databaseexplorer.h"
 
-#include "HHSharedGUI/hdataoutputdialog.h"
+#include "HHSharedGUI/DataOutputDialog"
 
 
 

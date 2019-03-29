@@ -37,8 +37,9 @@
 #include <QObject>
 
 #include "sqlexplorer.h"
-//#include "../../shared/gui/plugin/guipluginbase.h"
-#include "HHSharedGUI/hguipluginbase.h"
+
+#include "HHSharedGUI/GUIPluginBase"
+
 
 namespace HEHUI
 {

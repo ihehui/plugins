@@ -37,7 +37,7 @@
 #include <QObject>
 
 #include "dnslookup.h"
-#include "HHSharedGUI/hguipluginbase.h"
+#include "HHSharedGUI/GUIPluginBase"
 
 namespace HEHUI
 {
